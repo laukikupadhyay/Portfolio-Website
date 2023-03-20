@@ -16,17 +16,19 @@
   --grey-12: #0a0a0a;
   --grey-13: #0a0a0a;
   --grey-14: #000000;
+  --grey-hover: rgba(255, 255, 255, 0.08);
+  --grey-hover-text: rgba(255, 255, 255, 0.4);
 
-  --primary-1: "#E6FBFF";
-  --primary-2: "#CCF7FE";
-  --primary-3: "#99EEFD";
-  --primary-4: "#66E6FC";
-  --primary-5: "#33DDFB";
-  --primary-6: "#00D5FA";
-  --primary-7: "#00A0BC";
-  --primary-8: "#006B7D";
-  --primary-9: "#00353F";
-  --primary-10: "#001519";
+  --primary-1: #e6fbff;
+  --primary-2: #ccf7fe;
+  --primary-3: #99eefd;
+  --primary-4: #66e6fc;
+  --primary-5: #33ddfb;
+  --primary-6: #00d5fa;
+  --primary-7: #00a0bc;
+  --primary-8: #006b7d;
+  --primary-9: #00353f;
+  --primary-10: #001519;
 
   --spacing-smaller: 0.5rem;
   --spacing-small: 1rem;

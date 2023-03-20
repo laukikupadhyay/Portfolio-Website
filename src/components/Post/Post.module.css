@@ -1,7 +1,7 @@
 .container {
   margin: 2rem auto;
-  padding: 1.5rem 1.5rem 2rem 1.5rem;
-  background-color: #1a1a1a;
+  padding: 1.6rem;
+  background-color: var(--grey-11);
   border-radius: 0.75rem;
   /* temporary width */
   width: 50%;
@@ -39,19 +39,24 @@
   width: 50%;
   height: 50%;
   border-radius: 50%;
-  color: #99eefd;
 }
 
 .name {
   font-size: 1.6rem;
-  color: #c2c2c2;
+  color: var(--grey-4);
   font-weight: 500;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.name:hover {
+  color: var(--grey-hover-text);
 }
 
 .location {
   font-weight: 400;
   line-height: 1.5;
-  color: #858585;
+  color: var(--grey-5);
   font-size: 1.2rem;
 }
 
@@ -63,9 +68,10 @@
   width: 3.6rem;
   border-radius: 50%;
   border: none;
-  background-color: #00353f;
-  color: #99eefd;
+  background-color: var(--primary-9);
+  color: var(--primary-3);
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .icon {
@@ -76,7 +82,7 @@
 .description {
   font-weight: 400;
   line-height: 1.5;
-  color: #c2c2c2;
+  color: var(--grey-4);
   font-size: 1.2rem;
 }
 
@@ -103,4 +109,8 @@
   font-size: 1.2rem;
   color: var(--grey-0);
   font-weight: 400;
+}
+
+.button:hover {
+  background-color: var(--grey-hover);
 }
