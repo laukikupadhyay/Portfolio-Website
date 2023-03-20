@@ -1,16 +1,8 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useNavigate,
-} from "react-router-dom";
-import { useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/Home";
 import LoginPage from "./pages/Login";
 import SuccessPage from "./pages/Success";
-import supabase from "./supabase";
-import Main from './pages/Main/Main.jsx'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Main from "./pages/Main/Main.jsx";
 
 function App() {
   return (

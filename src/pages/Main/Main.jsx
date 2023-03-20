@@ -1,12 +1,14 @@
-import React from 'react'
-import Profile from '../../components/Profile/Profile'
+import React from "react";
+import Profile from "../../components/Profile/Profile";
+import Post from "../../components/Post/Post";
 
 function Main() {
   return (
-    <div>
-        <Profile/>
-    </div>
-  )
+    <>
+      <Profile />
+      <Post />
+    </>
+  );
 }
 
-export default Main
+export default Main;
