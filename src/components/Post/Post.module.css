@@ -74,11 +74,6 @@
   transition: background-color 0.3s;
 }
 
-.icon {
-  width: 50%;
-  height: 50%;
-}
-
 .description {
   font-weight: 400;
   line-height: 1.5;
