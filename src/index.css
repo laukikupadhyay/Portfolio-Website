@@ -30,12 +30,8 @@
   --primary-9: #00353f;
   --primary-10: #001519;
 
-  --spacing-smaller: 0.5rem;
-  --spacing-small: 1rem;
-  --spacing-medium: 2rem;
-  --spacing-large: 4rem;
-
   --font-mono: "Roboto Mono", monospace;
+  --font-x-small: 1.2rem;
   --font-small: 1.4rem;
   --font-medium: 1.6rem;
   --font-large: 1.8rem;
