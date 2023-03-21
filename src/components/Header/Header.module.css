@@ -1,0 +1,68 @@
+.headerContainer{
+margin: 2rem auto;
+  padding:2rem;
+  background-color: var(--grey-11);
+  border-radius: 0.75rem;
+  /* temporary width */
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  color:white;
+}
+.divider{
+    width:100%;
+    height: 1px;
+    background-color: var(--grey-8);
+    margin: 2rem 0;
+    text-align: center;
+}
+.upper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.user{
+    font-size: 4rem;
+}
+.input{
+    margin-left: 4rem;
+    background-color: var(--grey-11);
+    border:1px solid var(--grey-6);
+    padding:1.2rem;
+    border-radius:2rem;
+}
+.lower{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.lowerOptions{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 2rem;
+    color:var(--grey-5);
+}
+.image,.clip,.attachement,.audio{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-right: 2rem;
+}
+.imageText,.videoText,.clipText,.audioText{
+    font-size: 1.5rem;
+    margin-left: 0.4rem;
+}
+.image:hover,.clip:hover,.attachement:hover,.audio:hover{
+    color:var(--grey-0);
+    cursor:pointer;
+}
+button{
+  background-color: var(--grey-11);
+  color:var(--grey-5);
+  padding:0.5rem 1rem;
+  border:1px solid var(--grey-6);
+  border-radius:1.2rem;
+}
