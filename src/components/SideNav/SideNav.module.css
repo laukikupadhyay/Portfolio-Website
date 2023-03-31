@@ -32,3 +32,8 @@
 .logOutIcon{
     margin-left: 0.5rem;
 }
+
+.link.active {
+    background-color: var(--grey-7);
+    border:1rem;
+  }
