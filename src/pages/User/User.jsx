@@ -6,6 +6,7 @@ import styles from "./User.module.css"
 import MyRooms from "../../components/Rooms/MyRooms/MyRooms";
 import Friends from "../../components/Friends/Friends";
 import CreateRoom from "../../components/Rooms/CreateRoom/CreateRoom";
+import EditProfile from "../../components/EditProfile/EditProfile";
 
 function Main() {
   return (
@@ -16,7 +17,8 @@ function Main() {
     {/* <MyAccount/> */}
     {/* <MyRooms/> */}
     {/* <Friends/> */}
-    <CreateRoom/>
+    {/* <CreateRoom/> */}
+    <EditProfile/>
     </div>
     </>
   );

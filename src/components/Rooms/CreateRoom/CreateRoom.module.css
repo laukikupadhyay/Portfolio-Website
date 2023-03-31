@@ -69,11 +69,11 @@
   }
   
   .dropdown:hover:after {
-    color: #333;
+    color: #313131;
   }
   
   button{
-    background-color: #202020;
+    background-color: #1c1c1c;
     border:none;
     border-radius: 1rem;
     padding:1.2rem;

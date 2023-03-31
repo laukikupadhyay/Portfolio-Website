@@ -25,3 +25,10 @@ export const sports = [
         "maxPlayer":"4",
     },
 ]
+export const interestsList = [
+    "Cricket",
+    "Football",
+    "Basketball",
+    "Volleyball",
+    "Badminton"
+  ];
