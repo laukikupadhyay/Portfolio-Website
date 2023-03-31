@@ -4,6 +4,7 @@ import SideNav from "../../components/SideNav/SideNav";
 import MyAccount from "../../components/MyAccount/MyAccount";
 import styles from "./User.module.css"
 import MyRooms from "../../components/Rooms/MyRooms/MyRooms";
+import Friends from "../../components/Friends/Friends";
 
 function Main() {
   return (
@@ -12,7 +13,8 @@ function Main() {
     <div style={{ display: "flex", flexDirection: "row" }}>
     <SideNav/>
     {/* <MyAccount/> */}
-    <MyRooms/>
+    {/* <MyRooms/> */}
+    <Friends/>
     </div>
     </>
   );
