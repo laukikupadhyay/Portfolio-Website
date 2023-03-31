@@ -1,0 +1,27 @@
+export const sports = [
+    {
+        "name":"Cricket",
+        "minPlayer":"11",
+        "maxPlayer":"15",
+    },
+    {
+        "name":"Football",
+        "minPlayer":"11",
+        "maxPlayer":"15",
+    },
+    {
+        "name":"Basketball",
+        "minPlayer":"5",
+        "maxPlayer":"10",
+    },
+    {
+        "name":"Volleyball",
+        "minPlayer":"6",
+        "maxPlayer":"12",
+    },
+    {
+        "name":"Badminton",
+        "minPlayer":"2",
+        "maxPlayer":"4",
+    },
+]

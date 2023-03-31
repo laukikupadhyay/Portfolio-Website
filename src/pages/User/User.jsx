@@ -5,6 +5,7 @@ import MyAccount from "../../components/MyAccount/MyAccount";
 import styles from "./User.module.css"
 import MyRooms from "../../components/Rooms/MyRooms/MyRooms";
 import Friends from "../../components/Friends/Friends";
+import CreateRoom from "../../components/Rooms/CreateRoom/CreateRoom";
 
 function Main() {
   return (
@@ -14,7 +15,8 @@ function Main() {
     <SideNav/>
     {/* <MyAccount/> */}
     {/* <MyRooms/> */}
-    <Friends/>
+    {/* <Friends/> */}
+    <CreateRoom/>
     </div>
     </>
   );
