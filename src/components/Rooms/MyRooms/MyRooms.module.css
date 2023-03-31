@@ -1,0 +1,52 @@
+.rooms{
+    display: flex;
+    flex-direction: column;
+    width:50rem;
+    height: 100%;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin:9rem 0rem 0rem 10rem;
+    color:white;
+    background-color: #151515;
+    font-size: 1.5rem;
+}
+.divider{
+    width:100%;
+    height: 0.2px;
+    background-color: var(--grey-6);
+    opacity: 0.5;
+    margin: 2rem 0;
+    text-align: center;
+}
+.room{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    background-color: #262626;
+    padding:2rem;
+    border-radius: 1rem;
+}
+.teamName{
+    font-size: 1.5rem;
+}
+.teamDesc{
+    font-size: 1.3rem;
+    opacity: 0.8;
+}
+.group{
+    display: flex;
+}
+.avatar{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin-right: 2rem;
+}
+.trash{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin-right: 2rem;
+    cursor:pointer;
+}
