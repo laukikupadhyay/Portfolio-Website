@@ -1,0 +1,34 @@
+.sideNav{
+    display: flex;
+    flex-direction: column;
+    width:20%;
+    height: 100%;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin:9rem 0rem 0rem 10rem;
+    color:white;
+    background-color: #151515;
+    font-size: 1.5rem;
+}
+.sideNav>ul{
+    padding: 0;
+    margin: 0;
+}
+.link{
+    padding:1.2rem;
+}
+.link:hover{
+    background-color: var(--grey-7);
+    cursor:pointer;
+    border-radius: 0.8rem;
+}
+.diversion{
+    width:100%;
+    height: 0.2px;
+    background-color: var(--grey-7);
+    margin: 2rem 0;
+    text-align: center;
+}
+.logOutIcon{
+    margin-left: 0.5rem;
+}
