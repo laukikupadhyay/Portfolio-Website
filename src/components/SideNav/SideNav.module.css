@@ -1,8 +1,8 @@
 .sideNav{
     display: flex;
     flex-direction: column;
-    width:20%;
-    height: 100%;
+    width:25rem;
+    height: 33rem;
     border-radius: 1rem;
     padding: 2rem;
     margin:9rem 0rem 0rem 10rem;

@@ -1,0 +1,4 @@
+.userlayout{
+    display: flex;
+    flex-direction: row;
+}
