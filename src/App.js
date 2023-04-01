@@ -4,6 +4,7 @@ import LoginPage from "./pages/Login";
 import SuccessPage from "./pages/Success";
 import Main from "./pages/Main/Main.jsx";
 import User from "./pages/User/User";
+import Allrooms from "./components/Rooms/Allrooms/Allrooms";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/success" element={<SuccessPage />} />
           <Route path="/main" element={<Main />} />
           <Route path="/user" element={<User/>} />
+          <Route path="/allrooms" element={<Allrooms/>} />
         </Routes>
       </Router>
     </>

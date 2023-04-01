@@ -109,8 +109,12 @@
   background-size: 400%;
   color: #fff;
   font-size: 20px;
-  letter-spacing: 1px;
-  padding-bottom: 30px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  text-decoration: none;
 }
 
 #button::before {
