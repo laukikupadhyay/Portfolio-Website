@@ -49,19 +49,23 @@
     /* background-color: #6759ff; */
     color: #ffffff;
   }
-  #products {
+  #rooms {
     display: grid;
     grid-template-columns: auto auto auto;
     grid-column-gap: 1.5em;
     padding: 2em 0;
   }
   .card {
-    background-color: #ffffff;
     max-width: 18em;
-    margin-top: 1em;
+    margin-top: 3.5em;
     padding: 1em;
     border-radius: 5px;
-    box-shadow: 1em 2em 2.5em rgba(1, 2, 68, 0.08);
+    background: linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
   }
   .image-container {
     text-align: center;
@@ -81,6 +85,10 @@
   .hide {
     display: none;
   }
+  h1.room-category{
+    color: #6759ff;
+    width: 35%;
+  }
   
   @media screen and (max-width: 720px) {
     #search-container input{
@@ -89,6 +97,7 @@
     #search-container button{
         width: 80%;
         margin: 0;
+        margin-top: 5%;
     }
     img {
       max-width: 100%;
@@ -96,10 +105,10 @@
       height: 10em;
     }
     .card {
-      max-width: 10em;
+      width: 100%;
       margin-top: 1em;
     }
-    #products {
+    #rooms {
       grid-template-columns: auto auto;
       grid-column-gap: 1em;
     }
