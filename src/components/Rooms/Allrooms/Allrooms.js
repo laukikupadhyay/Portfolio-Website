@@ -22,12 +22,12 @@ function Allrooms() {
             <button id="search">Search</button>
           </div>
           <div id="buttons">
-            <button className="button-value" onClick={()=>filterroom('class')}>
+            <button className="button-value" onClick={()=>filterroom('all')}>
               All
             </button>
             {rooms.data.map((i)=>{
               return(
-                <button className="button-value" onClick={()=>filterroom('class')}>
+                <button className="button-value" onClick={()=>filterroom(i.category)}>
                   {i.category}
             </button>
               )
@@ -35,11 +35,21 @@ function Allrooms() {
           </div>
 
           <div id="rooms">           
-            
-            {console.log(rooms.data)}
             {rooms.data.map((room) => {
               return(
-                <div className={`card`}>
+                <div className={cat==room.category?`card`:"hide"}>
+                <div className="image-container">
+                  <img src={room.image} />
+                </div>
+                <div className="container">
+                  <h1 className="room-category">{room.category}</h1>
+                </div>
+              </div>
+            )
+            })}
+            {rooms.data.map((room) => {
+              return(
+                <div className={cat=="all"?`card`:"hide"}>
                 <div className="image-container">
                   <img src={room.image} />
                 </div>

@@ -55,7 +55,7 @@
     grid-column-gap: 1.5em;
     padding: 2em 0;
   }
-  .card {
+  .card{
     max-width: 18em;
     margin-top: 3.5em;
     padding: 1em;
@@ -67,6 +67,7 @@
     border: 1px solid rgba(255,255,255,0.18);
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
   }
+  
   .image-container {
     text-align: center;
   }
