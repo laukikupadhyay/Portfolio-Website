@@ -4,7 +4,7 @@ import "./allrooms.css";
 import rooms from "./roomsdata";
 
 function Allrooms() {
-  const [cat,setcat]=useState("");
+  const [cat,setcat]=useState("all");
   const filterroom=function(value){
     setcat(value)
   }
