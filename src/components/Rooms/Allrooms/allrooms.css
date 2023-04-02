@@ -67,6 +67,18 @@
     border: 1px solid rgba(255,255,255,0.18);
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
   }
+  .card:hover{
+    animation:borderanimate 0.5s linear;
+    box-shadow:   0px 12px 28px 0px #2854f1, 0px 2px 4px 0px #161eb9;
+}
+@keyframes borderanimate {
+    0%{
+        box-shadow:none;
+    }
+    100%{
+        box-shadow:  0px 12px 28px 0px #2854f1,0px 2px 4px 0px #161eb9;
+    }
+}
   
   .image-container {
     text-align: center;
