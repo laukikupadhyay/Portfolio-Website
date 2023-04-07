@@ -12,7 +12,7 @@ const Login = () => {
     supabase.auth.onAuthStateChange((event) => {
       console.log(event);
       if (event !== "SIGNED_OUT") {
-        navigate("/success");
+        navigate("/main");
         console.log("Login success");
       } else navigate("/login");
     });

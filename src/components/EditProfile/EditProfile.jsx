@@ -39,7 +39,7 @@ function EditProfile() {
           <div>Name:</div>
           <input
             className={styles.input}
-            placeholder="Anshu Joshi"
+            // placeholder="Anshu Joshi"
             value={name}
             onChange={handleNameChange}
           />

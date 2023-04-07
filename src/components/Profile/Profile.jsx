@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser,faLocationDot , faBriefcase ,faGear} from "@fortawesome/free-solid-svg-icons";
 import twitter from '../../assests/icons/twitter.svg'
 import styles from './Profile.module.css'
 
-function Profile() {
+function Profile({user}) {
+
+    useEffect(()=>{
+        console.log(user)
+    })
   return (
     <div className={styles.profileCard}>
         <div className={styles.picname}>
             <div className={styles.nameRight}>
-            <FontAwesomeIcon className={styles.avatar} icon={faUser} />
+            <img className={styles.avatar} src={user.avatar_url} />
             <div className={styles.self}>
-            <div className={styles.name}>Anshu Joshi</div>
+            <div className={styles.name}>{user.full_name}</div>
             <div className={styles.friends}>0 friends</div>
             </div>
             </div>

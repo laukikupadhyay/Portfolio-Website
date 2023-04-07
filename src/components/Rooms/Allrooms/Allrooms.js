@@ -4,10 +4,10 @@ import "./allrooms.css";
 import rooms from "./roomsdata";
 
 function Allrooms() {
-  const [cat,setcat]=useState("all");
-  const filterroom=function(value){
-    setcat(value)
-  }
+  const [cat, setcat] = useState("all");
+  const filterroom = function (value) {
+    setcat(value);
+  };
   return (
     <div>
       <NavBar />
@@ -22,44 +22,46 @@ function Allrooms() {
             <button id="search">Search</button>
           </div>
           <div id="buttons">
-            <button className="button-value" onClick={()=>filterroom('all')}>
+            <button className="button-value" onClick={() => filterroom("all")}>
               All
             </button>
-            {rooms.data.map((i)=>{
-              return(
-                <button className="button-value" onClick={()=>filterroom(i.category)}>
+            {rooms.data.map((i) => {
+              return (
+                <button
+                  className="button-value"
+                  onClick={() => filterroom(i.category)}
+                >
                   {i.category}
-            </button>
-              )
+                </button>
+              );
             })}
           </div>
 
-          <div id="rooms">           
+          <div id="rooms">
             {rooms.data.map((room) => {
-              return(
-                <div className={cat==room.category?`card`:"hide"}>
-                <div className="image-container">
-                  <img src={room.image} />
+              return (
+                <div className={cat == room.category ? `card` : "hide"}>
+                  <div className="image-container">
+                    <img src={room.image} />
+                  </div>
+                  <div className="container">
+                    <h1 className="room-category">{room.category}</h1>
+                  </div>
                 </div>
-                <div className="container">
-                  <h1 className="room-category">{room.category}</h1>
-                </div>
-              </div>
-            )
+              );
             })}
             {rooms.data.map((room) => {
-              return(
-                <div className={cat=="all"?`card`:"hide"}>
-                <div className="image-container">
-                  <img src={room.image} />
+              return (
+                <div className={cat == "all" ? `card` : "hide"}>
+                  <div className="image-container">
+                    <img src={room.image} />
+                  </div>
+                  <div className="container">
+                    <h1 className="room-category">{room.category}</h1>
+                  </div>
                 </div>
-                <div className="container">
-                  <h1 className="room-category">{room.category}</h1>
-                </div>
-              </div>
-            )
+              );
             })}
-
           </div>
         </div>
       </div>

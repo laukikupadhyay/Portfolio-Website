@@ -83,7 +83,7 @@
   .image-container {
     text-align: center;
   }
-  img {
+  .allrooms img {
     max-width: 100%;
     object-fit: contain;
     height: 15em;
