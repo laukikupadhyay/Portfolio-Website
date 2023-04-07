@@ -1,17 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./EditProfile.module.css";
 import { interestsList } from "../../assests/data.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store/auth/auth-slice";
 
-function EditProfile() {
+function EditProfile({user}) {
   const [name, setName] = useState("");
   const [interests, setInterests] = useState([]);
+
+  const dispatch = useDispatch();
 
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
 
+    useEffect(()=>{
+        if(user){
+            setName(user.name)
+        }
+    },[user])
   const handleInterestChange = (event) => {
     const selectedInterest = event.target.value;
     if (!interests.includes(selectedInterest)) {
@@ -29,6 +38,28 @@ function EditProfile() {
     console.log("Interests: ", interests);
   };
 
+  const handleUpdate= async ()=>{
+    try{
+      const res = await fetch(process.env.REACT_APP_BACKEND_URL + 'users/editprofile/' + user._id, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          name: name,
+          interest: interests,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      const data = await res.json();
+      console.log(data);
+      dispatch(setUser(data.data.user))
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+
   return (
     <div className={styles.editProfileContainer}>
       <h2>Edit Profile</h2>
@@ -39,7 +70,6 @@ function EditProfile() {
           <div>Name:</div>
           <input
             className={styles.input}
-            // placeholder="Anshu Joshi"
             value={name}
             onChange={handleNameChange}
           />
@@ -74,7 +104,7 @@ function EditProfile() {
 
         </div>
 
-        <button className={styles.updateButton} type="submit">
+        <button className={styles.updateButton} type="submit" onClick={handleUpdate}>
           Update Details
         </button>
       </form>

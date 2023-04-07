@@ -10,13 +10,13 @@ function Main() {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem(`sb-soqmlrodsqlvbpmdhesr-auth-token`));
   const newuser = useSelector(state => state.auth.userInfo);
-
   useEffect(() => {
     // console.log(user);
-    if (user) {
-      dispatch(setUser(user.user.user_metadata));
-      console.log(newuser);
-    }
+    // if (user) {
+    //   dispatch(setUser(user.user.user_metadata));
+    //   console.log(newuser);
+    // }
+    console.log(newuser)
   }, []);
 
   return (

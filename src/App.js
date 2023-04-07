@@ -5,6 +5,8 @@ import SuccessPage from "./pages/Success";
 import Main from "./pages/Main/Main.jsx";
 import User from "./pages/User/User";
 import Allrooms from "./components/Rooms/Allrooms/Allrooms";
+import Login from "./components/Auth/Login/Login";
+import Register from "./components/Auth/Register/Register";
 
 function App() {
   return (
@@ -12,11 +14,12 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/Register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/success" element={<SuccessPage />} />
           <Route path="/main" element={<Main />} />
-          <Route path="/user" element={<User/>} />
-          <Route path="/allrooms" element={<Allrooms/>} />
+          <Route path="/user" element={<User />} />
+          <Route path="/allrooms" element={<Allrooms />} />
         </Routes>
       </Router>
     </>

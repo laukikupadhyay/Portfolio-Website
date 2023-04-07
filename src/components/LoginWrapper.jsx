@@ -1,7 +1,9 @@
-import styles from "./LoginWrapper.module.css";
+import React from 'react'
 
-const LoginWrapper = (props) => {
-  return <div className={styles.wrapper}>{props.children}</div>;
-};
+function LoginWrapper() {
+  return (
+    <div>LoginWrapper</div>
+  )
+}
 
-export default LoginWrapper;
+export default LoginWrapper
