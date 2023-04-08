@@ -9,7 +9,10 @@ function Register() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userInfo = useSelector((state) => state.auth.userInfo);
+  const state = useSelector((state) => state);
+console.log(state); 
+  // dispatch(setUser({}));
+  const userInfo = useSelector((state) => state.userInfo);
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);

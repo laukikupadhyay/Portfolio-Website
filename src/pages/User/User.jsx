@@ -18,7 +18,7 @@ function Main() {
 
   const dispatch = useDispatch();
   
-  const userInfo = useSelector((state) => state.auth.userInfo);
+  const userInfo = useSelector((state) => state.userInfo);
   useEffect(()=>{
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(async function(position) {
