@@ -2,7 +2,6 @@
 .allrooms{
     width: 70%;
     margin: auto;
-    padding-left: 10%;
 }
 
   .wrapper {
@@ -22,7 +21,7 @@
     width: 40%;
     border-bottom: 2px solid #110f29;
     padding: 1em 0.3em;
-    
+    color:white;
   }
   #search-container input:focus {
     border-bottom-color: #6759ff;

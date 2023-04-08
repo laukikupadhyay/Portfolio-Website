@@ -7,6 +7,7 @@ import User from "./pages/User/User";
 import Allrooms from "./components/Rooms/Allrooms/Allrooms";
 import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
+import Category from "./pages/Category/Category";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/main" element={<Main />} />
           <Route path="/user" element={<User />} />
           <Route path="/allrooms" element={<Allrooms />} />
+          <Route path="/category" element={<Category />} />
         </Routes>
       </Router>
     </>

@@ -25,10 +25,6 @@ function CreateRoom({user}) {
   console.log(user);
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log('Room Name: ', roomName);
-    console.log('Room Desc: ', desc);
-    console.log('Selected Sport: ', selectedSport);
-    console.log('Max Size: ', maxSize);
     try{
       const res = await fetch(process.env.REACT_APP_BACKEND_URL + 'groups', {
         method: 'POST',
