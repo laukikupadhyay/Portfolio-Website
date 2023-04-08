@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import "./Navbar.css";
+import styles from "./Navbar.module.css";
 import { TbMoonFilled } from "react-icons/tb";
 import { IoMdNotifications } from "react-icons/io";
 
@@ -10,41 +10,41 @@ function NavBar() {
   const handleClick = () => setClick(!click);
   return (
     <>
-      <nav className="navbar">
-        <div className="nav-container">
-          <NavLink exact to="#" className="nav-logo logo-container">
-            <span className="Logo">Meet n Play</span>
+      <nav className={styles.navbar}>
+        <div className={styles.navcontainer}>
+          <NavLink exact to="#" className={`${styles.navlogo} ${styles.logocontainer}`}>
+            <span className={styles.Logo}>Meet n Play</span>
           </NavLink>
 
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
+          <ul className={click ? `${styles.navmenu} ${styles.active}` : `${styles.navmenu}`}>
+            <li className={styles.navitem}>
               <NavLink
                 exact
                 to="#"
-                activeClassName="active"
-                className="nav-links"
+                activeClassName={styles.active}
+                className={styles.navlinks}
                 onClick={handleClick}
               >
                 <TbMoonFilled />
               </NavLink>
             </li>
-            {/* <li className="nav-item">
+            {/* <li className="navitem">
               <NavLink
                 exact
                 to="/profile"
                 activeClassName="active"
-                className="nav-links"
+                className="navlinks"
                 onClick={handleClick}
               >
                 Profile
               </NavLink>
             </li> */}
-            <li className="nav-item">
+            <li className={styles.navitem}>
               <NavLink
                 exact
                 to="#"
-                activeClassName="active"
-                className="nav-links"
+                activeClassName={styles.active}
+                className={styles.navlinks}
                 onClick={handleClick}
               >
                 <IoMdNotifications />
@@ -54,23 +54,24 @@ function NavBar() {
               <NavLink
                 exact
                 to="#"
-                activeClassName="active"
-                className="nav-links-buuton"
+                activeClassName={styles.active}
+                className={styles.navlinksbuuton}
                 onClick={handleClick}
               >
-                <span id="container-button">
-                  <button id="button">ROOMS</button>
+                <span id={styles.containerbutton}>
+                  <button id={styles.button}>ROOMS</button>
                 </span>
               </NavLink>
             </li>
           </ul>
-          <div className="nav-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
+          <div className={styles.navicon} onClick={handleClick}>
+          <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
           </div>
         </div>
       </nav>
     </>
   );
+
 }
 
 export default NavBar;
