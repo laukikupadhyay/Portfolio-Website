@@ -3,20 +3,34 @@ import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import { TbMoonFilled } from "react-icons/tb";
 import { IoMdNotifications } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
   const [click, setClick] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNavigation = () => {
+    navigate("/allrooms");
+  };
 
   const handleClick = () => setClick(!click);
   return (
     <>
       <nav className={styles.navbar}>
         <div className={styles.navcontainer}>
-          <NavLink exact to="#" className={`${styles.navlogo} ${styles.logocontainer}`}>
-            <span className={styles.Logo}>Meet n Play</span>
+          <NavLink
+            exact
+            to="#"
+            className={`${styles.navlogo} ${styles.logocontainer}`}
+          >
+            <span className={styles.Logo}>SportySPY</span>
           </NavLink>
 
-          <ul className={click ? `${styles.navmenu} ${styles.active}` : `${styles.navmenu}`}>
+          <ul
+            className={
+              click ? `${styles.navmenu} ${styles.active}` : `${styles.navmenu}`
+            }
+          >
             <li className={styles.navitem}>
               <NavLink
                 exact
@@ -50,7 +64,7 @@ function NavBar() {
                 <IoMdNotifications />
               </NavLink>
             </li>
-            <li >
+            <li>
               <NavLink
                 exact
                 to="#"
@@ -59,19 +73,20 @@ function NavBar() {
                 onClick={handleClick}
               >
                 <span id={styles.containerbutton}>
-                  <button id={styles.button}>ROOMS</button>
+                  <button id={styles.button} onClick={handleNavigation}>
+                    ROOMS
+                  </button>
                 </span>
               </NavLink>
             </li>
           </ul>
           <div className={styles.navicon} onClick={handleClick}>
-          <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
+            <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
           </div>
         </div>
       </nav>
     </>
   );
-
 }
 
 export default NavBar;

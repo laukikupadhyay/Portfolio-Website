@@ -4,6 +4,7 @@ import { rooms } from "../../../assests/data"
 import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser,faTrash} from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
 function CatRoom() {
 
@@ -11,6 +12,7 @@ function CatRoom() {
   const [value , setValue] = useState(50)
   const [catRooms , setCatRooms] = useState([])
   const location = useLocation();
+  const userInfo = useSelector((state) => state.userInfo);
   
   useEffect(() => {
     console.log(location.state.propValue)
