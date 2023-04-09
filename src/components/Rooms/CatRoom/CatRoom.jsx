@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser,faTrash} from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function CatRoom() {
 
@@ -13,6 +14,7 @@ function CatRoom() {
   const [catRooms , setCatRooms] = useState([])
   const location = useLocation();
   const userInfo = useSelector((state) => state.userInfo);
+  const navigate = useNavigate();
   
   useEffect(() => {
     console.log(location.state.propValue)
@@ -41,6 +43,10 @@ function CatRoom() {
     console.log(event.target.value);
     setValue(event.target.value);
   };
+
+  // const handleEnter = ()=>{
+  //   navigate()
+  // }
   return (
     <div className={styles.roomList}>
       <h1>{room.name}</h1>
@@ -73,7 +79,9 @@ function CatRoom() {
             <button>
               Join
             </button>
-            <button className={styles.enter}>
+            <button className={styles.enter} onClick={()=>{
+              navigate(`/room/${eachRoom._id}`)
+            }}>
               Enter
             </button>
             </div>

@@ -8,6 +8,7 @@ import Allrooms from "./components/Rooms/Allrooms/Allrooms";
 import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
 import Category from "./pages/Category/Category";
+import RoomDetails from "./pages/RoomDetails/RoomDetails";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/user" element={<User />} />
           <Route path="/allrooms" element={<Allrooms />} />
           <Route path="/category" element={<Category />} />
+          <Route path="/room/:roomId" element={<RoomDetails />} />
         </Routes>
       </Router>
     </>

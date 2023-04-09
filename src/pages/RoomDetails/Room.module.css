@@ -1,0 +1,16 @@
+.roomPage{
+    height:100vh;
+    overflow: hidden;
+}
+.headerAndSide{
+    display: flex;
+    height:100vh;
+    overflow: hidden;
+}
+.roomHeader{
+    width:70%;
+}
+.sideMembers{
+    width:30%;
+    overflow-y: scroll;
+}

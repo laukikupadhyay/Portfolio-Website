@@ -27,7 +27,7 @@ function Main() {
       });
     }
     setLocation();
-}, []);
+}, [navigator.geolocation]);
 
   const setLocation = async () => {
     try{

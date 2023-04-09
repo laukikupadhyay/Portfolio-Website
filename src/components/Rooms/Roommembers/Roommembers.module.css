@@ -1,0 +1,42 @@
+.memberContainer{
+    /* width:30%; */
+    color:white;   
+    overflow-y: scroll; 
+    /* height:100vh; */
+    margin:2rem;
+    overflow: auto;
+    /* position: relative; */
+}
+.friend{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    /* padding:2rem; */
+    border-radius: 1rem;
+    background-color: #262626;
+}
+.friendBox{
+    display: flex;
+    align-items: center;
+    margin:2rem;
+}
+.name{
+    font-size: 1.5rem;
+}
+.friendBox{
+    display: flex;
+}
+.avatar{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin-right: 2rem;
+}
+.remove{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin-right: 2rem;
+    cursor:pointer;
+}
