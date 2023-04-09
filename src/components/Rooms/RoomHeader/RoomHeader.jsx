@@ -17,6 +17,9 @@ function RoomHeader({room}) {
       setIsCopied(false);
     }, 3000);
   };
+  // if (!room) {
+  //   return <div>Loading...</div>;
+  // }
   return (
     <div className={styles.roomHeaderContainer}>
          <div className={styles['group-header']}>

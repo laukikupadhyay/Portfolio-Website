@@ -1,0 +1,31 @@
+.searchContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:30vh;
+    width:100vw;
+    color:white;
+}
+h1{
+    border:none;
+}
+.buttons{
+    margin:2rem;
+}
+.input{
+    width:30%;
+    background-color: #252525;
+    border: none;
+    height:2rem;
+    color:white;
+    padding:2rem;
+}
+.input:focus{
+    border: none;
+}
+button:hover{
+    background-color: #252525;
+    color:white;
+    border: none;
+}

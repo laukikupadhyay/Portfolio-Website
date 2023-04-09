@@ -1,6 +1,6 @@
 .roomHeaderContainer{
     color:white;
-    height:20rem;
+    height:28rem;
     background-color: #151515;
     display: flex;
     align-items: center;
@@ -56,4 +56,54 @@ button{
   border-radius: 0.5rem;
   border:none;
   color:white;
+}
+@media only screen and (max-width: 768px){
+  .roomHeaderContainer{
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .group-header {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  
+  .group-dp {
+    width: 8rem;
+    height: 8rem;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .group-info {
+    text-align: center;
+    align-items: center;
+  }
+  
+  .group-name {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .group-description {
+    font-size: 1.3rem;
+  }
+  
+  .group-created-by,
+  .group-created-at,
+  .group-members {
+    font-size: 1.2rem;
+  }
+  
+  button{
+    height:3rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .tagStyle , .invitationLink{
+    font-size: 1rem;
+    padding:0.2rem 0.4rem 0.2rem 0.4rem;
+  }
 }

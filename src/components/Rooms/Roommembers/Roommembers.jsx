@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react'
 
 function Roommembers({room}) {
   const [members, setMembers] = useState([])
-  console.log(room._id)
   useEffect(()=>{
     getMembers()
   },[room])
@@ -16,7 +15,6 @@ function Roommembers({room}) {
         method:'GET',
       })
       const data = await response.json();
-      console.log(data)
       setMembers(data);
     }
     catch(err){

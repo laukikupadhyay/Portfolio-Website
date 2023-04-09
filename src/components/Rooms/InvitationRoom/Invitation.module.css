@@ -1,0 +1,47 @@
+.invitationRoomContainer{
+    width:50%;
+}
+.room{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    background-color: #262626;
+    padding:2rem;
+    border-radius: 1rem;
+    color:white;
+}
+.teamName{
+    font-size: 2rem;
+}
+.teamDesc{
+    font-size: 1.3rem;
+    opacity: 0.8;
+}
+.teamSize{
+    margin-top: 1rem;
+    font-size: 1.6rem;
+}
+.group{
+    display: flex;
+}
+.avatar{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin-right: 2rem;
+}
+button{
+    color: white;
+    margin-left: 2rem;
+}
+.message{
+    font-size: 1.5rem;
+}
+.enter{
+    background: green;
+}
+button:hover{
+    background:green;
+    cursor: pointer;
+}
