@@ -7,8 +7,14 @@ import {
   faMessage,
   faShareFromSquare,
 } from "@fortawesome/free-regular-svg-icons";
+import { useState } from "react";
 
-const Post = () => {
+const Post = ({user , ownProfileView}) => {
+  const [post , setPost] = useState({})
+
+  const setPostsToView = () => {
+    
+  }
   return (
     <div className={styles.container}>
       <div className={styles.user}>

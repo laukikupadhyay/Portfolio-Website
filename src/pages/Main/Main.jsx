@@ -3,28 +3,34 @@ import Profile from "../../components/Profile/Profile";
 import Post from "../../components/Post/Post";
 import Header from "../../components/Header/Header";
 import Navbar from "../../components/navbar/Navbar";
+import styles from './Main.module.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from '../../store/auth/auth-slice.js';
 
 function Main() {
   const dispatch = useDispatch();
-  const user = JSON.parse(localStorage.getItem(`sb-soqmlrodsqlvbpmdhesr-auth-token`));
-  const newuser = useSelector(state => state.auth.userInfo);
+  const userInfo = useSelector(state => state.userInfo);
   useEffect(() => {
     // console.log(user);
     // if (user) {
     //   dispatch(setUser(user.user.user_metadata));
-    //   console.log(newuser);
+    //   console.log(userInfo);
     // }
-    console.log(newuser)
+    console.log(userInfo)
   }, []);
 
   return (
     <>
       <Navbar />
-      <Profile user={newuser} />
-      <Header user={newuser} />
-      <Post user={newuser} />
+    <div className={styles.mainContainer}>
+      <div>
+      <Profile user={userInfo} />
+      </div>
+      <div>
+      <Header user={userInfo} />
+      <Post user={userInfo} ownProfileView={false}/>
+      </div>
+    </div>
     </>
   );
 }

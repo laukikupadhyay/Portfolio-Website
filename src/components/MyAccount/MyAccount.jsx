@@ -15,7 +15,9 @@ function MyAccount({user}) {
       <div className={styles.meDetails}>
       <div className={styles.me}>
         <div className={styles.image}>
-        <img className={styles.avatar} icon={faUser} /*src={`${process.env.REACT_APP_BACKEND_URL}${user.image}`}*/ />
+        <img className={styles.avatar} icon={faUser} 
+        src={`${user.image}`}
+        />
         </div>
         <div className={styles.username}>{user.name}</div>
       </div>
