@@ -16,7 +16,7 @@ function Register() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userInfo = useSelector((state) => state.auth.userInfo);
+  // const userInfo = useSelector((state) => state.auth.userInfo);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -98,11 +98,11 @@ function Register() {
 
         <label htmlFor="interests">Interests:</label>
         <select id="interests" name="interests" multiple onChange={handleInterestsChange}>
-          <option value="Soccer">Soccer</option>
+          <option value="Cricket">Cricket</option>
           <option value="Basketball">Basketball</option>
           <option value="Tennis">Tennis</option>
           <option value="Volleyball">Volleyball</option>
-          <option value="Golf">Golf</option>
+          <option value="Badminton">Badminton</option>
         </select>
 
         <button type="submit">Sign Up</button>

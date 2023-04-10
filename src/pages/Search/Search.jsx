@@ -3,6 +3,7 @@ import NavBar from '../../components/navbar/Navbar'
 import styles from './Search.module.css'
 import { useSelector } from 'react-redux'
 import InvitationRoom from '../../components/Rooms/InvitationRoom/InvitationRoom'
+import SearchUser from '../../components/SearchUser/SearchUser'
 
 function Search() {
   const [search,setSearch] = useState('')
@@ -12,13 +13,13 @@ function Search() {
   console.log(user)
 
   const handleSearchOne = async ()=>{
-    setCompOne(true);
-    setCompTwo(false);
+    setCompOne(!compOne);
+    setCompTwo(!compTwo);
   }
 
   const handleSearchTwo = async ()=>{
-    setCompTwo(true);
-    setCompOne(false);
+    setCompTwo(!compTwo);
+    setCompOne(!compOne);
   }
   return (
     <div>
@@ -34,14 +35,18 @@ function Search() {
         <button onClick={handleSearchTwo}>Join Room</button>
         </div>
         </div>
+        <div className={styles.resultContainer}>
         {
-            compOne && <div></div>
+          compOne && <div>
+            <SearchUser search={search}/>
+          </div>
         }
         {
-            compTwo && <div>
+          compTwo && <div>
               <InvitationRoom user={user} search={search}/>
             </div>
         }
+        </div>
     </div>
   )
 }

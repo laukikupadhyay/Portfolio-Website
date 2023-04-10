@@ -39,7 +39,7 @@ function InvitationRoom({user , search}) {
             console.log(data);
             // setRoom(data.data.group);
             // console.log(room)
-            // navigate(`/room/${room._id}`)
+            navigate(`/room/${room._id}`)
         }
         catch(err){
             console.log(err);

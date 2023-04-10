@@ -5,7 +5,8 @@ import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser,faTrash} from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import InvitationRoom from "../InvitationRoom/InvitationRoom";
+import EachCatRoom from "./EachCatRoom/EachCatRoom";
 
 function CatRoom() {
 
@@ -14,7 +15,6 @@ function CatRoom() {
   const [catRooms , setCatRooms] = useState([])
   const location = useLocation();
   const userInfo = useSelector((state) => state.userInfo);
-  const navigate = useNavigate();
   
   useEffect(() => {
     console.log(location.state.propValue)
@@ -33,7 +33,7 @@ function CatRoom() {
       const data = await res.json();
       console.log(data);
       setCatRooms(data.data.groups);
-      console.log(catRooms)
+      // console.log(catRooms)
     }
     catch(err){
       console.log(err);
@@ -67,25 +67,7 @@ function CatRoom() {
       <div className={styles.catRooms}>
       {catRooms.map((eachRoom) => {
         return (
-          <div className={styles.room}>
-            <div className={styles.group}>
-            <div className={styles.groupDetails}>
-                <div className={styles.teamName}>{eachRoom.name}</div>
-                <div className={styles.teamDesc}>{eachRoom.desc}</div>
-                <div className={styles.teamSize}>No. of members : {eachRoom.players.length}/{eachRoom.maxSize}</div>
-            </div>
-            </div>
-            <div>
-            <button>
-              Join
-            </button>
-            <button className={styles.enter} onClick={()=>{
-              navigate(`/room/${eachRoom._id}`)
-            }}>
-              Enter
-            </button>
-            </div>
-        </div>
+       <EachCatRoom eachRoom={eachRoom} value={value} />
         )
       })}
       </div>

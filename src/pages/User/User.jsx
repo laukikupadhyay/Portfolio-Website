@@ -32,6 +32,10 @@ function Main() {
   const setLocation = async () => {
     try{
       console.log('Setting up your location ........')
+      if(lat == 0 && long == 0){
+        console.log('Location not found , Using previous location ..........')
+        return;
+      }
       const response = await fetch(process.env.REACT_APP_BACKEND_URL + 'users/setlocation/' + userInfo._id, {
         method: 'PATCH',
         headers: {
@@ -42,7 +46,7 @@ function Main() {
           latitude: lat,
         }),
       })
-      console.log(long , lat)
+      // console.log(long , lat)
       const data = await response.json();
       // console.log(data.data.user)
       dispatch(setUser(data.data.user))
