@@ -41,12 +41,14 @@ function Allrooms() {
       <div className="allrooms">
         <div className="wrapper">
           <div id="search-container">
-            <input
-              type="search"
-              id="search-input"
-              placeholder="Search Rooms name here.."
-            />
-            <button id="search">Search</button>
+            <button
+              id="search"
+              onClick={() => {
+                navigate("/search");
+              }}
+            >
+              Search For Users
+            </button>
           </div>
           <div id="buttons">
             <button className="button-value" onClick={() => filterroom("all")}>

@@ -9,6 +9,7 @@ function Search() {
   const [search,setSearch] = useState('')
   const [compOne , setCompOne] = useState(false)
   const [compTwo , setCompTwo] = useState(false)
+  const [compThree , setCompThree] = useState(false);
   const user = useSelector((state) => state.userInfo);
   console.log(user)
 
@@ -20,6 +21,13 @@ function Search() {
   const handleSearchTwo = async ()=>{
     setCompTwo(!compTwo);
     setCompOne(!compOne);
+  }
+
+  const handleSearchBydistance = async ()=>{
+    setCompTwo(false);
+    setCompOne(false);
+    setCompThree(!compThree);
+    console.log(compThree);
   }
   return (
     <div>
@@ -33,18 +41,25 @@ function Search() {
         <div className={styles.buttons}>
         <button onClick={handleSearchOne}>Search Users/Rooms by name</button>
         <button onClick={handleSearchTwo}>Join Room</button>
+        <button onClick={handleSearchBydistance}>Search user by distance</button>
         </div>
         </div>
         <div className={styles.resultContainer}>
         {
           compOne && <div>
-            <SearchUser search={search}/>
+            
           </div>
         }
         {
           compTwo && <div>
               <InvitationRoom user={user} search={search}/>
             </div>
+        }
+        {
+          compThree && <div className={styles.searchUserContainer}>
+            {/* <h1>Search user by distance</h1> */}
+            <SearchUser/>
+          </div>
         }
         </div>
     </div>

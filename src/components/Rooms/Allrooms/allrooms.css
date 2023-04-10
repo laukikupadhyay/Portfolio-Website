@@ -14,7 +14,6 @@
   }
   #search-container {
     margin: 1em 0;
-    margin-left: 15%;
   }
   #search-container input {
     background-color: transparent;
@@ -28,12 +27,14 @@
   }
   #search-container button {
     padding: 1em 2em;
-    margin-left: 1em;
     background-color: #6759ff;
     color: #ffffff;
     border-radius: 5px;
     margin-top: 0.5em;
     width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .button-value {
     border: 2px solid #6759ff;

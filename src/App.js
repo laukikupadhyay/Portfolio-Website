@@ -10,6 +10,7 @@ import Register from "./components/Auth/Register/Register";
 import Category from "./pages/Category/Category";
 import RoomDetails from "./pages/RoomDetails/RoomDetails";
 import Search from "./pages/Search/Search";
+import ViewProfile from "./pages/ViewProfile/ViewProfile";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/allrooms" element={<Allrooms />} />
           <Route path="/category" element={<Category />} />
           <Route path="/room/:roomId" element={<RoomDetails />} />
+          <Route path="/viewprofile/:userId" element={<ViewProfile />} />
           <Route path="/search" element={<Search />} />
         </Routes>
       </Router>
