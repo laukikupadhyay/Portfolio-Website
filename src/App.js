@@ -11,6 +11,7 @@ import Category from "./pages/Category/Category";
 import RoomDetails from "./pages/RoomDetails/RoomDetails";
 import Search from "./pages/Search/Search";
 import ViewProfile from "./pages/ViewProfile/ViewProfile";
+import PublicProfile from "./pages/PublicProfile/PublicProfile";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/room/:roomId" element={<RoomDetails />} />
           <Route path="/viewprofile/:userId" element={<ViewProfile />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/userpage/:id" element={<PublicProfile />} />
         </Routes>
       </Router>
     </>

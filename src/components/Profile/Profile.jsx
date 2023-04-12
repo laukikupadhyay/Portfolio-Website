@@ -16,7 +16,7 @@ function Profile({user}) {
     <div className={styles.profileCard}>
         <div className={styles.picname}>
             <div className={styles.nameRight}>
-            <img className={styles.avatar} src={user.avatar_url} />
+            <img className={styles.avatar} src={user.image} />
             <div className={styles.self}>
             <div className={styles.name}>{user.name}</div>
             <div className={styles.friends}>{user.friends.length} friends</div>

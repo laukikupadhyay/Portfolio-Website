@@ -44,7 +44,7 @@ function Header() {
     <div className={styles.headerContainer}>
       <div className={styles.upper}>
         <div className={styles.user}>
-          <FontAwesomeIcon icon={faUser} />
+          <img className={styles.avatar} src={userInfo.image} />
         </div>
         <input
           className={styles.input}

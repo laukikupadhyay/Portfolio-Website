@@ -28,7 +28,9 @@ function Roommembers({room}) {
           return(
             <div className={styles.friend}>
                     <div className={styles.friendBox}>
-                    <FontAwesomeIcon className={styles.avatar} icon={faUser} />
+                    <img className={styles.avatar} icon={faUser} 
+        src={member.image}
+        />
                     <div className={styles.name}>{member.name}</div>
                     </div>
                     <div>

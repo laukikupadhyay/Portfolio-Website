@@ -41,6 +41,7 @@
     height: 3rem;
     border-radius: 50%;
     margin-right: 2rem;
+    object-fit: cover;
 }
 .remove{
     width: 2rem;

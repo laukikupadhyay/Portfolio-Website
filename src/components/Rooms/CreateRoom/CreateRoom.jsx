@@ -6,6 +6,7 @@ function CreateRoom({user}) {
   const [roomName, setRoomName] = useState("Set your room Name");
   const [desc , setDesc] = useState("Hey! I am creating a new room!!");
   const [selectedSport, setSelectedSport] = useState('Cricket');
+  const [image , setImage] = useState('');
   const [maxSize, setMaxSize] = useState(11);
 
   const handleRoomNameChange = (e) =>{
@@ -22,24 +23,26 @@ function CreateRoom({user}) {
     setSelectedSport(selectedSportName);
     setMaxSize(selectedSport.maxPlayer);
   }
+
+  const handleImageChange= (e) =>{
+    setImage(e.target.files[0])
+  }
   console.log(user);
   async function handleSubmit(e) {
     e.preventDefault();
     try{
+      const form = new FormData();
+      form.append('name', roomName);
+      form.append('adminName', user.name);
+      form.append('desc', desc);
+      form.append('creator', user.email);
+      form.append('players', [user._id]);
+      form.append('type', selectedSport);
+      form.append('maxSize', maxSize);
+      form.append('image', image);
       const res = await fetch(process.env.REACT_APP_BACKEND_URL + 'groups', {
         method: 'POST',
-        body: JSON.stringify({
-          name: roomName,
-          adminName: user.name,
-          desc: desc,
-          creator: user.email,
-          players:[user._id],
-          type: selectedSport,
-          maxSize:maxSize
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        body: form,
       })
 
       const data = await res.json();
@@ -84,6 +87,8 @@ function CreateRoom({user}) {
     </div>
         </div>
       <div>Max number of players : {maxSize}</div>
+      <input type="file" onChange={handleImageChange} />
+
       <button onClick={handleSubmit}>Create Room</button>
         
       </div>

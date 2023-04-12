@@ -20,10 +20,10 @@ function NavBar() {
         <div className={styles.navcontainer}>
           <NavLink
             exact
-            to="#"
             className={`${styles.navlogo} ${styles.logocontainer}`}
+            to='/main'
           >
-            <span className={styles.Logo}>SportySPY</span>
+            <span className={styles.Logo} >SportyPHY</span>
           </NavLink>
 
           <ul
@@ -56,10 +56,8 @@ function NavBar() {
             <li className={styles.navitem}>
               <NavLink
                 exact
-                to="#"
                 activeClassName={styles.active}
                 className={styles.navlinks}
-                onClick={handleClick}
               >
                 <IoMdNotifications />
               </NavLink>
@@ -73,9 +71,9 @@ function NavBar() {
                 onClick={handleClick}
               >
                 <span id={styles.containerbutton}>
-                  <button id={styles.button} onClick={handleNavigation}>
+                  <NavLink id={styles.button} to="/allrooms">
                     ROOMS
-                  </button>
+                  </NavLink>
                 </span>
               </NavLink>
             </li>

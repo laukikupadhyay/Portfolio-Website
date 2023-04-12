@@ -23,7 +23,7 @@ function RoomHeader({room}) {
   return (
     <div className={styles.roomHeaderContainer}>
          <div className={styles['group-header']}>
-      <img src={demo} alt="Group Display Picture" className={styles['group-dp']} />
+      <img src={room.image} alt="Group Display Picture" className={styles['group-dp']} />
       <div className={styles['group-info']}>
         <h1 className={styles['group-name']}>{room.name}</h1>
         <p className={styles['group-description']}>{room.desc}</p>

@@ -2,26 +2,31 @@ import React, { useEffect } from 'react'
 import styles from './MyAccount.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser,faGear} from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from 'react-redux';
 
 function MyAccount({user}) {
+  const userInfo = useSelector((state) => state.userInfo);
   useEffect(()=>{
     console.log(user.userName);
 
   },[])
   return (
     <div className={styles.MyAccount}>
-      <h2>My Account</h2>
+      <h2>{user._id === userInfo._id ? "My" : user.name} Account</h2>
       <div className={styles.divider}></div>
       <div className={styles.meDetails}>
       <div className={styles.me}>
         <div className={styles.image}>
         <img className={styles.avatar} icon={faUser} 
-        src={`${user.image}`}
+        src={user.image}
         />
         </div>
         <div className={styles.username}>{user.name}</div>
       </div>
-      <FontAwesomeIcon className={styles.gear} icon={faGear} />
+      {
+        userInfo._id === user._id &&
+        <FontAwesomeIcon className={styles.gear} icon={faGear} />
+      }
       </div>
       <div className={styles.details}>
         <div className={styles.detailName}>
@@ -42,7 +47,7 @@ function MyAccount({user}) {
           INTERESTS
           <div className={styles.detailValueTag}>
             {/* In tags   */}
-            {user.interest.map((interest)=>{
+            {user.interest && user.interest.map((interest)=>{
                 return(
                     <div className={styles.tag}>{interest}</div>
                 )

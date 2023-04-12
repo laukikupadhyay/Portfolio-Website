@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faXmark, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../../store/auth/auth-slice";
+import { useNavigate } from "react-router-dom";
 
 function EachUser({ user }) {
   const userInfo = useSelector((state) => state.userInfo);
@@ -21,6 +22,7 @@ function EachUser({ user }) {
   const [message, setMessage] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     checkUserStatus();
@@ -121,8 +123,10 @@ return (
     <div className={styles.allnearByUsers}>
       <div className={styles.divider}></div>
       <div className={styles.friend}>
-        <div className={styles.friendBox}>
-          <FontAwesomeIcon className={styles.avatar} icon={faUser} />
+        <div className={styles.friendBox} onClick={()=>{
+          navigate('/userpage/'+user._id);
+        }}>
+          <img className={styles.avatar} icon={faUser} src={user.image}/>
           <div className={styles.name}>{user.name}</div>
         </div>
         <div>

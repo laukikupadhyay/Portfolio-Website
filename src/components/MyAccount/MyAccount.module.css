@@ -30,6 +30,7 @@
     height: 6rem;
     border-radius: 50%;
     margin-right: 2rem;
+    object-fit: cover;
 }
 .gear{
     width: 2rem;

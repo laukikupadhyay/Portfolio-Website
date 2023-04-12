@@ -24,6 +24,7 @@ function SearchUser() {
 
   const getUsersWithinRange = async () => {
     try {
+      console.log(process.env.REACT_APP_BACKEND_URL + 'users/users-within/' + value + '/center/' + userInfo.location.coordinates[1] + ',' + userInfo.location.coordinates[0] + '/unit/km');
       const res = await fetch(process.env.REACT_APP_BACKEND_URL + 'users/users-within/' + value + '/center/' + userInfo.location.coordinates[1] + ',' + userInfo.location.coordinates[0] + '/unit/km', {
         method: 'GET'
       })
