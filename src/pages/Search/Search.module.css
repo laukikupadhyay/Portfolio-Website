@@ -27,6 +27,7 @@ h1{
     height:100%;
     color:white;
     padding:2rem;
+    border-radius: 1rem;
 }
 .input:focus{
     border: none;
@@ -41,8 +42,9 @@ button:hover{
     flex-direction: row;
     align-items: center;
 }
-/* @media screen and (max-width: 440px) {
-    h1{
-        margin-top: 10rem;
+@media screen and (max-width: 440px) {
+    .input{
+        width:80%;
+        border-radius: 1rem;
     }
-  } */
+  }

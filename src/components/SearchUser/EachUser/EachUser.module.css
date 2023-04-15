@@ -1,11 +1,9 @@
 .allnearByUsers{
     display: flex;
     flex-direction: column;
-    width:50rem;
-    /* height: 100%; */
+    width:100%;
     border-radius: 1rem;
     color:white;
-    /* background-color: #151515; */
     font-size: 1.5rem;
     overflow-x: hidden;
 }
@@ -25,6 +23,7 @@
     background-color: #262626;
     padding:2rem;
     border-radius: 1rem;
+    width:100%;
 }
 .friendBox{
     display: flex;
@@ -49,4 +48,10 @@
     border-radius: 50%;
     margin-right: 2rem;
     cursor:pointer;
+}
+.reqButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:100%;
 }

@@ -2,9 +2,11 @@ import styles from './Invitation.module.css'
 import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import Swal from 'sweetalert2';
+import Loader from "react-js-loader";
 
 function InvitationRoom({user , search}) {
     const [room , setRoom] = useState({});
+    const [loading , setLoading] = useState(false);
     const [isUserPresent , setIsUserPresent] = useState(false);
     const navigate = useNavigate();
 
@@ -13,6 +15,7 @@ function InvitationRoom({user , search}) {
     },[])
         
     const fetchRoom = async () =>{
+        setLoading(true);
         try{
             const res = await fetch(process.env.REACT_APP_BACKEND_URL + `groups/getgroup/` + search, {
                 method:'GET'
@@ -20,7 +23,7 @@ function InvitationRoom({user , search}) {
             const data = await res.json();
             const fetchedRoom = data.data.group[0];
             console.log(fetchedRoom);
-            if(!fetchRoom.length){
+            if(fetchRoom.length=='undefined'){
                     Swal.fire({
                         title: 'Error!',
                         text: 'Please write valid code',
@@ -34,6 +37,7 @@ function InvitationRoom({user , search}) {
             if(fetchedRoom.players.includes(user._id)){
                 setIsUserPresent(true);
             }
+            setLoading(false);
         }
         catch(err){
             console.log(err);
@@ -60,7 +64,10 @@ function InvitationRoom({user , search}) {
 
     return (
         <div className={styles.invitationRoomContainer}>
-            <div className={styles.room}>
+            {
+                loading ?
+                <Loader type="bubble-loop" bgColor={"#FFFFFF"} color={'#FFFFFF'} size={30} />:
+                <div className={styles.room}>
                 <div className={styles.group}>
                     <div className={styles.groupDetails}>
                         <div className={styles.teamName}>{room.name}</div>
@@ -84,6 +91,7 @@ function InvitationRoom({user , search}) {
                     </button>
                 </div>
             </div>
+    }
         </div>
     )
 }

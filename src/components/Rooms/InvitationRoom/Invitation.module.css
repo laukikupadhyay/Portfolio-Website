@@ -47,4 +47,24 @@ button:hover{
     background:green;
     cursor: pointer;
 }
-    
+
+@media screen and (max-width: 720px) {
+    .groupDetails{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+   .room{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   }
+   .message{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   }    
+}
