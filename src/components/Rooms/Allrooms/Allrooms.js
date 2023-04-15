@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../../navbar/Navbar";
 import "./allrooms.css";
-import rooms from "./roomsdata";
 import { sports } from "../../../assests/data";
 import { useNavigate } from "react-router-dom";
 

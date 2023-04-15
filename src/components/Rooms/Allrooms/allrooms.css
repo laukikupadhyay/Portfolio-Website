@@ -11,9 +11,16 @@
   div#buttons{
     margin: 0;
     padding-left: 0%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
   #search-container {
     margin: 1em 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   #search-container input {
     background-color: transparent;
@@ -44,16 +51,23 @@
     color: #6759ff;
     cursor: pointer;
     margin-right: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .active {
     /* background-color: #6759ff; */
     color: #ffffff;
   }
   #rooms {
-    display: grid;
-    grid-template-columns: auto auto auto;
+    /* display: grid;
+    grid-template-columns: auto auto auto; */
     grid-column-gap: 1.5em;
     padding: 2em 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
   .card{
     max-width: 18em;
@@ -66,6 +80,7 @@
     border-radius: 20px;
     border: 1px solid rgba(255,255,255,0.18);
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+    margin:3rem;
   }
   .card:hover{
     animation:borderanimate 0.5s linear;
