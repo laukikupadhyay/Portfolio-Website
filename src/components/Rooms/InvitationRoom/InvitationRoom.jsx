@@ -1,6 +1,7 @@
 import styles from './Invitation.module.css'
 import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
+import Swal from 'sweetalert2';
 
 function InvitationRoom({user , search}) {
     const [room , setRoom] = useState({});
@@ -19,6 +20,15 @@ function InvitationRoom({user , search}) {
             const data = await res.json();
             const fetchedRoom = data.data.group[0];
             console.log(fetchedRoom);
+            if(!fetchRoom.length){
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Please write valid code',
+                        icon: 'error',
+                        confirmButtonText: 'Ok'
+                    })
+                    return;
+            }
             setRoom(fetchedRoom);
             console.log(fetchedRoom.players)
             if(fetchedRoom.players.includes(user._id)){
@@ -37,8 +47,6 @@ function InvitationRoom({user , search}) {
             })
             const data = await res.json();
             console.log(data);
-            // setRoom(data.data.group);
-            // console.log(room)
             navigate(`/room/${room._id}`)
         }
         catch(err){

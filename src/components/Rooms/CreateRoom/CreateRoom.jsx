@@ -44,7 +44,7 @@ function CreateRoom({user}) {
       form.append('type', selectedSport);
       form.append('maxSize', maxSize);
       form.append('image', image);
-      const res = await fetch(process.env.REACT_APP_BACKEND_URL + 'groups', {
+      const res = await fetch(process.env.REACT_APP_BACKEND_URL + 'groups/creategroup', {
         method: 'POST',
         body: form,
       })

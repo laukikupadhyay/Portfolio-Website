@@ -6,7 +6,7 @@ import InvitationRoom from '../../components/Rooms/InvitationRoom/InvitationRoom
 import SearchUser from '../../components/SearchUser/SearchUser'
 
 function Search() {
-  const [search,setSearch] = useState('')
+  const [search,setSearch] = useState('Paste invite link here!')
   const [compOne , setCompOne] = useState(false)
   const [compTwo , setCompTwo] = useState(false)
   const [compThree , setCompThree] = useState(false);
@@ -15,7 +15,8 @@ function Search() {
 
   const handleSearchOne = async ()=>{
     setCompOne(!compOne);
-    setCompTwo(!compTwo);
+    setCompTwo(false);
+    setCompThree(!compThree)
   }
 
   const handleSearchTwo = async ()=>{
@@ -34,14 +35,14 @@ function Search() {
         <NavBar/>
         <div className={styles.searchContainer}>
         <h1>Search users/rooms or join group by code</h1>
-        <input onChange = {(e)=>{
+        <input value={search} onChange = {(e)=>{
             setSearch(e.target.value)
             console.log(search)
         }} className={styles.input}/>
         <div className={styles.buttons}>
-        <button onClick={handleSearchOne}>Search Users/Rooms by name</button>
-        <button onClick={handleSearchTwo}>Join Room</button>
-        <button onClick={handleSearchBydistance}>Search user by distance</button>
+        <button onClick={handleSearchOne} className={styles.button}>Search Users/Rooms by name</button>
+        <button onClick={handleSearchTwo} className={styles.button}>Join Room</button>
+        <button onClick={handleSearchBydistance} className={styles.button}>Search user by distance</button>
         </div>
         </div>
         <div className={styles.resultContainer}>
