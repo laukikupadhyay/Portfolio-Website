@@ -4,7 +4,7 @@
   background-color: var(--grey-11);
   border-radius: 1rem;
   /* temporary width */
-  width: 50%;
+  /* width: 50%; */
   display: flex;
   flex-direction: column;
   gap: 1.6rem;

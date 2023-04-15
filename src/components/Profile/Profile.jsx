@@ -63,13 +63,14 @@ function Profile({user}) {
         </div>
         <div className={styles.divider}></div>
         <div className='social-profile'>
-            <div className={styles.socialProfileText}>Social profile</div>
+            {/* <div className={styles.socialProfileText}>Social profile</div> */}
             <div className={styles.socialProfileIcons}>
                 {/* <img src={twitter}/> */}
-            <FontAwesomeIcon icon={faGear} />
-            <FontAwesomeIcon icon={faGear} />
-            <FontAwesomeIcon icon={faGear} />
-            <FontAwesomeIcon icon={faGear}/>
+            <button onClick={()=>{
+                navigate('/user')
+            }}>
+                Profile
+            </button>
             {/* <FontAwesomeIcon icon="fa-solid fa-gear" /> */}
             </div>
         </div>

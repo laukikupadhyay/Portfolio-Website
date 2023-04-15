@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Register.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUser } from '../../../store/auth/auth-slice.js';
+import { setLoading, setUser } from '../../../store/auth/auth-slice.js';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import Loader from "react-js-loader";
 
-function Register() {
+function Register({switchToLogIn}) {
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [profilePic, setProfilePic] = useState(null);
   const [password, setPassword] = useState('');
-  const [interests, setInterests] = useState([]);
   const [lat , setLat] = useState(0);
   const [long , setLong] = useState(0);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const userInfo = useSelector((state) => state.auth.userInfo);
+  const loading = useSelector((state) => state.loading)
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -38,16 +40,23 @@ function Register() {
     setPassword(e.target.value);
   };
 
-  const handleInterestsChange = (e) => {
-    const newInterests = Array.from(e.target.selectedOptions, (option) => option.value);
-    setInterests(newInterests);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(setLoading(true));
+    if(!name || !username || !email || !profilePic || !password){
+      Swal.fire({
+        title: 'Error!',
+        text: 'Please enter all details to register',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      })
+      dispatch(setLoading(false));
+    }
     try{
 
-        console.log({ name, username, email, profilePic, password, interests });
+        console.log({ name, username, email, profilePic, password });
+        dispatch(setLoading(true));
         const locationObj = {
             "type":"Point",
             "coordinates":[long, lat]
@@ -58,7 +67,7 @@ function Register() {
         formData.append('email', email);
         formData.append('image', profilePic);
         formData.append('password', password);
-        formData.append('interest', interests);
+        formData.append('interest', []);
         formData.append('friends', []);
         formData.append('location', locationObj);
         
@@ -66,46 +75,67 @@ function Register() {
             method: 'POST',
             body: formData
         });
-        const data = await response.json();
-        console.log(data);
-        dispatch(setUser(data.user));
-        if(data.user){
-            navigate('/user');
+        const {status , user , message} = await response.json();
+        dispatch(setUser(user));
+        dispatch(setLoading(false));
+        if(status=='success'){
+          Swal.fire({
+            title: 'Success!',
+            text: message,
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })
+          if(user){
+              navigate('/user');
+          }
+        }
+        else{
+          Swal.fire({
+            title: 'Error!',
+            text: message,
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          })
         }
     }
     catch(err){
         console.log(err)
+        dispatch(setLoading(false));
+        Swal.fire({
+          title: 'Error!',
+          text: err.message,
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
     }
   };
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
-        <input type="text" id="name" name="name" value={name} onChange={handleNameChange} />
+      <form onSubmit={handleSubmit} className={styles.form}>
+      <div className={styles.authHeading}>
+        Register
+      </div>
+        <label htmlFor="name" className={styles.authLabel}>Name:</label>
+        <input type="text" id="name" name="name" value={name} className={styles.authInput} onChange={handleNameChange} />
 
-        <label htmlFor="username">Username:</label>
-        <input type="text" id="username" name="username" value={username} onChange={handleUsernameChange} />
+        <label htmlFor="username" className={styles.authLabel}>Username:</label>
+        <input type="text" id="username" name="username" className={styles.authInput} value={username} onChange={handleUsernameChange} />
 
-        <label htmlFor="email">Email:</label>
-        <input type="email" id="email" name="email" value={email} onChange={handleEmailChange} />
+        <label htmlFor="email" className={styles.authLabel}>Email:</label>
+        <input type="email" id="email" className={styles.authInput} name="email" value={email} onChange={handleEmailChange} />
 
-        <label htmlFor="profile-pic">Profile Picture:</label>
-        <input type="file" id="profile-pic" name="image" onChange={handleProfilePicChange} />
+        <label htmlFor="profile-pic" className={styles.authLabel}>Profile Picture:</label>
+        <input type="file" id="profile-pic" name="image" className={styles.authInput} onChange={handleProfilePicChange} />
 
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} />
+        <label htmlFor="password" className={styles.authLabel}>Password:</label>
+        <input type="password" id="password" name="password" className={styles.authInput} value={password} onChange={handlePasswordChange} />
 
-        <label htmlFor="interests">Interests:</label>
-        <select id="interests" name="interests" multiple onChange={handleInterestsChange}>
-          <option value="Cricket">Cricket</option>
-          <option value="Basketball">Basketball</option>
-          <option value="Tennis">Tennis</option>
-          <option value="Volleyball">Volleyball</option>
-          <option value="Badminton">Badminton</option>
-        </select>
-
-        <button type="submit">Sign Up</button>
+        <button type="submit" className={styles.authButton}>{
+        loading ? <Loader type="bubble-loop" bgColor={"#FFFFFF"} color={'#FFFFFF'} size={30} /> : 
+      'Sign Up'
+      }</button>
+        <div className={styles.message} onClick={switchToLogIn}>Already have an account?</div>
       </form>
     </div>
   );

@@ -129,7 +129,9 @@ return (
           <img className={styles.avatar} icon={faUser} src={user.image}/>
           <div className={styles.name}>{user.name}</div>
         </div>
-        <div>
+        {
+          userInfo._id !== user._id ?
+          <div>
           {isFriend ? (
             <button className={styles.reqButton} onClick={handleRemoveFriend}>
               {
@@ -156,6 +158,12 @@ return (
             </button>
           )}
         </div>
+        :
+          <>
+            <i>Your account</i>
+          </>
+        
+        } 
       </div>
     </div>
   );

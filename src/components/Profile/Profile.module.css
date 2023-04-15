@@ -83,11 +83,6 @@
 .socialProfileIcons{
     font-size: 2rem;
     margin-top: 1rem;
-    gap: 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
 }
 .allinterests{
     display: flex;

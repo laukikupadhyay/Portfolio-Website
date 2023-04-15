@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom'
 function RoomHeader({room}) {
   //get room id from params
   const [isCopied, setIsCopied] = useState(false);
+  const [matchStatus , setMatchStatus] = useState('close');
   
   const handleCopy = () => {
     const copyText = document.getElementById("code");
@@ -17,9 +18,14 @@ function RoomHeader({room}) {
       setIsCopied(false);
     }, 3000);
   };
-  // if (!room) {
-  //   return <div>Loading...</div>;
-  // }
+
+  const getMatchStatus = async () => {
+    setMatchStatus(room.status);
+  }
+
+  useEffect(()=>{
+    getMatchStatus();
+  })
   return (
     <div className={styles.roomHeaderContainer}>
          <div className={styles['group-header']}>
@@ -42,7 +48,6 @@ function RoomHeader({room}) {
           </div>
       </div>
     </div>
-    <button>Find a match</button>
     </div>
   )
 }

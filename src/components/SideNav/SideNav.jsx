@@ -2,13 +2,24 @@ import React, { useState } from "react";
 import styles from "./SideNav.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { setUser } from "../../store/auth/auth-slice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function SideNav(props) {
   const [activeLink, setActiveLink] = useState("EditProfile");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function handleLinkClick(linkName) {
     props.onLinkClick(linkName);
     setActiveLink(linkName);
+  }
+
+  const handleLogOut = (e) => {
+    e.preventDefault();
+    dispatch(setUser(null));
+    navigate('/login')
   }
 
   return (
@@ -44,7 +55,7 @@ function SideNav(props) {
         Manage Friends
       </div>
       <div className={styles.diversion}></div>
-      <div className={styles.link}>
+      <div className={styles.link} onClick ={handleLogOut}>
         Log out{" "}
         <FontAwesomeIcon className={styles.logOutIcon} icon={faRightFromBracket} />
       </div>

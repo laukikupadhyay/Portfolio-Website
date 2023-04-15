@@ -7,7 +7,7 @@ function CreateRoom({user}) {
   const [desc , setDesc] = useState("Hey! I am creating a new room!!");
   const [selectedSport, setSelectedSport] = useState('Cricket');
   const [image , setImage] = useState('');
-  const [maxSize, setMaxSize] = useState(11);
+  const [maxSize, setMaxSize] = useState(22);
 
   const handleRoomNameChange = (e) =>{
     setRoomName(e.target.value)

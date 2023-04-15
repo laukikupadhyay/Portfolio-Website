@@ -78,7 +78,6 @@ function EditProfile({user}) {
         <div className={styles.field}>
           <div>Interests:</div>
           <select className={styles.select} onChange={handleInterestChange}>
-            <option value="">Select an interest</option>
             {interestsList.map((interest) => (
               <option key={interest} value={interest}>
                 {interest}

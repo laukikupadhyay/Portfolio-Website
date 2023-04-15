@@ -36,6 +36,7 @@ function Header() {
 
       const data = await response.json();
       console.log(data);
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
@@ -64,10 +65,8 @@ function Header() {
               className={styles.postImage}
               name="image"
               onChange={(e) => {
-                if (e.target.files > 0) {
-                  setImage(e.target.files[0]);
-                  console.log(image);
-                }
+                setImage(e.target.files[0]);
+                console.log(image);
               }}
               encType="multipart/form-data"
             />

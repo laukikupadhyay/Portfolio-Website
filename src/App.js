@@ -12,15 +12,15 @@ import RoomDetails from "./pages/RoomDetails/RoomDetails";
 import Search from "./pages/Search/Search";
 import ViewProfile from "./pages/ViewProfile/ViewProfile";
 import PublicProfile from "./pages/PublicProfile/PublicProfile";
+import Auth from "./pages/Auth/Auth";
 
 function App() {
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Auth />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/success" element={<SuccessPage />} />
           <Route path="/main" element={<Main />} />
           <Route path="/user" element={<User />} />

@@ -10,13 +10,13 @@ export const sports = [
   {
     name: "Cricket",
     minPlayer: "11",
-    maxPlayer: "15",
+    maxPlayer: "22",
     image: cricket,
   },
   {
     name: "Football",
     minPlayer: "11",
-    maxPlayer: "15",
+    maxPlayer: "22",
     image: football,
   },
   {
@@ -34,7 +34,7 @@ export const sports = [
   {
     name: "Badminton",
     minPlayer: "2",
-    maxPlayer: "4",
+    maxPlayer: "8",
     image: badminton,
   },
 ];
