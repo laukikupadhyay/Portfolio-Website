@@ -56,3 +56,11 @@
 .leave , .leave:hover{
     background-color: rgb(179, 0, 0);
 }
+
+@media screen and (max-width: 700px) {
+    .rooms{
+        width:100%;
+        margin:0rem;
+        margin-top: 5rem;
+    }
+}

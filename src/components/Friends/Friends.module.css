@@ -50,3 +50,11 @@
     margin-right: 2rem;
     cursor:pointer;
 }
+
+@media screen and (max-width: 700px) {
+    .friends{
+        width:100%;
+        margin:0rem;
+        margin-top: 5rem;
+    }
+}

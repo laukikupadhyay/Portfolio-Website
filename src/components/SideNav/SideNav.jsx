@@ -19,7 +19,7 @@ function SideNav(props) {
   const handleLogOut = (e) => {
     e.preventDefault();
     dispatch(setUser(null));
-    navigate('/login')
+    navigate('/')
   }
 
   return (

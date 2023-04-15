@@ -62,12 +62,12 @@ function Main() {
     <div>
       <Navbar />
       <div className={styles.userlayout}>
-        <SideNav onLinkClick={handleLinkClick} />
-        {activeComponent === "MyAccount" && <MyAccount user={userInfo} />}
-        {activeComponent === "MyRooms" && <MyRooms user={userInfo} />}
-        {activeComponent === "Friends" && <Friends user={userInfo} />}
-        {activeComponent === "CreateRoom" && <CreateRoom user={userInfo} />}
-        {activeComponent === "EditProfile" && <EditProfile user={userInfo} />}
+        <SideNav onLinkClick={handleLinkClick} className={styles.sidenav}/>
+        {activeComponent === "MyAccount" && <MyAccount user={userInfo} className={styles.rightComp}/>}
+        {activeComponent === "MyRooms" && <MyRooms user={userInfo} className={styles.rightComp}/>}
+        {activeComponent === "Friends" && <Friends user={userInfo} className={styles.rightComp}/>}
+        {activeComponent === "CreateRoom" && <CreateRoom user={userInfo} className={styles.rightComp}/>}
+        {activeComponent === "EditProfile" && <EditProfile user={userInfo} className={styles.rightComp}/>}
       </div>
     </div>
   );
