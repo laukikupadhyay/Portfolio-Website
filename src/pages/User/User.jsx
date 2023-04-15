@@ -63,7 +63,8 @@ function Main() {
       <Navbar />
       <div className={styles.userlayout}>
         <SideNav onLinkClick={handleLinkClick} className={styles.sidenav}/>
-        {activeComponent === "MyAccount" && <MyAccount user={userInfo} className={styles.rightComp}/>}
+        {activeComponent === "MyAccount" && <MyAccount user={userInfo} 
+         className={styles.rightComp}/>}
         {activeComponent === "MyRooms" && <MyRooms user={userInfo} className={styles.rightComp}/>}
         {activeComponent === "Friends" && <Friends user={userInfo} className={styles.rightComp}/>}
         {activeComponent === "CreateRoom" && <CreateRoom user={userInfo} className={styles.rightComp}/>}

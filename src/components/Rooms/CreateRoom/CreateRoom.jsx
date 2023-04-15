@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "./CreateRoom.module.css";
 import { sports } from "../../../assests/data";
+import Loader from "react-js-loader";
+import Swal from "sweetalert2";
 
 function CreateRoom({user}) {
   const [roomName, setRoomName] = useState("Set your room Name");
@@ -8,6 +10,7 @@ function CreateRoom({user}) {
   const [selectedSport, setSelectedSport] = useState('Cricket');
   const [image , setImage] = useState('');
   const [maxSize, setMaxSize] = useState(22);
+  const [loading , isLoading] = useState(false);
 
   const handleRoomNameChange = (e) =>{
     setRoomName(e.target.value)
@@ -30,6 +33,7 @@ function CreateRoom({user}) {
   console.log(user);
   async function handleSubmit(e) {
     e.preventDefault();
+    isLoading(true);
     try{
       const form = new FormData();
       form.append('name', roomName);
@@ -47,9 +51,23 @@ function CreateRoom({user}) {
 
       const data = await res.json();
       console.log(data);
+      isLoading(false);
+       Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Room created!',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }
     catch(err){
-      console.log(err)
+      console.log(err);
+      isLoading(false);
+        Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: err.message,
+      })
     }
   }
   return (
@@ -89,7 +107,13 @@ function CreateRoom({user}) {
       <div>Max number of players : {maxSize}</div>
       <input type="file" onChange={handleImageChange} />
 
-      <button onClick={handleSubmit}>Create Room</button>
+      {
+        loading ? 
+            <Loader type="bubble-loop" color={'#FFFFFF'} size={30} />:
+      <button onClick={handleSubmit}>  
+            Update details
+          </button>
+          }
         
       </div>
 

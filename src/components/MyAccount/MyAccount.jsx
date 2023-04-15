@@ -23,10 +23,6 @@ function MyAccount({user}) {
         </div>
         <div className={styles.username}>{user.name}</div>
       </div>
-      {
-        userInfo._id === user._id &&
-        <FontAwesomeIcon className={styles.gear} icon={faGear} />
-      }
       </div>
       <div className={styles.details}>
         <div className={styles.detailName}>

@@ -5,10 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../store/auth/auth-slice";
+import Loader from "react-js-loader";
+import Swal from "sweetalert2";
 
 function EditProfile({user}) {
   const [name, setName] = useState("");
   const [interests, setInterests] = useState([]);
+  const [loading , isLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -39,6 +42,7 @@ function EditProfile({user}) {
   };
 
   const handleUpdate= async ()=>{
+    isLoading(true);
     try{
       const res = await fetch(process.env.REACT_APP_BACKEND_URL + 'users/editprofile/' + user._id, {
         method: 'PATCH',
@@ -52,11 +56,25 @@ function EditProfile({user}) {
       })
 
       const data = await res.json();
+      isLoading(false);
       console.log(data);
       dispatch(setUser(data.data.user))
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }
     catch(err){
       console.log(err)
+      isLoading(false);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: err.message,
+      })
     }
   }
 
@@ -102,10 +120,13 @@ function EditProfile({user}) {
 
 
         </div>
-
-        <button className={styles.updateButton} type="submit" onClick={handleUpdate}>
-          Update Details
+          {
+            loading ? 
+            <Loader type="bubble-loop" color={'#FFFFFF'} size={30} />:
+            <button className={styles.updateButton} type="submit" onClick={handleUpdate}>
+            Update details
         </button>
+          }
       </form>
     </div>
   );
