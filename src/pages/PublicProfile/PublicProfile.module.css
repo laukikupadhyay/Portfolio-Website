@@ -1,0 +1,27 @@
+.content{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+.myAccount{
+    height:100%;
+    margin-left: -6rem;
+    margin-top: -7rem;
+    margin-right:1rem;
+}
+.posts{
+    margin-right: 2rem;
+}
+
+@media screen and (max-width: 950px) {
+   .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   }
+   .myAccount{
+    width:100%;
+    margin:0;
+   }
+}

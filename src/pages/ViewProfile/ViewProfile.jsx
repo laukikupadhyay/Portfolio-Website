@@ -5,7 +5,7 @@ import MyAccount from '../../components/MyAccount/MyAccount'
 function ViewProfile({user}) {
   return (
     <div>
-        <NavBar/>
+        <NavBar/>zz
         <MyAccount/>
     </div>
   )

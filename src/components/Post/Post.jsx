@@ -52,8 +52,16 @@ const Post = ({ user, ownProfileView }) => {
       setLoading(true)
       const users = {};
       for (const post of posts) {
-        if (!users[post.userId]) {
-          users[post.userId] = await getUserById(post.userId);
+        if(ownProfileView){
+          if(post.userId === user._id){
+            users[post.userId] = await getUserById(post.userId);
+          }
+        }
+        else{
+
+          if (!users[post.userId]) {
+            users[post.userId] = await getUserById(post.userId);
+          }
         }
       }
       setPostUsers(users);
@@ -72,9 +80,13 @@ const Post = ({ user, ownProfileView }) => {
         loading?
         <Loader type="bubble-loop" bgColor={"#FFFFFF"} color={'#FFFFFF'} size={30} />:
         <>
-          {posts &&
+          {
+          posts &&
             posts.map((post) => {
-              const postUser = postUsers[post.userId] || {};
+              if(ownProfileView && post.userId !== user._id){
+                return null;
+              }
+              const postUser =postUsers[post.userId] || {};
               return (
                 <div key={post._id}>
               <div className={styles.user}>
@@ -98,37 +110,9 @@ const Post = ({ user, ownProfileView }) => {
                     </p>
                   </div>
                 </div>
-                {/* <button className={styles.button}>
-                  <FontAwesomeIcon className={styles.icon} icon={faUserPlus} />
-                </button> */}
               </div>
               <p className={styles.description}>{post.desc}</p>
               <img className={styles.image} alt="post" src={post.image} />
-              {/* <div className={styles.actions}>
-                <div className={styles.likeCont}>
-                <div className={styles.likes}>
-                <button className={styles.button}>
-                <FontAwesomeIcon className={styles.icon} icon={faHeart} />
-                </button>
-                <span className={styles.count}>3</span>
-                </div>
-                <div className={styles.comment}>
-                <button className={styles.button}>
-                <FontAwesomeIcon
-                className={styles.icon}
-                icon={faComment}
-                />
-                </button>
-                <span className={styles.count}>23</span>
-                </div>
-                </div>
-                <button className={styles.button}>
-                <FontAwesomeIcon
-                className={styles.icon}
-                icon={faShareSquare}
-                />
-                </button>
-              </div> */}
             </div>
           );
         })}
