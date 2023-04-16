@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../../store/auth/auth-slice";
 import { useNavigate } from "react-router-dom";
 
-function EachUser({ user }) {
+function EachUser({ user}) {
   const userInfo = useSelector((state) => state.userInfo);
   const [usersWithinRange, setUsersWithinRange] = useState([]);
   const [userFriends, setUserFriends] = useState(userInfo.friends);
@@ -26,22 +26,23 @@ function EachUser({ user }) {
 
   useEffect(() => {
     checkUserStatus();
-  }, [userFriends, userPendingRequests, userReceivedRequests]);
+  }, [userFriends, userPendingRequests, userReceivedRequests,user]);
 
+  
   const checkUserStatus = () => {
-    if (userFriends && userFriends.includes(user._id)) {
+    console.log(userFriends , userPendingRequests , userReceivedRequests);
+    console.log(user._id)
+    if (user && userFriends && userFriends.includes(user._id)) {
       setIsFriend(true);
-    } else if (userPendingRequests && userPendingRequests.includes(user._id)) {
+    } else if (user && userPendingRequests && userPendingRequests.includes(user._id)) {
       setIsPending(true);
-    } else if (
-      userReceivedRequests &&
-      userReceivedRequests.includes(user._id)
-    ) {
+    } else if (user && userReceivedRequests && userReceivedRequests.includes(user._id)) {
       setIsReceived(true);
     }
+    
   };
 
-  console.log(isFriend, isPending, isReceived)
+  // console.log(isFriend, isPending, isReceived)
   const handleSendRequests = async () => {
       try{
           const response = await fetch(process.env.REACT_APP_BACKEND_URL + 'users/sendrequest/'+ userInfo._id + '/' + user._id, {
@@ -54,6 +55,7 @@ function EachUser({ user }) {
         console.log(res.data.response);
         dispatch(setUser(res.data.response));
         setMessage("Friend request sent!");
+        window.location.reload();
     }
     catch(err){
         console.log(err);
@@ -72,6 +74,7 @@ const handleAcceptRequest = async () =>{
         console.log(res.data.response);
         dispatch(setUser(res.data.response));
         setMessage("Friend request accepted!");
+        window.location.reload();
     }
     catch(err){
         console.log(err);
@@ -90,6 +93,7 @@ const handleRemoveFriend = async () =>{
         console.log(res.data.response);
         dispatch(setUser(res.data.response));
         setMessage("Friend removed!");
+        window.location.reload();
     }
     catch(err){
         console.log(err);
@@ -110,6 +114,7 @@ const handleCancelRequest = async () => {
         setuserPendingRequests(res.data.response.sentRequests);
         setIsPending(false);
         setMessage('Request cancelled successfully.');
+        window.location.reload();
     } catch (err) {
         console.log(err);
         // setErrorMessage('Error cancelling request.');
