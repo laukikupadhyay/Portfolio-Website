@@ -7,6 +7,7 @@ import { faUser,faTrash} from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 import InvitationRoom from "../InvitationRoom/InvitationRoom";
 import EachCatRoom from "./EachCatRoom/EachCatRoom";
+import Loader from "react-js-loader";
 
 function CatRoom() {
 
@@ -14,6 +15,7 @@ function CatRoom() {
   const [value , setValue] = useState(50)
   const [catRooms , setCatRooms] = useState([])
   const location = useLocation();
+  const [loading ,setLoading] = useState(false);
   const userInfo = useSelector((state) => state.userInfo);
   
   useEffect(() => {
@@ -22,10 +24,11 @@ function CatRoom() {
       setRoom(location.state.propValue);
       getCategoryRooms(location.state.propValue.name);
     }
-  }, [location.state]);
+  }, [location.state, value]);
   
 
   const getCategoryRooms = async (category) => {
+    setLoading(true);
     try{
       const res = await fetch(process.env.REACT_APP_BACKEND_URL + `groups/` + category, {
         method:'GET'
@@ -34,9 +37,11 @@ function CatRoom() {
       console.log(data);
       setCatRooms(data.data.groups);
       // console.log(catRooms)
+      setLoading(false);
     }
     catch(err){
       console.log(err);
+      setLoading(false);
     }
   }
   const handleSliderChange = (event) => {
@@ -65,11 +70,19 @@ function CatRoom() {
             </div>
           </div>
       <div className={styles.catRooms}>
-      {catRooms.map((eachRoom) => {
-        return (
-       <EachCatRoom eachRoom={eachRoom} value={value} />
-        )
-      })}
+      {
+        loading ? 
+        <Loader type="bubble-loop" bgColor={"#FFFFFF"} color={'#FFFFFF'} size={30} />
+        :
+        <>
+        {
+        catRooms.map((eachRoom) => {
+          return (
+            <EachCatRoom eachRoom={eachRoom} value={value} />
+            )
+          })}
+          </>
+        }
       </div>
   </div>
   )
