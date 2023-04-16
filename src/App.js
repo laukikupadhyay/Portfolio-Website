@@ -13,6 +13,7 @@ import Search from "./pages/Search/Search";
 import ViewProfile from "./pages/ViewProfile/ViewProfile";
 import PublicProfile from "./pages/PublicProfile/PublicProfile";
 import Auth from "./pages/Auth/Auth";
+import Chat from "./pages/Chat/Chat";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/viewprofile/:userId" element={<ViewProfile />} />
           <Route path="/search" element={<Search />} />
           <Route path="/userpage/:id" element={<PublicProfile />} />
+          <Route path="/chat/:chatId" element={<Chat />} />
         </Routes>
       </Router>
     </>

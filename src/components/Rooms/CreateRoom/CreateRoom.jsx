@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./CreateRoom.module.css";
 import { sports } from "../../../assests/data";
 import Loader from "react-js-loader";
 import Swal from "sweetalert2";
+import axios from "axios"
 
 function CreateRoom({user}) {
   const [roomName, setRoomName] = useState("Set your room Name");
@@ -11,6 +12,13 @@ function CreateRoom({user}) {
   const [image , setImage] = useState('');
   const [maxSize, setMaxSize] = useState(22);
   const [loading , isLoading] = useState(false);
+  const [roomObjectId , setRoomObjectId] = useState("");
+  const [roomid,setRoomid]=useState("")
+
+  useEffect(() => {
+    console.log('RoomId1 ' + roomid);
+    handleSetRoomId();
+  }, [roomid]);
 
   const handleRoomNameChange = (e) =>{
     setRoomName(e.target.value)
@@ -30,7 +38,16 @@ function CreateRoom({user}) {
   const handleImageChange= (e) =>{
     setImage(e.target.files[0])
   }
-  console.log(user);
+
+  const handleSetRoomId = ()=>{
+    try{
+        axios.post(process.env.REACT_APP_BACKEND_URL+`groups/addroomid/${roomObjectId}/${roomid}`,
+        ).then(r=>console.log("Room id stored in backend"))
+      }catch(err){
+          console.log(err)
+        }
+  }
+  // console.log(user);
   async function handleSubmit(e) {
     e.preventDefault();
     isLoading(true);
@@ -48,11 +65,47 @@ function CreateRoom({user}) {
         method: 'POST',
         body: form,
       })
-
+      console.log(res);
       const data = await res.json();
       console.log(data);
-      isLoading(false);
-       Swal.fire({
+      setRoomObjectId(data.data.group._id);
+      
+      
+      try {
+        axios
+        .put(
+          "https://api.chatengine.io/users/",
+          { username: user.userName, secret: user.password },
+          { headers: { "private-key": "fc1f7010-933f-4e48-ae65-26ceebd03ebb" } }
+          )
+          .then((r) => console.log("chat engine post sent"));
+        } catch (err) {
+          console.log(err);
+        }
+        
+        try{
+            axios.post(
+                "https://api.chatengine.io/chats/",
+          {  title: roomName  },
+              {headers: {
+                "Project-ID": "6f3959ca-851c-4ab1-8b06-71236bd7d680",
+                "User-Name": user.userName,
+                "User-Secret": user.password
+                // "Private-Key": "fc1f7010-933f-4e48-ae65-26ceebd03ebb",
+              }}
+        ).then((response) => {
+          console.log(response.data.id);  
+          setRoomid(response.data.id)
+        })}
+        catch(err){
+            console.log(err)
+          }
+          finally{
+            console.log('RoomId1 '+roomid);
+          }
+              
+        isLoading(false);
+        Swal.fire({
         position: 'top-end',
         icon: 'success',
         title: 'Room created!',
