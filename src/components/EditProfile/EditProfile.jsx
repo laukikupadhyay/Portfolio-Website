@@ -3,15 +3,18 @@ import styles from "./EditProfile.module.css";
 import { interestsList } from "../../assests/data.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../store/auth/auth-slice";
 import Loader from "react-js-loader";
 import Swal from "sweetalert2";
 
 function EditProfile({user}) {
+   const userInfo = useSelector((state) => state.userInfo);
   const [name, setName] = useState("");
   const [interests, setInterests] = useState([]);
   const [loading , isLoading] = useState(false);
+   const [long, setLong] = useState(0);
+  const [lat, setLat] = useState(0);
 
   const dispatch = useDispatch();
 
@@ -39,6 +42,49 @@ function EditProfile({user}) {
     event.preventDefault();
     console.log("Name: ", name);
     console.log("Interests: ", interests);
+  };
+
+  const handleLocationUpdate = async () => {
+     if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          setLat(position.coords.latitude);
+          setLong(position.coords.longitude);
+          setLocation(position.coords.latitude, position.coords.longitude);
+        },
+        function (error) {
+          console.error(`Error getting user's location: ${error.message}`);
+        }
+      );
+    }
+  }
+
+  const setLocation = async (latitude, longitude) => {
+    try {
+      console.log("Setting up your location ........");
+      if (lat === 0 && long === 0) {
+        console.log("Location not found, using previous location ..........");
+        return;
+      }
+      console.log(lat , long);
+      const response = await fetch(
+        process.env.REACT_APP_BACKEND_URL + "users/setlocation/" + userInfo._id,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            longitude: longitude,
+            latitude: latitude,
+          }),
+        }
+      );
+      const data = await response.json();
+      dispatch(setUser(data.data.user));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleUpdate= async ()=>{
@@ -125,6 +171,14 @@ function EditProfile({user}) {
             <Loader type="bubble-loop" color={'#FFFFFF'} size={30} />:
             <button className={styles.updateButton} type="submit" onClick={handleUpdate}>
             Update details
+        </button>
+          }
+
+          {
+            loading ? 
+            <Loader type="bubble-loop" color={'#FFFFFF'} size={30} />:
+            <button className={styles.updateButton} type="submit" onClick={handleLocationUpdate}>
+            Update location
         </button>
           }
       </form>

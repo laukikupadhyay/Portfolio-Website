@@ -3,10 +3,13 @@ import styles from "./Friends.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser,faXmark} from "@fortawesome/free-solid-svg-icons";
 import Loader from "react-js-loader";
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../store/auth/auth-slice';
 
 function Friends({user}) {
     const [friends , setFriends] = useState([]);
     const [loading , isLoading] = useState(false);
+    const dispatch = useDispatch();
 
     useEffect(()=>{
         fetchUserFriends();
@@ -32,6 +35,27 @@ function Friends({user}) {
         }
       }
 
+      const removeFriend = async (friendId)=>{
+        try{
+          const response = await fetch(process.env.REACT_APP_BACKEND_URL + 'users/removefriend/' + user._id +'/'+ friendId , {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          })
+          const data = await response.json();
+          console.log(data.data.response.friends);
+          const updatedFriends = data.data.response.friends ;   
+          console.log('hi');
+          console.log(updatedFriends);
+          setFriends(updatedFriends); 
+          const updatedUser = {...user, friends: updatedFriends};
+          dispatch(setUser(updatedUser));
+        }
+        catch(err){
+          console.log(err);
+        }
+      }
       
   return (
     <div className={styles.friends}>
@@ -49,7 +73,7 @@ function Friends({user}) {
                     <div className={styles.name}>{friend.name}</div>
                     </div>
                     <div>
-                    <FontAwesomeIcon className={styles.remove} icon={faXmark} />
+                    <FontAwesomeIcon className={styles.remove} icon={faXmark} onClick={()=> removeFriend(friend._id)}/>
                     </div>
                 </div>
                 )
