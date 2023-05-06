@@ -1,11 +1,6 @@
 import styles from "./Post.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import {
-  faHeart,
-  faComment,
-  faShareSquare,
-} from "@fortawesome/free-regular-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "react-js-loader";
@@ -46,6 +41,25 @@ const Post = ({ user, ownProfileView }) => {
       console.log(err);
     }
   };
+
+  const removePost = async (postId) => {
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_BACKEND_URL + "posts/" + postId,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+      setPostsToView();
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   useEffect(() => {
     const fetchPostUsers = async () => {
@@ -92,9 +106,6 @@ const Post = ({ user, ownProfileView }) => {
               <div className={styles.user}>
                 <div
                   className={styles.about}
-                  onClick={() => {
-                    navigate("/userpage/" + post.userId);
-                  }}
                   >
                   <div className={styles.avatar}>
                     <img
@@ -103,8 +114,17 @@ const Post = ({ user, ownProfileView }) => {
                       alt="avatar"
                       />
                   </div>
-                  <div className="">
-                    <h5 className={styles.name}>{postUser[0]?.name ?? ""}</h5>
+                  <div className={styles.upperDetails}>
+                    <div className={styles.upperName}>
+                    <h5 className={styles.name}  onClick={() => {
+                    navigate("/userpage/" + post.userId);
+                  }} 
+                  >{postUser[0]?.name ?? ""}</h5>
+                  {
+                    user._id === post.userId &&
+                    <FontAwesomeIcon icon={faTrash} className={styles.trash} onClick={()=> removePost(post._id)}/>
+                  }
+                    </div>
                     <p className={styles.location}>
                       {postUser?.location ?? ""}
                     </p>
