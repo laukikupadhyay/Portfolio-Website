@@ -52,8 +52,28 @@ html {
 
 body {
   font-family: "Roboto", sans-serif;
-  background-color: var(--grey-13);
 }
-Loader{
-  margin:0;
+Loader {
+  margin: 0;
+}
+
+#profile-pic {
+  cursor: pointer;
+  border-bottom: 0.2rem solid #d1d1d4;
+  background: none;
+  padding: 1rem;
+  padding-left: 2.4rem;
+  font-weight: 700;
+  width: 75%;
+  transition: 0.2s;
+}
+
+#profile-pic:active,
+#profile-pic:focus,
+#profile-pic:hover {
+  border-bottom-color: #6a679e;
+}
+
+#profile-pic::-webkit-file-upload-button {
+  display: none;
 }
