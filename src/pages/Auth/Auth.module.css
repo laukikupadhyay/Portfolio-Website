@@ -17,8 +17,7 @@
   max-width: 30%;
 }
 .heading > h1 {
-  font-family: "Dancing Script", cursive;
-  background: linear-gradient(90deg, #fc00ff, #00dbde);
+  background:linear-gradient(#5d54a4,#7c78b8,#5c5696);
   text-transform: uppercase;
   background-clip: text;
   -webkit-background-clip: text;
@@ -28,7 +27,7 @@
   font-weight: 700;
 }
 .heading > span {
-  font-size: 2.4rem;
+  font-size: 1.7rem;
   color: #fff;
   font-weight: 400;
   font-style: italic;

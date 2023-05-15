@@ -35,7 +35,8 @@ function CatRoom() {
       })
       const data = await res.json();
       console.log(data);
-      setCatRooms(data.data.groups);
+      const publicRooms = data.data.groups.filter(checkVisibility);
+      setCatRooms(publicRooms);
       // console.log(catRooms)
       setLoading(false);
     }
@@ -43,6 +44,9 @@ function CatRoom() {
       console.log(err);
       setLoading(false);
     }
+  }
+  function checkVisibility(room){
+    return room.visibility=='Public';
   }
   const handleSliderChange = (event) => {
     console.log(event.target.value);
