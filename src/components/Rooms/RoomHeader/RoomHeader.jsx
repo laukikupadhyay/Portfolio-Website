@@ -19,6 +19,20 @@ function RoomHeader({room}) {
     }, 3000);
   };
 
+  const changeGroupVisibility = async () =>{
+    try{
+      const res = await fetch(process.env.REACT_APP_BACKEND_URL + 'groups/changegroupvisibility/' + room._id , {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      } )
+      window.location.reload();
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
   const getMatchStatus = async () => {
     setMatchStatus(room.status);
   }
@@ -40,6 +54,8 @@ function RoomHeader({room}) {
           }/{room.maxSize}
         </span></p>
         <p className={styles['group-created-by']}>Created by: <span className={styles.tagStyle}>{room.adminName}</span></p>
+        <p className={styles['group-created-by']}>Visibility: <span className={styles.tagStyle}>{room.visibility}</span></p>
+        <button onClick={changeGroupVisibility}>Change visibility</button>
         <div className={styles['group-created-at']}>
           <p>Code:</p>
             <input type="text" id="code" value={room.invitationLink} className={styles.invitationLink} readOnly />
