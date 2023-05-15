@@ -4,12 +4,14 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "react-js-loader";
+import { useSelector } from "react-redux";
 
 const Post = ({ user, ownProfileView }) => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [postUsers, setPostUsers] = useState({});
   const [loading , setLoading] = useState(false);
+  const userInfo = useSelector(state => state.userInfo);
   
   useEffect(() => {
     setPostsToView();
@@ -120,8 +122,7 @@ const Post = ({ user, ownProfileView }) => {
                     navigate("/userpage/" + post.userId);
                   }} 
                   >{postUser[0]?.name ?? ""}</h5>
-                  {
-                    user._id === post.userId &&
+                  {userInfo._id === post.userId &&
                     <FontAwesomeIcon icon={faTrash} className={styles.trash} onClick={()=> removePost(post._id)}/>
                   }
                     </div>
