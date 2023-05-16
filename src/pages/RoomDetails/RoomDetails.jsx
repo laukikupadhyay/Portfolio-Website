@@ -68,7 +68,7 @@ function RoomDetails() {
         <div className={styles.roomHeader}>
           <RoomHeader room={room} />
           <button onClick= {()=>{
-              navigate('/chat/'+ room.roomId)
+              navigate('/chat/'+ roomId)
           }}>Chat with members</button>
         </div>
         <div className={styles.sideMembers}>
