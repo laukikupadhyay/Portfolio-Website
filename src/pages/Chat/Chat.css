@@ -7,10 +7,16 @@
   display: flex;
   flex-direction: column;
   margin: 16px;
+  background:none;
+  /* width: 80%; */
 }
-
+.roomheading{
+  flex-wrap: wrap;
+}
 .room-name {
-  margin-top: 0;
+  /* position: relative; */
+  margin-left: -15px;
+  color: azure;
 }
 
 .messages-container {
@@ -19,6 +25,8 @@
   overflow: auto;
   border: 1px solid black;
   border-radius: 7px 7px 0 0;
+  background-color: #212529;
+  border-radius: 1%;
 }
 
 .messages-list {
@@ -27,11 +35,15 @@
 }
 
 .new-message-input-field {
-  height: 200px;
+  height: 80px;
   max-height: 50%;
   font-size: 20px;
   padding: 8px 12px;
   resize: none;
+  background-color: #212529;
+  color: white;
+  border-radius: 1%;
+  border-top: none;
 }
 
 .message-item {
@@ -54,11 +66,11 @@
 }
 
 .send-message-button {
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 600;
   color: white;
-  background: #31a24c;
-  padding: 24px 12px;
+  background: rgb(0, 132, 255);
+  padding: 5px 8px;
   border: none;
 }
 

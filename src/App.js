@@ -31,7 +31,7 @@ function App() {
           <Route path="/viewprofile/:userId" element={<ViewProfile />} />
           <Route path="/search" element={<Search />} />
           <Route path="/userpage/:id" element={<PublicProfile />} />
-          <Route path="/chat/:roomId" element={<ChatRoom />} />
+          <Route path="/chat/:roomId/:roomname" element={<ChatRoom />} />
         </Routes>
       </Router>
     </>
