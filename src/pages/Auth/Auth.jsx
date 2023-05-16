@@ -1,9 +1,9 @@
 import styles from "./Auth.module.css";
-import Loginold from "../../components/Auth/Login/Login.jsx";
-import Login from "../../components/AuthNew/Login";
 import React, { useState } from "react";
-import Register from "../../components/AuthNew/Signup";
-import Registerold from "../../components/Auth/Register/Register";
+import Login from "../../components/Auth/Login/Login.jsx";
+// import Login from "../../components/AuthNew/Login";
+// import Register from "../../components/AuthNew/Signup";
+import Register from "../../components/Auth/Register/Register";
 
 function Auth() {
   const [login, setLogin] = useState(false);

@@ -43,7 +43,8 @@ function Register({ switchToLogIn }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(setLoading(true));
-    if (!name || !username || !email || !profilePic || !password) {
+    console.log(profilePic)
+    if (name=="" || username=="" || email=="" || profilePic==undefined || password=="") {
       Swal.fire({
         title: "Error!",
         text: "Please enter all details to register",
@@ -102,7 +103,7 @@ function Register({ switchToLogIn }) {
       dispatch(setLoading(false));
       Swal.fire({
         title: "Error!",
-        text: err.message,
+        text: "Enter details correctly!",
         icon: "error",
         confirmButtonText: "Ok",
       });
