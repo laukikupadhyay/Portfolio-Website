@@ -1,169 +1,67 @@
-.background{
-  height:100%;
-  width:100%;
+.chat-room-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
 }
-.shadow {
-    box-shadow: 0 2px 15px rgb(0 0 0 / 68%);
-  }
-  
 
-  /* Chat List */
-  .ce-wrapper {
-    background-color: #151515 !important;
-  }
-  
-  .ce-chats-container {
-    background-color: #151515 !important;
-    border-radius: 0px !important;
-  }
-  
-  .ce-chat-form-container {
-    background-color: #151515 !important;
-    color: white;
-  }
-  
-  .ce-chat-card {
-    margin: 0px 6px !important;
-  }
-  
-  .ce-chat-card-loading-bar {
-    background-color: #535a6d !important;
-  }
-  
-  .ce-active-chat-card {
-    background-color: #726dfe !important;
-  }
-  
-  .ce-chat-title-text {
-    color: white !important;
-  }
-  
-  .ce-chat-subtitle-text {
-    color: hsla(0, 0%, 100%, 0.568) !important;
-  }
-  
-  .ce-chat-unread-dot {
-    background-color: white !important;
-  }
-  
-  /* Chat Feed */
-  
-  .ce-chat-title-container {
-    background-color: #151515 !important;
-    border-radius: 0px !important;
-  }
-  
-  .ce-chat-feed-container {
-    background-color: #151515 !important;
-  }
-  
-  .ce-primary-button {
-    background-color: #9a97fc !important;
-  }
-  
-  .ce-message-date-text {
-    color: hsla(0, 0%, 100%, 0.568) !important;
-  }
-  
-  .ce-my-message-bubble {
-    background-color: #726dfe !important;
-  }
-  
-  .ce-my-message-sinding-bubble {
-    background-color: #938ffe !important;
-  }
-  
-  .ce-my-message-timestamp {
-    color: #9a97fc !important;
-  }
-  
-  .ce-their-message-timestamp {
-    color: hsla(0, 0%, 100%, 0.568) !important;
-  }
-  
-  #ce-send-message-button {
-    background-color: #9a97fc !important;
-  }
-  
-  #ce-ice-breaker-gif {
-    max-width: 115px !important;
-    margin-top: 30px !important;
-  }
-  
-  .ce-social-message-form {
-    background-color: #151515 !important;
-  }
-  
-  .ce-message-input-form {
-    padding-bottom: 10px !important;
-  }
-  
-  #msg-textarea {
-    width: calc(100% - 140px) !important;
-    position: relative !important;
-    top: 4px !important;
-    border-width: 0px !important;
-    background-color: #151515 !important;
-    color: white !important;
-  }
-  #msg-textarea::placeholder {
-    color: hsla(0, 0%, 100%, 0.568) !important;
-  }
-  
-  #ce-upload-document-icon {
-    color: white !important;
-  }
-  
-  .ce-feed-container-bottom {
-    height: "44px";
-  }
-  
-  .ce-message-images-row {
-    background-color: #151515 !important;
-  }
-  
-  .ce-their-message-sender {
-    color: hsla(0, 0%, 100%, 0.568) !important;
-  }
-  
-  .ce-their-message-bubble {
-    background-color: #535a6d !important;
-    color: rgba(255, 255, 255, 0.705) !important;
-  }
-  
-  /* Chat Settings */
-  
-  .ce-settings {
-    background-color: #151515 !important;
-    border-radius: 0px !important;
-  }
-  
-  .ce-chat-title-form .ce-text-input {
-    background-color: #151515;
-    color: white;
-  }
-  
-  .ce-section-title-container {
-    background-color: #151515 !important;
-    color: white;
-  }
-  
-  #ce-options-drop-down {
-    background-color: #151515 !important;
-    color: white;
-  }
-  
-  .ce-person-text {
-    color: hsla(0, 0%, 100%, 0.568);
-  }
-  
-  .ce-danger-button {
-    background-color: #151515 !important;
-    border: 1px solid #9a97fc !important;
-    color: #9a97fc !important;
-  }
-  
-  .ce-autocomplete-close {
-    background-color: white !important;
-    border-radius: 0px !important;
-  }
+.room-name {
+  margin-top: 0;
+}
+
+.messages-container {
+  flex: 1;
+  min-height: 100px;
+  overflow: auto;
+  border: 1px solid black;
+  border-radius: 7px 7px 0 0;
+}
+
+.messages-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.new-message-input-field {
+  height: 200px;
+  max-height: 50%;
+  font-size: 20px;
+  padding: 8px 12px;
+  resize: none;
+}
+
+.message-item {
+  width: 55%;
+  margin: 8px;
+  padding: 12px 8px;
+  word-break: break-word;
+  border-radius: 4px;
+  color: white;
+}
+
+.my-message {
+  background-color: rgb(0, 132, 255);
+  margin-left: auto;
+}
+
+.received-message {
+  background-color: #3f4042;
+  margin-right: auto;
+}
+
+.send-message-button {
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+  background: #31a24c;
+  padding: 24px 12px;
+  border: none;
+}
+
+.messages-container, .new-message-input-field, .send-message-button {
+  border-color: #9a9a9a;
+}
