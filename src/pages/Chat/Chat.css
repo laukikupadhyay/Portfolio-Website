@@ -8,7 +8,8 @@
   flex-direction: column;
   margin: 16px;
   background:none;
-  /* width: 80%; */
+  width: 90%;
+  margin: auto;
 }
 .roomheading{
   flex-wrap: wrap;
@@ -72,6 +73,7 @@
   background: rgb(0, 132, 255);
   padding: 5px 8px;
   border: none;
+  margin-bottom: 20px;
 }
 
 .messages-container, .new-message-input-field, .send-message-button {
