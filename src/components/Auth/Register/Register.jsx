@@ -71,7 +71,7 @@ function Register({ switchToLogIn }) {
       formData.append("location", locationObj);
 
       const response = await fetch(
-        process.env.REACT_APP_BACKEND_URL + "auth/register",
+        "http://localhost:8000/api/" + "auth/register",
         {
           method: "POST",
           body: formData,
@@ -98,12 +98,12 @@ function Register({ switchToLogIn }) {
           confirmButtonText: "Ok",
         });
       }
-    } catch (err) {
+    }catch (err) {
       console.log(err);
       dispatch(setLoading(false));
       Swal.fire({
         title: "Error!",
-        text: "Enter details correctly!",
+        text: err.message || "Error occurred while uploading the image",
         icon: "error",
         confirmButtonText: "Ok",
       });

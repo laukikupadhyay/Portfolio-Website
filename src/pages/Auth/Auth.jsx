@@ -6,7 +6,7 @@ import Login from "../../components/Auth/Login/Login.jsx";
 import Register from "../../components/Auth/Register/Register";
 
 function Auth() {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
 
   const toggle = () => {
     setLogin(!login);

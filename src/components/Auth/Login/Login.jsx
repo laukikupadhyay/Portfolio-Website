@@ -40,7 +40,7 @@ function Register({ switchToRegister }) {
       dispatch(setLoading(true));
       console.log(loading);
       const response = await fetch(
-        process.env.REACT_APP_BACKEND_URL + "auth/login",
+        "http://localhost:8000/api/" + "auth/login",
         {
           method: "POST",
           headers: {
@@ -76,7 +76,7 @@ function Register({ switchToRegister }) {
       console.log(err);
       swal.fire({
         title: "Error!",
-        text: "Please enter valid credentials!!",
+        text: err.message,
         icon: "error",
         confirmButtonText: "Ok",
       });
