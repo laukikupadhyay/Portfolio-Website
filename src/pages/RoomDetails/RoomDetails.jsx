@@ -5,6 +5,7 @@ import RoomHeader from '../../components/Rooms/RoomHeader/RoomHeader'
 import Roommembers from '../../components/Rooms/Roommembers/Roommembers'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
+import Invitation from '../../components/Invitation/Invitation'
 
 function RoomDetails() {
   const [room, setRoom] = useState({})
@@ -70,6 +71,9 @@ function RoomDetails() {
           <button onClick= {()=>{
               navigate('/chat/'+ room.roomId)
           }}>Chat with members</button>
+          <div className={styles.inviteUsers}>
+          <Invitation room={room}/>
+          </div>
         </div>
         <div className={styles.sideMembers}>
           <Roommembers room={room} />
