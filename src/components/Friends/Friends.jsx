@@ -5,10 +5,12 @@ import { faUser,faXmark} from "@fortawesome/free-solid-svg-icons";
 import Loader from "react-js-loader";
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/auth/auth-slice';
+import { useNavigate } from "react-router-dom";
 
 function Friends({user}) {
     const [friends , setFriends] = useState([]);
     const [loading , isLoading] = useState(false);
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -68,10 +70,16 @@ function Friends({user}) {
             friends.map((friend)=>{
                 return(
                     <div className={styles.friend}>
+                    <div onClick={()=>{
+                      navigate('/userpage/'+friend._id);
+                    }}>
                     <div className={styles.friendBox}>
-                    <FontAwesomeIcon className={styles.avatar} icon={faUser} />
+                    <img className={styles.avatar}
+                      src={friend.image}
+                      />
                     <div className={styles.name}>{friend.name}</div>
                     </div>
+                      </div>
                     <div>
                     <FontAwesomeIcon className={styles.remove} icon={faXmark} onClick={()=> removeFriend(friend._id)}/>
                     </div>

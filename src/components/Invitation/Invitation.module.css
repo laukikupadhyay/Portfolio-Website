@@ -1,0 +1,39 @@
+.container {
+    background-color: #212121;
+    padding: 20px;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #303030;
+    color: #ffffff;
+  }
+  
+  .userList {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .userItem {
+    background-color: #303030;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .userItem span {
+    display: block;
+    color: #ffffff;
+  }
+  
+  .inviteButton {
+    background-color: #1565c0;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  

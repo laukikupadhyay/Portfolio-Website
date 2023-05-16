@@ -14,6 +14,7 @@ function CreateRoom({user}) {
   const [loading , isLoading] = useState(false);
   const [roomObjectId , setRoomObjectId] = useState("");
   const [roomid,setRoomid]=useState("")
+  const [visibility,setVisibility]=useState("Public")
 
   useEffect(() => {
     console.log('RoomId1 ' + roomid);
@@ -34,7 +35,9 @@ function CreateRoom({user}) {
     setSelectedSport(selectedSportName);
     setMaxSize(selectedSport.maxPlayer);
   }
-
+  const handleVisibilityChange = (e) =>{
+    setVisibility(e.target.value)
+  }
   const handleImageChange= (e) =>{
     setImage(e.target.files[0])
   }
@@ -57,6 +60,7 @@ function CreateRoom({user}) {
       form.append('adminName', user.name);
       form.append('desc', desc);
       form.append('creator', user.email);
+      form.append('visibility', visibility);
       form.append('players', [user._id]);
       form.append('type', selectedSport);
       form.append('maxSize', maxSize);
@@ -71,38 +75,38 @@ function CreateRoom({user}) {
       setRoomObjectId(data.data.group._id);
       
       
-      try {
-        axios
-        .put(
-          "https://api.chatengine.io/users/",
-          { username: user.userName, secret: user.password },
-          { headers: { "private-key": "fc1f7010-933f-4e48-ae65-26ceebd03ebb" } }
-          )
-          .then((r) => console.log("chat engine post sent"));
-        } catch (err) {
-          console.log(err);
-        }
+      // try {
+      //   axios
+      //   .put(
+      //     "https://api.chatengine.io/users/",
+      //     { username: user.userName, secret: user.password },
+      //     { headers: { "private-key": "fc1f7010-933f-4e48-ae65-26ceebd03ebb" } }
+      //     )
+      //     .then((r) => console.log("chat engine post sent"));
+      //   } catch (err) {
+      //     console.log(err);
+      //   }
         
-        try{
-            axios.post(
-                "https://api.chatengine.io/chats/",
-          {  title: roomName  },
-              {headers: {
-                "Project-ID": "6f3959ca-851c-4ab1-8b06-71236bd7d680",
-                "User-Name": user.userName,
-                "User-Secret": user.password
-                // "Private-Key": "fc1f7010-933f-4e48-ae65-26ceebd03ebb",
-              }}
-        ).then((response) => {
-          console.log(response.data.id);  
-          setRoomid(response.data.id)
-        })}
-        catch(err){
-            console.log(err)
-          }
-          finally{
-            console.log('RoomId1 '+roomid);
-          }
+      //   try{
+      //       axios.post(
+      //           "https://api.chatengine.io/chats/",
+      //     {  title: roomName  },
+      //         {headers: {
+      //           "Project-ID": "6f3959ca-851c-4ab1-8b06-71236bd7d680",
+      //           "User-Name": user.userName,
+      //           "User-Secret": user.password
+      //           // "Private-Key": "fc1f7010-933f-4e48-ae65-26ceebd03ebb",
+      //         }}
+      //   ).then((response) => {
+      //     console.log(response.data.id);  
+      //     setRoomid(response.data.id)
+      //   })}
+      //   catch(err){
+      //       console.log(err)
+      //     }
+      //     finally{
+      //       console.log('RoomId1 '+roomid);
+      //     }
               
         isLoading(false);
         Swal.fire({
@@ -140,7 +144,16 @@ function CreateRoom({user}) {
         </div>
 
         <div className={styles.field}>
-        <div>Game Type:</div>
+        <div>Visibility:</div>
+        <div className={styles.dropdown}>
+      <select 
+      value={selectedSport} onChange={handleVisibilityChange}
+      >
+       <option value="Public">Public</option>
+        <option value="Private">Private</option>
+      </select>
+    </div>
+        <div className={styles.gameType}>Game Type:</div>
         <div className={styles.dropdown}>
       <select 
       value={selectedSport} onChange={handleSportChange}

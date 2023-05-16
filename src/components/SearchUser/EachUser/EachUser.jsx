@@ -39,7 +39,6 @@ function EachUser({ user}) {
     } else if (user && userReceivedRequests && userReceivedRequests.includes(user._id)) {
       setIsReceived(true);
     }
-    
   };
 
   // console.log(isFriend, isPending, isReceived)

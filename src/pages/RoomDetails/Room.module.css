@@ -5,7 +5,11 @@
 .headerAndSide{
     display: flex;
     height:100vh;
-    overflow: hidden;
+    /* overflow: scroll; */
+}
+.inviteUsers{
+    overflow-x:hidden;
+    overflow-y: scroll;
 }
 .roomHeader{
     width:70%;
