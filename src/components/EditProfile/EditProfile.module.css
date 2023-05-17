@@ -29,10 +29,17 @@
 .field{
     margin-bottom: 2rem;
 }
+.mapContainer>div {
+  height: 300px;
+  width:100%;
+}
+.locationContainer{
+  margin-top: 2rem;
+}
 .form {
     margin-top: 20px;
   }
-  
+
   select {
     width: 100%;
     padding: 5px;

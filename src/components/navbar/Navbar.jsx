@@ -31,17 +31,6 @@ function NavBar() {
               click ? `${styles.navmenu} ${styles.active}` : `${styles.navmenu}`
             }
           >
-            <li className={styles.navitem}>
-              <NavLink
-                exact
-                to="#"
-                activeClassName={styles.active}
-                className={styles.navlinks}
-                onClick={handleClick}
-              >
-                <TbMoonFilled />
-              </NavLink>
-            </li>
             {/* <li className="navitem">
               <NavLink
                 exact
@@ -61,6 +50,13 @@ function NavBar() {
               >
                 <IoMdNotifications />
               </NavLink>
+              {/* <NavLink
+                exact
+                activeClassName={styles.active}
+                className={styles.navlinks}
+              >
+                Home
+              </NavLink> */}
             </li>
             <li>
               <NavLink

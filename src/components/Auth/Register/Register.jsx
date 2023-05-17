@@ -71,7 +71,7 @@ function Register({ switchToLogIn }) {
       formData.append("location", locationObj);
 
       const response = await fetch(
-        "http://localhost:8000/api/" + "auth/register",
+        process.env.REACT_APP_BACKEND_URL + "auth/register",
         {
           method: "POST",
           body: formData,

@@ -40,7 +40,7 @@ function Register({ switchToRegister }) {
       dispatch(setLoading(true));
       console.log(loading);
       const response = await fetch(
-        "http://localhost:8000/api/" + "auth/login",
+        process.env.REACT_APP_BACKEND_URL + "auth/login",
         {
           method: "POST",
           headers: {
