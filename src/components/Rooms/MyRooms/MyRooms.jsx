@@ -51,8 +51,23 @@ function MyRooms({user}) {
       window.location.reload();
     }
   }
-  const handleDelete = async () =>{
-
+  const handleDelete = async (room) =>{
+    console.log(room._id)
+    try{
+      const response = await fetch(process.env.REACT_APP_BACKEND_URL + 'groups/deletegroup/' + room._id, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      const data = await response.json();
+      console.log(data);
+      const updatedRooms = rooms.filter(room => room._id !== data.data.deleteGroup._id)
+      setRooms(updatedRooms)
+    }
+    catch(err){
+      console.log(err);
+    }
   }
   
   return (
@@ -84,7 +99,7 @@ function MyRooms({user}) {
                       </button>
                         {
                           room.creator === user.email ? 
-                      <button className={styles.leave} onClick={handleDelete}>
+                      <button className={styles.leave} onClick={()=> handleDelete(room)}>
                           Delete
                       </button>
                           : 

@@ -32,10 +32,13 @@
 }
 .teamName{
     font-size: 1.5rem;
+    margin-bottom: 0.2rem;
 }
 .teamDesc{
     font-size: 1.3rem;
     opacity: 0.8;
+    font-style: italic;
+    margin-bottom: 0.2rem;
 }
 .group{
     display: flex;
