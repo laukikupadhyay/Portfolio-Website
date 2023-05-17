@@ -69,7 +69,7 @@ function RoomDetails() {
         <div className={styles.roomHeader}>
           <RoomHeader room={room} />
           <button onClick= {()=>{
-              navigate('/chat/'+ roomId)
+              navigate('/chat/'+ roomId+"/"+ room.name)
           }}>Chat with members</button>
           <div className={styles.inviteUsers}>
           <Invitation room={room}/>

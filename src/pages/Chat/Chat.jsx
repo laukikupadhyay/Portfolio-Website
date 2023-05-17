@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import useChat from "./UseChat";
 
 const ChatRoom = (props) => {
-  const { roomId } = useParams();
+  const { roomId,roomname } = useParams();
   const state = useSelector((state) => state);
   const name=state.userInfo.name;
   const { messages, sendMessage } = useChat(roomId,name);
@@ -42,7 +42,7 @@ const ChatRoom = (props) => {
 
   return (
     <div className="chat-room-container">
-      <h1 className="room-name">Room: {roomId}</h1>
+      <div className="room-name"><h1 className="roomheading">Room: {roomname}</h1></div>
       <div className="messages-container">
         <ol className="messages-list">
         {oldMessage.map((message, i) => (
@@ -73,9 +73,9 @@ const ChatRoom = (props) => {
         placeholder="Write message..."
         className="new-message-input-field"
       />
-      <button onClick={handleSendMessage} className="send-message-button">
+      <div onClick={handleSendMessage} className="send-message-button">
         Send
-      </button>
+      </div>
     </div>
   );
 };
