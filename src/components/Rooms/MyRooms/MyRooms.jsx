@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser,faTrash} from "@fortawesome/free-solid-svg-icons";
 import Loader from "react-js-loader";
 import { useNavigate } from 'react-router-dom';
+import Swal from "sweetalert2";
 
 
 function MyRooms({user}) {
@@ -51,24 +52,40 @@ function MyRooms({user}) {
       window.location.reload();
     }
   }
-  const handleDelete = async (room) =>{
-    console.log(room._id)
-    try{
-      const response = await fetch(process.env.REACT_APP_BACKEND_URL + 'groups/deletegroup/' + room._id, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      const data = await response.json();
-      console.log(data);
-      const updatedRooms = rooms.filter(room => room._id !== data.data.deleteGroup._id)
-      setRooms(updatedRooms)
+const handleDelete = async (room) => {
+  Swal.fire({
+    title: "Do you really want to delete the group?",
+    text: "This action cannot be undone.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const response = await fetch(
+          process.env.REACT_APP_BACKEND_URL + "groups/deletegroup/" + room._id,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const data = await response.json();
+        console.log(data);
+        const updatedRooms = rooms.filter((room) => room._id !== data.data.deleteGroup._id);
+        setRooms(updatedRooms);
+        Swal.fire("Deleted!", "The group has been deleted.", "success");
+      } catch (err) {
+        console.log(err);
+        Swal.fire("Error!", "An error occurred while deleting the group.", "error");
+      }
     }
-    catch(err){
-      console.log(err);
-    }
-  }
+  });
+};
+
   
   return (
     <div className={styles.rooms}>
