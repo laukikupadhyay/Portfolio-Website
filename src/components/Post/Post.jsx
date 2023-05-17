@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "react-js-loader";
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 const Post = ({ user, ownProfileView }) => {
   const navigate = useNavigate();
@@ -26,7 +27,10 @@ const Post = ({ user, ownProfileView }) => {
     );
     const postsData = await allPosts.json();
     console.log(postsData);
-    setPosts(postsData.data.posts);
+    const sortedPosts = postsData.data.posts.sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+    setPosts(sortedPosts);
   };
   
   const getUserById = async (id) => {
@@ -45,6 +49,16 @@ const Post = ({ user, ownProfileView }) => {
   };
 
   const removePost = async (postId) => {
+    Swal.fire({
+      title: "Do you really want to delete the post?",
+      text: "This action cannot be undone.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
     try {
       const response = await fetch(
         process.env.REACT_APP_BACKEND_URL + "posts/" + postId,
@@ -57,12 +71,15 @@ const Post = ({ user, ownProfileView }) => {
       );
       const data = await response.json();
       console.log(data);
+      Swal.fire("Removed!", "The user is not longer a friend!", "success");
       setPostsToView();
     } catch (err) {
       console.log(err);
+      Swal.fire("Error!", "An error occurred while deleting the post!", "error");
     }
   }
-
+});
+};
   useEffect(() => {
     const fetchPostUsers = async () => {
       setLoading(true)

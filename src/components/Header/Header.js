@@ -9,13 +9,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Header.module.css";
 import { useSelector } from "react-redux";
+import Loader from "react-js-loader";
 
 function Header() {
   const [image, setImage] = useState();
-  const [desc, setDesc] = useState();
+  const [desc, setDesc] = useState("");
+  const [loading, setLoading] = useState(false);
   const userInfo = useSelector((state) => state.userInfo);
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     console.log(image);
     const form = new FormData();
@@ -39,6 +42,8 @@ function Header() {
       window.location.reload();
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -73,7 +78,11 @@ function Header() {
           </div>
         </div>
         <div>
-          <button onClick={handleSubmit}>POST</button>
+          {loading ? (
+            <Loader type="bubble-loop" color={"#FFFFFF"} size={20} />
+          ) : (
+            <button onClick={handleSubmit}>POST</button>
+          )}
         </div>
       </div>
       <div className={styles.imageText}>

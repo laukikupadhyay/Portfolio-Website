@@ -43,7 +43,8 @@ function Register({ switchToLogIn }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(setLoading(true));
-    if (!name || !username || !email || !profilePic || !password) {
+    console.log(profilePic)
+    if (name=="" || username=="" || email=="" || profilePic==undefined || password=="") {
       Swal.fire({
         title: "Error!",
         text: "Please enter all details to register",
@@ -97,12 +98,12 @@ function Register({ switchToLogIn }) {
           confirmButtonText: "Ok",
         });
       }
-    } catch (err) {
+    }catch (err) {
       console.log(err);
       dispatch(setLoading(false));
       Swal.fire({
         title: "Error!",
-        text: err.message,
+        text: err.message || "Error occurred while uploading the image",
         icon: "error",
         confirmButtonText: "Ok",
       });

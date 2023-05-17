@@ -1,16 +1,35 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser,faLocationDot , faBriefcase ,faGear} from "@fortawesome/free-solid-svg-icons";
 import twitter from '../../assests/icons/twitter.svg'
 import styles from './Profile.module.css'
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Profile({user}) {
+    const [location , setLocation] = useState("");
+    const userInfo = useSelector((state) => state.userInfo);
+  const [lat, setLat] = useState(0);
+  const [long , setLong] = useState(0);
 
     useEffect(()=>{
         console.log(user)
     })
-
+    useEffect(() => {
+        const getLocation = async () => {
+          if (userInfo) {
+            setLat(userInfo.location.coordinates[1]);
+            setLong(userInfo.location.coordinates[0]);
+            const res = await fetch( `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${long}&key=ca6442829bc54e7c80a88fc2782267cc`);
+            const data = await res.json();
+            console.log(data)
+            setLocation(data.results[0].formatted)
+            return data;
+          }
+        }
+        const place = getLocation();
+        console.log(place)
+        })
     const navigate = useNavigate();
   return (
     <div className={styles.profileCard}>
@@ -36,7 +55,7 @@ function Profile({user}) {
                 <div>
                 <FontAwesomeIcon className={styles.icon} icon={faLocationDot}/>
                 </div>
-                <div className={styles.locationText}>Location</div>
+                <div className={styles.locationText}>{location}</div>
             </div>
             <div className={styles.interests}>
             <FontAwesomeIcon className={styles.icon} icon={faBriefcase}/>
@@ -53,12 +72,12 @@ function Profile({user}) {
         <div className={styles.divider}></div>
         <div className={styles.statistics}>
             <div className={styles.whoViewed}>
-                <div className={styles.whoViewedText}>Pending requests</div>
+                <div className={styles.whoViewedText}>Pending recieved requests</div>
                 <div className='who-viewed-count'>{user.getRequests.length}</div>
             </div>
             <div className={styles.impressions}>
-                <div className={styles.impressionsText}>Profile views</div>
-                <div className='impressions-count'>0</div>
+                <div className={styles.impressionsText}>Pending sent requests</div>
+                <div className='impressions-count'>{user.sentRequests.length}</div>
             </div>
         </div>
         <div className={styles.divider}></div>

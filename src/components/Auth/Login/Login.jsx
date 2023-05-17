@@ -76,7 +76,7 @@ function Register({ switchToRegister }) {
       console.log(err);
       swal.fire({
         title: "Error!",
-        text: "Please enter valid credentials!!",
+        text: err.message,
         icon: "error",
         confirmButtonText: "Ok",
       });

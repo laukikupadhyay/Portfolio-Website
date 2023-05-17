@@ -6,6 +6,7 @@ import Loader from "react-js-loader";
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/auth/auth-slice';
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Friends({user}) {
     const [friends , setFriends] = useState([]);
@@ -38,6 +39,16 @@ function Friends({user}) {
       }
 
       const removeFriend = async (friendId)=>{
+        Swal.fire({
+          title: "Do you really want to remove the user as friend?",
+          text: "This action cannot be undone.",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes",
+        }).then(async (result) => {
+          if (result.isConfirmed) {
         try{
           const response = await fetch(process.env.REACT_APP_BACKEND_URL + 'users/removefriend/' + user._id +'/'+ friendId , {
             method: 'PATCH',
@@ -53,12 +64,16 @@ function Friends({user}) {
           setFriends(updatedFriends); 
           const updatedUser = {...user, friends: updatedFriends};
           dispatch(setUser(updatedUser));
+          Swal.fire("Removed!", "The user is not longer a friend!", "success");
         }
         catch(err){
           console.log(err);
+          Swal.fire("Error!", "An error occurred while removing the friend", "error");
         }
       }
-      
+    });
+  };
+  
   return (
     <div className={styles.friends}>
         <h2>Your Friends</h2>
