@@ -1,20 +1,22 @@
-.roomPage{
-    height:100vh;
-    overflow: hidden;
+.headerAndSide {
+  display: flex;
 }
-.headerAndSide{
-    display: flex;
-    height:100vh;
-    /* overflow: scroll; */
+/* .inviteUsers {
+  overflow-x: hidden;
+  overflow-y: scroll;
+} */
+.roomHeader {
+  width: 70%;
 }
-.inviteUsers{
-    overflow-x:hidden;
-    overflow-y: scroll;
+.sideMembers {
+  width: 30%;
 }
-.roomHeader{
-    width:70%;
+.partition {
+  position: fixed;
+  width: 100vw;
+  height: 2px;
+  background-color: #e0e0e0;
 }
-.sideMembers{
-    width:30%;
-    overflow-y: scroll;
+.padding2 {
+  padding: 2rem 2rem 0 2rem;
 }
