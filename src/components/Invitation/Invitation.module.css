@@ -1,6 +1,7 @@
 .container {
     background-color: #212121;
     padding: 20px;
+    color:white;
   }
   
   .input {
@@ -36,4 +37,3 @@
     padding: 5px 10px;
     cursor: pointer;
   }
-  

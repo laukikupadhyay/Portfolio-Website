@@ -47,7 +47,14 @@ button:hover{
     background:green;
     cursor: pointer;
 }
-
+.invalidLink{
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-style: italic
+}
 @media screen and (max-width: 720px) {
     .groupDetails{
         display: flex;
