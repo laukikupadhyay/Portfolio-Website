@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "./Chat.css";
 import { useSelector } from "react-redux";
 import useChat from "./UseChat";
+import NavBar from "../../components/navbar/Navbar";
 
 const ChatRoom = (props) => {
   const { roomId, roomname } = useParams();
@@ -29,6 +30,10 @@ const ChatRoom = (props) => {
       .catch((err) => {
         console.log(err);
       });
+
+
+
+      
   }, []);
 
   const handleNewMessageChange = (event) => {
@@ -41,6 +46,7 @@ const ChatRoom = (props) => {
   };
 
   return (
+    <div>
     <div className="chatroom">
       <div className="chat-room-container">
         <div className="roomheading"><span>Room: {roomname}</span></div>
@@ -88,6 +94,7 @@ const ChatRoom = (props) => {
           <div>Yet to implement - so ise cherna mat</div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

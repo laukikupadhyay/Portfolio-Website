@@ -58,6 +58,21 @@ function NavBar() {
                 Home
               </NavLink> */}
             </li>
+            <li className={styles.linkbuttonbns}>
+              <NavLink
+                exact
+                to="#"
+                activeClassName={styles.active}
+                className={styles.navlinksbuutonbns}
+                onClick={handleClick}
+              >
+                <span id={styles.containerbuttonbns}>
+                  <NavLink id={styles.buttonbns} to="/buynsell">
+                    Buy n Sell
+                  </NavLink>
+                </span>
+              </NavLink>
+            </li>
             <li>
               <NavLink
                 exact

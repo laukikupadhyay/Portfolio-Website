@@ -171,8 +171,11 @@
     color: aliceblue;
     height: 500px;
     width: 20%;
-    background-color: #3f4042;
+    background-color: #212529;
     margin-top: 60px;
     margin-left: 925px;
+  }
+  .chatroom{
+    margin-top: 60px;
   }
 }

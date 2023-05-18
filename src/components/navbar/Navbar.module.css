@@ -190,7 +190,130 @@
   }
 }
 
+.containerbuttonbns {
+  align-items: center;
+  text-align: center;
+  /* margin-right: 1000px;
+  padding-right: 100px; */
+}
+
+#buttonbns {
+  position: relative;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  width: 100%;
+  height: 30px;
+  border-radius: 50px;
+  outline: none;
+  background: linear-gradient(90deg, #00dbde, #fc00ff);
+  background-size: 400%;
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  text-decoration: none;
+  height: 40px;
+  
+}
+
+#buttonbns::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, #00dbde, #fc00ff);
+  background-size: 400%;
+  border-radius: 50px;
+  opacity: 0;
+  transition: 0.5s;
+  
+}
+
+#buttonbns:hover {
+  animation: animate 10s linear infinite;
+  text-decoration: none; /* Remove underline effect */
+}
+
+#buttonbns:hover::before {
+  filter: blur(25px);
+  opacity: 0.8;
+  animation: animate 10s linear infinite;
+}
+
+#buttonbns:active {
+  outline: none;
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
+}
+
+/* Remove underline effect */
+.navlinksbuutonbns {
+  text-decoration: none;
+
+  
+}
+
+.navlinksbuutonbns:hover {
+  text-decoration: none;
+}
+
+.navlinksbuutonbns:active {
+  outline: none;
+}
+.navlinksbuuton {
+  text-decoration: none;
+  
+}
+
+.navlinksbuuton:hover {
+  text-decoration: none;
+}
+
+.navlinksbuuton:active {
+  outline: none;
+}
+.linkbuttonbns{
+  margin-right: 25px;
+}
 
 
 
 
+
+
+@media screen and (max-width: 960px) {
+  
+  /* Adjust the margin as needed to align the elements */
+  .navlinksbuutonbns {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .navlinksbuuton {
+    margin-bottom: 1rem;
+  }
+
+  /* Make the buttons take full width */
+  #containerbuttonbns,
+  #button {
+    width: 100%;
+  }
+  #containerbuttonbns,
+  #buttonbns{
+    width: 100%;
+  }
+}
