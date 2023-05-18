@@ -28,6 +28,10 @@
     border-radius: 50%;
     margin-right: 2rem;
 }
+i{
+    font-size: 1.5rem;
+    margin-left: 2rem;
+}
 button{
     color: white;
     margin-left: 2rem;

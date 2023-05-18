@@ -1,11 +1,7 @@
 import styles from "./CatRoom.module.css"
 import React, { useEffect, useState } from 'react'
-import { rooms } from "../../../assests/data"
 import { useLocation } from 'react-router-dom';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser,faTrash} from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
-import InvitationRoom from "../InvitationRoom/InvitationRoom";
 import EachCatRoom from "./EachCatRoom/EachCatRoom";
 import Loader from "react-js-loader";
 
@@ -37,7 +33,7 @@ function CatRoom() {
       console.log(data);
       const publicRooms = data.data.groups.filter(checkVisibility);
       setCatRooms(publicRooms);
-      // console.log(catRooms)
+      console.log(catRooms)
       setLoading(false);
     }
     catch(err){
@@ -46,7 +42,7 @@ function CatRoom() {
     }
   }
   function checkVisibility(room){
-    return room.visibility=='Public';
+    return room.visibility==='Public';
   }
   const handleSliderChange = (event) => {
     console.log(event.target.value);
@@ -82,7 +78,9 @@ function CatRoom() {
         {
         catRooms.map((eachRoom) => {
           return (
+            <div>
             <EachCatRoom eachRoom={eachRoom} value={value} />
+            </div>
             )
           })}
           </>
