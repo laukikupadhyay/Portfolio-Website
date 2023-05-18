@@ -5,7 +5,8 @@ import { TbMoonFilled } from "react-icons/tb";
 import { IoMdNotifications } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
-function NavBar() {
+function NavBar(prop) {
+  console.log(prop.prop)
   const [click, setClick] = useState(false);
   const navigate = useNavigate();
 
@@ -67,8 +68,8 @@ function NavBar() {
                 onClick={handleClick}
               >
                 <span id={styles.containerbuttonbns}>
-                  <NavLink id={styles.buttonbns} to="/buynsell">
-                    Buy n Sell
+                  <NavLink id={styles.buttonbns} to={prop.prop=="Add Item"?"/additem":"/buynsell"}>
+                    {prop.prop=="Add Item" ? "Add Item" : "Buy & Sell"}
                   </NavLink>
                 </span>
               </NavLink>

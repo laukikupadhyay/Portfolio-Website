@@ -15,6 +15,8 @@ import PublicProfile from "./pages/PublicProfile/PublicProfile";
 import Auth from "./pages/Auth/Auth";
 import ChatRoom from "../src/pages/Chat/Chat";
 import BuynSell from "./pages/BuynSell/BuynSell";
+import Additem from "./pages/Additem/Additem";
+import PagenotFound from "./pages/PagenotFound/PagenotFound";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
           <Route path="/userpage/:id" element={<PublicProfile />} />
           <Route path="/chat/:roomId/:roomname" element={<ChatRoom />} />
           <Route path="/buynsell" element={<BuynSell />} />
+          <Route path="/additem" element={<Additem />} />
+          <Route path="*" element={<PagenotFound />} />
         </Routes>
       </Router>
     </>

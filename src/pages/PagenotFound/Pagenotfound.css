@@ -1,0 +1,36 @@
+.PagenotFound {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .title {
+    font-size: 48px;
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 16px;
+    background: linear-gradient(90deg,#00dbde,#fc00ff);
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 4.5rem;
+    
+  }
+  
+  .subtitle {
+    font-size: 36px;
+    font-style: italic;
+    background: linear-gradient(90deg,#00dbde,#fc00ff);
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+  }
+  
