@@ -4,7 +4,7 @@ function PagenotFound() {
   return (
     <div className="PagenotFound">
       <div className="title">Oops....</div>
-      <div className="subtitle">Page not Found</div>
+      <div className="subtitle">Page not Found </div>
     </div>
   )
 }

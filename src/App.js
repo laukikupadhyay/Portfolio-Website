@@ -17,26 +17,29 @@ import ChatRoom from "../src/pages/Chat/Chat";
 import BuynSell from "./pages/BuynSell/BuynSell";
 import Additem from "./pages/Additem/Additem";
 import PagenotFound from "./pages/PagenotFound/PagenotFound";
+import { useSelector } from "react-redux";
 
 function App() {
+  const userInfo = useSelector((state) => state.userInfo);
+  console.log(userInfo)
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Auth />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/success" element={<SuccessPage />} />
-          <Route path="/main" element={<Main />} />
-          <Route path="/user" element={<User />} />
-          <Route path="/allrooms" element={<Allrooms />} />
-          <Route path="/category" element={<Category />} />
-          <Route path="/room/:roomId" element={<RoomDetails />} />
-          <Route path="/viewprofile/:userId" element={<ViewProfile />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/userpage/:id" element={<PublicProfile />} />
+          <Route path="/" element={userInfo==null?<Auth />:<Auth />} />
+          <Route path="/register" element={userInfo==null?<Auth />:<Register />} />
+          <Route path="/success" element={userInfo==null?<Auth />:<SuccessPage />} />
+          <Route path="/main" element={userInfo==null?<Auth />:<Main />} />
+          <Route path="/user" element={userInfo==null?<Auth />:<User />} />
+          <Route path="/allrooms" element={userInfo==null?<Auth />:<Allrooms />} />
+          <Route path="/category" element={userInfo==null?<Auth />:<Category />} />
+          <Route path="/room/:roomId" element={userInfo==null?<Auth />:<RoomDetails />} />
+          <Route path="/viewprofile/:userId" element={userInfo==null?<Auth />:<ViewProfile />} />
+          <Route path="/search" element={userInfo==null?<Auth />:<Search />} />
+          <Route path="/userpage/:id" element={userInfo==null?<Auth />:<PublicProfile />} />
           <Route path="/chat/:roomId/:roomname" element={<ChatRoom />} />
-          <Route path="/buynsell" element={<BuynSell />} />
-          <Route path="/additem" element={<Additem />} />
+          <Route path="/buynsell" element={userInfo==null?<Auth />:<BuynSell />} />
+          <Route path="/additem" element={userInfo==null?<Auth />:<Additem />} />
           <Route path="*" element={<PagenotFound />} />
         </Routes>
       </Router>

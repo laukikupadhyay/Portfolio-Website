@@ -1,0 +1,48 @@
+  .cardadditem {
+    background-color: #151515;
+    color: white;
+    width: 400px;
+    padding: 30px;
+    border-radius: 8px;
+    margin: auto;
+    margin-top: 100px;
+  }
+  
+  .cardadditem-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .form-control {
+    margin-bottom: 15px;
+    background-color: #252525;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+  }
+  
+  .form-control:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #0069d9;
+  }
+  
+  .additembutton {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .additembutton:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+  
