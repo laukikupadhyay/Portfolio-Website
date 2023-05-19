@@ -10,6 +10,7 @@ import {
 import styles from "./Header.module.css";
 import { useSelector } from "react-redux";
 import Loader from "react-js-loader";
+import Swal from "sweetalert2";
 
 function Header() {
   const [image, setImage] = useState();
@@ -27,6 +28,16 @@ function Header() {
     form.append("email", userInfo.email);
     form.append("desc", desc);
     form.append("image", image);
+
+    if (!image) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please select an image",
+      });
+      setLoading(false);
+      return;
+    }
 
     try {
       const response = await fetch(

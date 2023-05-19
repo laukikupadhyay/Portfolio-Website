@@ -1,25 +1,35 @@
 import React, { useEffect, useState } from "react";
 import "./BuynSell.css";
 import { sports } from "../../assests/data";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/navbar/Navbar";
 import { useSelector } from "react-redux";
 import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
 
 function BuynSell() {
   const [cat, setcat] = useState("all");
   const [prods, setProds] = useState([]);
   const userInfo = useSelector((state) => state.userInfo);
-  console.log(userInfo)
+  console.log(userInfo);
 
   // const navigate = useNavigate();
   const filterroom = function (value) {
     setcat(value);
   };
 
-  const handleClick = (name,email,itemname,price,desc) => {
-    console.log(itemname,price,desc)
-    const msg="I would like to buy this product posted by you at SportiPHY: \n\nItem Name: "+itemname+"\nPrice: "+price+"\nDescription: "+desc+"\n\nPlease contact me at "+userInfo.email+" if you are interested to sell this product."
+  const handleClick = (name, email, itemname, price, desc) => {
+    console.log(itemname, price, desc);
+    const msg =
+      "I would like to buy this product posted by you at SportiPHY: \n\nItem Name: " +
+      itemname +
+      "\nPrice: " +
+      price +
+      "\nDescription: " +
+      desc +
+      "\n\nPlease contact me at " +
+      userInfo.email +
+      " if you are interested to sell this product.";
 
     emailjs
       .send(
@@ -36,47 +46,51 @@ function BuynSell() {
       )
       .then(
         () => {
-          alert(`Thank you.Email sent to ${name} that you are interested to buy this product.`);
-
-         
+          Swal.fire({
+            title: "Success!",
+            text: `Thank you.Email sent to ${name} that you are interested to buy this product.`,
+            icon: "success",
+            confirmButtonText: "Ok",
+          });
         },
         (error) => {
-          
           console.error(error);
-
           alert("Ahh, something went wrong. Please try again.");
+          Swal.fire({
+            title: "Error!",
+            text: "Ahh, something went wrong. Please try again.",
+            icon: "error",
+            confirmButtonText: "Ok",
+          });
         }
       );
-
-
-
-
-  }
-  
+  };
 
   useEffect(() => {
     const getprods = async () => {
       try {
-        const res = await fetch(process.env.REACT_APP_BACKEND_URL + `items/getitems`, {
-          method: "GET",
-        });
+        const res = await fetch(
+          process.env.REACT_APP_BACKEND_URL + `items/getitems`,
+          {
+            method: "GET",
+          }
+        );
         const data = await res.json();
         // console.log(data.data.items);
-        setProds(data.data.items)
+        setProds(data.data.items);
       } catch (err) {
         console.log(err.message);
       }
     };
     getprods();
   }, []);
-  console.log(prods)
+  console.log(prods);
 
   return (
     <div>
-      <NavBar prop={"Add Item"}/>
+      <NavBar prop={"Add Item"} />
       <div className="allrooms">
         <div className="wrapper">
-        
           <div id="buttons">
             <button className="button-value" onClick={() => filterroom("all")}>
               All
@@ -93,9 +107,7 @@ function BuynSell() {
             })}
           </div>
 
-
           <div id="rooms">
-
             {prods.map((prod) => {
               return (
                 <div className={cat == prod.category ? `cardbns` : "hide"}>
@@ -110,7 +122,15 @@ function BuynSell() {
                   </div>
                   <button
                     className="buttonbns"
-                    onClick={()=>handleClick(prod.username,prod.email,prod.itemname,prod.price,prod.description)}
+                    onClick={() =>
+                      handleClick(
+                        prod.username,
+                        prod.email,
+                        prod.itemname,
+                        prod.price,
+                        prod.description
+                      )
+                    }
                   >
                     contact
                   </button>
@@ -131,14 +151,21 @@ function BuynSell() {
                   </div>
                   <button
                     className="buttonbns"
-                    onClick={()=>handleClick(prod.username,prod.email,prod.itemname,prod.price,prod.description)}
+                    onClick={() =>
+                      handleClick(
+                        prod.username,
+                        prod.email,
+                        prod.itemname,
+                        prod.price,
+                        prod.description
+                      )
+                    }
                   >
                     contact
                   </button>
                 </div>
               );
             })}
-
           </div>
         </div>
       </div>
@@ -146,4 +173,4 @@ function BuynSell() {
   );
 }
 
-export default BuynSell
+export default BuynSell;

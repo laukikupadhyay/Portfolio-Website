@@ -36,32 +36,10 @@ function RoomDetails() {
     }
     getRoomDetails();
   }, []);
-
-  // console.log(room)
-
-  // fetch user from database
-
-  // axios.post("")
-
-  // try{
-  //   axios
-  //   .post(`https://api.chatengine.io/chats/${room.roomId}/people/`,
-  //     {username: userName},
-  //     {headers: {
-  //       "Project-ID": "6f3959ca-851c-4ab1-8b06-71236bd7d680",
-  //       "User-Name":  room.adminName,
-  //       "User-Secret": room.invitationLink,
-  //     }}
-  //   )
-  //   .then((res) => console.log("user added to chat"));
-  // }catch{err}{
-  //   console.log(err)
-  // }
-
   return (
     <div className={styles.roomPage}>
       <NavBar />
-      <div className={styles.partition}></div>
+      {/* <div className={styles.partition}></div> */}
       <div className={styles.headerAndSide}>
         {room && (
           <>
@@ -76,12 +54,12 @@ function RoomDetails() {
                   Chat with members
                 </button>
               </div>
+              <Roommembers room={room} />
             </div>
             <div className={styles.inviteUsers}>
               <Invitation room={room} />
             </div>
             <div className={styles.sideMembers}>
-              <Roommembers room={room} />
             </div>
           </>
         )}

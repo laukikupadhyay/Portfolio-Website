@@ -2,9 +2,11 @@ import styles from './Roommembers.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser,faXmark} from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 
 function Roommembers({room}) {
   const [members, setMembers] = useState([])
+  const userInfo = useSelector((state) => state.userInfo);
   useEffect(()=>{
     getMembers()
   },[room])
@@ -21,6 +23,10 @@ function Roommembers({room}) {
       console.log(err)
     }
   }
+
+  const removeMember = async (e) => {
+
+  }
   return (
     <div className={styles.memberContainer}>
       {members.length > 0 ? (
@@ -32,9 +38,19 @@ function Roommembers({room}) {
         src={member.image}
         />
                     <div className={styles.name}>{member.name}</div>
+                    <i>{member.name === room.adminName && "(Admin)"}</i>
                     </div>
                     <div>
-                    <FontAwesomeIcon className={styles.remove} icon={faXmark} />
+                      {
+                        member.name === room.adminName ? ""
+                        :
+                        (
+                          
+                            userInfo.email === room.creator && 
+                            <FontAwesomeIcon className={styles.remove} icon={faXmark} onClick={removeMember}/>
+                          
+                          )
+                        }
                     </div>
                     
             </div>
