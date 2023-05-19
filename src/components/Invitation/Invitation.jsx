@@ -2,29 +2,40 @@ import React, { useEffect, useState } from 'react'
 import styles from './Invitation.module.css'
 import swal from "sweetalert2";
 import Loader from "react-js-loader";
+import emailjs from 'emailjs-com';
+import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
 function Invitation({room}) {
+    const userInfo = useSelector((state) => state.userInfo);
     const [searchQuery, setSearchQuery] = useState('');
     const [users, setUsers] = useState([]);
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [loading , setLoading] = useState(false);
+    const [from_name , setFromName] = useState(userInfo.name);
+    const [message , setMessage] = useState(`Hi , Join my new room using the following code : ${room.invitationLink}`);
+    const [to_email , setToEmail] = useState('');
   
     useEffect(() => {
       const fetchUsers = async () => {
         try {
-          const response = await fetch(process.env.REACT_APP_BACKEND_URL + 'users',{
-            method:'GET',
+          const response = await fetch(process.env.REACT_APP_BACKEND_URL + 'users', {
+            method: 'GET',
             headers: {
-                'Content-Type': 'application/json',
-              }
+              'Content-Type': 'application/json',
+            },
           });
           const data = await response.json();
           console.log(data.data.users);
-          const filteredUsers = data.data.users.filter(
-            (user) => {
-              return !room.players.includes(user._id) && !room.invitations.includes(user._id);
-            }
-          );
+          const filteredUsers = data.data.users.filter((user) => {
+            return (
+              room &&
+              room.players &&
+              room.invitations &&
+              !room.players.includes(user._id) &&
+              !room.invitations.includes(user._id)
+            );
+          });
           console.log(filteredUsers);
           setUsers(filteredUsers);
         } catch (error) {
@@ -33,7 +44,7 @@ function Invitation({room}) {
       };
   
       fetchUsers();
-    }, []);
+    }, [room]);
   
     const handleSearchQueryChange = (e) => {
       let query = e.target.value;
@@ -49,23 +60,45 @@ function Invitation({room}) {
       setFilteredUsers(filtered);
     };
   
-    const handleSendInvite = async (user) => {
-      // Handle the invitation sending logic here
-      setLoading(true);
-      try{
-        const response = await fetch(process.env.REACT_APP_BACKEND_URL + 'groups/inviteuser/'+ room._id + '/' + user._id,{
-          method:'POST',
-          headers: {
-                'Content-Type': 'application/json',
-              }
-        })
-        const res = await response.json();
-        swal.fire({
+    const sendInvitationEmail = async (email) => {
+      try {
+        await emailjs.send(
+          process.env.REACT_APP_EMAILJS_SERVICE_ID,
+          process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+          { to_email: email },
+          process.env.REACT_APP_EMAILJS_USER_ID
+        );
+        Swal.fire({
           title: "Success!",
-          text: res.message,
+          text: "Invitation sent successfully!",
           icon: "success",
           confirmButtonText: "Ok",
         });
+        return true;
+      } catch (error) {
+        console.error('Error sending invitation email:', error);
+        return false;
+      }
+    };
+
+    const handleSendInvite = async (user) => {
+      // Handle the invitation sending logic here
+      sendInvitationEmail(user.email)
+      setLoading(true);
+      try{
+        // const response = await fetch(process.env.REACT_APP_BACKEND_URL + 'groups/inviteuser/'+ room._id + '/' + user._id,{
+        //   method:'POST',
+        //   headers: {
+        //         'Content-Type': 'application/json',
+        //       }
+        // })
+        // const res = await response.json();
+        // swal.fire({
+        //   title: "Success!",
+        //   text: res.message,
+        //   icon: "success",
+        //   confirmButtonText: "Ok",
+        // });
       }
       catch(err){
         swal.fire({
@@ -104,14 +137,14 @@ function Invitation({room}) {
         <ul className={styles.userList}>
           {filteredUsers.map((user) => (
             <li key={user.id} className={styles.userItem}>
-              <span>{user.name}</span>
-              <span>{user.userName}</span>
-              <span>{user.email}</span>
+              <span className={styles.name}>{user.name}</span>
+              {/* <span className={styles.username}>{user.userName}</span> */}
+              <span className={styles.email}>{user.email}</span>
                   <button
                   onClick={() => handleSendInvite(user)}
                   className={styles.inviteButton}
                   >
-                Send Invite
+                Send Invite via email
               </button>
             </li>
           ))}

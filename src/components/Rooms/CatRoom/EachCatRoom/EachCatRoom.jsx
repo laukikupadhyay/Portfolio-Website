@@ -15,6 +15,7 @@ function EachCatRoom({ eachRoom, value }) {
   }, [value]);
 
   const getUsersWithinRange = async () => {
+    setLoading(true);
     try {
       const res = await fetch(
         process.env.REACT_APP_BACKEND_URL +
@@ -41,6 +42,9 @@ function EachCatRoom({ eachRoom, value }) {
       isRoomWithinRange(isAdminWithinRange);
     } catch (err) {
       console.log(err);
+    }
+    finally{
+      setLoading(false);
     }
   };
 

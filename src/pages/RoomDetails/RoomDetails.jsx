@@ -61,7 +61,7 @@ function RoomDetails() {
   return (
     <div className={styles.roomPage}>
       <NavBar />
-      <div className={styles.partition}></div>
+      {/* <div className={styles.partition}></div> */}
       <div className={styles.headerAndSide}>
         {room && (
           <>
