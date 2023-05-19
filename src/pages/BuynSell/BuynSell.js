@@ -10,6 +10,7 @@ function BuynSell() {
   const [cat, setcat] = useState("all");
   const [prods, setProds] = useState([]);
   const userInfo = useSelector((state) => state.userInfo);
+  console.log(userInfo)
 
   // const navigate = useNavigate();
   const filterroom = function (value) {
