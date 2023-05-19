@@ -9,7 +9,7 @@ import Loader from "react-js-loader";
 function Register({ switchToLogIn }) {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(localStorage.getItem('sportyphy_19967_email'));
   const [profilePic, setProfilePic] = useState(null);
   const [password, setPassword] = useState("");
   const [lat, setLat] = useState(0);
@@ -18,7 +18,7 @@ function Register({ switchToLogIn }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const userInfo = useSelector((state) => state.auth.userInfo);
-  const loading = useSelector((state) => state.loading);
+  const loading = false;
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -141,14 +141,14 @@ function Register({ switchToLogIn }) {
         <label htmlFor="email" className={styles.authLabel}>
           Email:
         </label>
-        <input
+        {/* <input
           type="email"
           id="email"
           className={styles.authInput}
           name="email"
           value={email}
           onChange={handleEmailChange}
-        />
+        /> */}
 
         <label htmlFor="profile-pic" className={styles.authLabel}>
           Profile Picture:

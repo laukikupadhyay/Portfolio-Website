@@ -3,9 +3,10 @@
   height:100vh;
 }
 .authHeading{
-  font-size: 5rem;
+  font-size: 4rem;
   color:white;
   align-items: center;
+  margin-bottom: 2rem;
 }
 .form{
   width: 100%;
@@ -21,7 +22,7 @@
 display: flex;
 justify-content: space-between;
 align-items: space-between;
-flex-direction: column;
+/* flex-direction: row; */
 }
 
 .authLabel {
@@ -64,7 +65,34 @@ background: linear-gradient(90deg,#00dbde,#fc00ff)
   text-align: center;
   cursor:pointer;
 }
+.number {
+  display: flex;
+  margin-bottom: 10px;
+  width:50%;
+  margin: 2rem auto 2rem 0rem;
+}
 
+.digits {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  text-align: center;
+  background-color: rgba(150, 150, 150, 0.3);
+  border:none;
+}
+.otpComp{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:flex-start;
+}
+.codeMessage{
+  font-size: 1.5rem;
+  color:white;
+  margin-top: 1rem;
+  text-align: center;
+  cursor:pointer;
+}
 @media screen and (max-width: 700px) {
   .container{
       width:100%;

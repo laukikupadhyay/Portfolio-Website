@@ -3,7 +3,7 @@ import Profile from "../../components/Profile/Profile";
 import Post from "../../components/Post/Post";
 import Header from "../../components/Header/Header";
 import Navbar from "../../components/navbar/Navbar";
-import styles from './Main.module.css'
+import styles from './Main.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from '../../store/auth/auth-slice.js';
 import EachUser from "../../components/SearchUser/EachUser/EachUser";
@@ -46,9 +46,9 @@ function Main() {
         <div>
           <Profile user={userInfo} />
         </div>
-        <div>
+        <div className={styles.postHeader}>
           <Header user={userInfo} />
-          <Post user={userInfo} ownProfileView={false}/>
+          <Post user={userInfo} ownProfileView={false} />
         </div>
         <div className={styles.rightRequestSection}> 
           {
@@ -58,7 +58,7 @@ function Main() {
             ):
             (
               friendRequests.map((user) => (
-                <EachUser user={user[0]}/>
+                <EachUser user={user[0]} />
               ))
             )
           }

@@ -4,13 +4,19 @@ import Login from "../../components/Auth/Login/Login.jsx";
 // import Login from "../../components/AuthNew/Login";
 // import Register from "../../components/AuthNew/Signup";
 import Register from "../../components/Auth/Register/Register";
+import Email from "../../components/Auth/Email/Email";
 
 function Auth() {
   const [login, setLogin] = useState(true);
+  const [email , setEmail] = useState(true);
 
   const toggle = () => {
     setLogin(!login);
   };
+
+  const toggleEmail = () =>{
+    setEmail(!email)
+  }
 
   return (
     <div className={styles.authContainer}>
@@ -24,7 +30,9 @@ function Auth() {
       {login ? (
         <Login switchToRegister={toggle} />
       ) : (
-        <Register switchToLogIn={toggle} />
+        !email ? 
+        <Register switchToLogIn={toggle} />:
+        <Email switchToLogIn={toggle} switchToRegister={toggleEmail}/>
       )}
     </div>
   );
