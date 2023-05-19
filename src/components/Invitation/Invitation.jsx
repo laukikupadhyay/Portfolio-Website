@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './Invitation.module.css'
 import swal from "sweetalert2";
 import Loader from "react-js-loader";
-import emailjs from 'emailjs-com';
+import emailjs from "@emailjs/browser";
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 
@@ -60,20 +60,49 @@ function Invitation({room}) {
       setFilteredUsers(filtered);
     };
   
-    const sendInvitationEmail = async (email) => {
+    const sendInvitationEmail = async (email,name) => {
+      const msg = `Hi,
+
+Join my new room using the following code: ${room.invitationLink}.
+
+Just follow these steps:
+1. Login/Register to SportyPHY.
+2. Go to the 'Invitations' tab in the 'Rooms' section.
+3. Enter the code in the 'Join Room' section.
+4. Happy Playing!!
+
+Regards,
+${userInfo.name}`;
       try {
-        await emailjs.send(
-          process.env.REACT_APP_EMAILJS_SERVICE_ID,
-          process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-          { to_email: email },
-          process.env.REACT_APP_EMAILJS_USER_ID
-        );
+        emailjs.send(
+          // process.env.REACT_APP_EMAILJS_SERVICE_ID,
+          // process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+          "service_j8bmr44",
+        "template_7545ba6",
+        {
+          from_name: userInfo.name,
+          to_name: name,
+          from_email: userInfo.email,
+          to_email: email,
+          message: msg,
+        },
+          // process.env.REACT_APP_EMAILJS_USER_ID
+          "Rm1ia-p6cq15IJQrr"
+        )
+        .then(
+          () => { 
         Swal.fire({
           title: "Success!",
           text: "Invitation sent successfully!",
           icon: "success",
           confirmButtonText: "Ok",
         });
+          },
+          (error) => {        
+            console.error(error);
+            alert("Ahh, something went wrong. Please try again.");
+          }
+        );
         return true;
       } catch (error) {
         console.error('Error sending invitation email:', error);
@@ -83,22 +112,22 @@ function Invitation({room}) {
 
     const handleSendInvite = async (user) => {
       // Handle the invitation sending logic here
-      sendInvitationEmail(user.email)
+      sendInvitationEmail(user.email , user.name)
       setLoading(true);
       try{
-        // const response = await fetch(process.env.REACT_APP_BACKEND_URL + 'groups/inviteuser/'+ room._id + '/' + user._id,{
-        //   method:'POST',
-        //   headers: {
-        //         'Content-Type': 'application/json',
-        //       }
-        // })
-        // const res = await response.json();
-        // swal.fire({
-        //   title: "Success!",
-        //   text: res.message,
-        //   icon: "success",
-        //   confirmButtonText: "Ok",
-        // });
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL + 'groups/inviteuser/'+ room._id + '/' + user._id,{
+          method:'POST',
+          headers: {
+                'Content-Type': 'application/json',
+              }
+        })
+        const res = await response.json();
+        swal.fire({
+          title: "Success!",
+          text: res.message,
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
       }
       catch(err){
         swal.fire({
@@ -110,7 +139,7 @@ function Invitation({room}) {
       }
       finally{
         setLoading(false);
-        window.location.reload();
+        // window.location.reload();
       }
     };
   

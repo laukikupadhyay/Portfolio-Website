@@ -206,7 +206,7 @@
   height: 30px;
   border-radius: 50px;
   outline: none;
-  background: linear-gradient(90deg, #00dbde, #fc00ff);
+  background: linear-gradient(90deg, #00dbde,#fc00ff, #930aab, #00dbde);
   background-size: 400%;
   color: #fff;
   font-size: 20px;
@@ -228,7 +228,7 @@
   right: 0;
   bottom: 0;
   z-index: -1;
-  background: linear-gradient(90deg, #00dbde, #fc00ff);
+  background: linear-gradient(90deg, #00dbde,#fc00ff, #930aab, #00dbde);
   background-size: 400%;
   border-radius: 50px;
   opacity: 0;
