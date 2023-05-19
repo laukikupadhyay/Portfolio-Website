@@ -37,6 +37,7 @@ function Search() {
               }
           });
           const data = await response.json();
+          console.log(data)
           const filteredUsers = data.data.users.filter(
             (userEach) => {
               return userEach._id != user._id;
