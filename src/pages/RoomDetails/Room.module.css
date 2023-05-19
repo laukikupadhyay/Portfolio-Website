@@ -1,16 +1,12 @@
 .headerAndSide {
-  display: flex;
+  display: grid;
+  grid-template-columns: 4fr 1.5fr;
 }
 /* .inviteUsers {
   overflow-x: hidden;
   overflow-y: scroll;
 } */
-.roomHeader {
-  width: 70%;
-}
-.sideMembers {
-  width: 30%;
-}
+
 .partition {
   position: fixed;
   width: 100vw;
@@ -19,4 +15,10 @@
 }
 .padding2 {
   padding: 2rem 2rem 0 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .headerAndSide {
+    grid-template-columns: 1fr;
+  }
 }

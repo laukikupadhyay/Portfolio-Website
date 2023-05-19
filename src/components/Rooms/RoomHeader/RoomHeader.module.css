@@ -72,6 +72,10 @@ button {
   }
 }
 @media only screen and (max-width: 600px) {
+  .roomHeaderContainer {
+    margin: 2rem 2rem 0 2rem;
+  }
+
   .group-header {
     width: 100%;
     margin-bottom: 2rem;

@@ -76,10 +76,9 @@ function RoomDetails() {
                   Chat with members
                 </button>
               </div>
-
-              <div className={styles.inviteUsers}>
-                <Invitation room={room} />
-              </div>
+            </div>
+            <div className={styles.inviteUsers}>
+              <Invitation room={room} />
             </div>
             <div className={styles.sideMembers}>
               <Roommembers room={room} />
