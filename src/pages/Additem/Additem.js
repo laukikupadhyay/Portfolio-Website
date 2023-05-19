@@ -23,6 +23,7 @@ function Additem() {
     form.append("price", itemprice);
     form.append("image", image);
     form.append("username", userInfo.name);
+    form.append("email", userInfo.email)
     try {
       const response = await fetch(
         process.env.REACT_APP_BACKEND_URL + "items/additem",

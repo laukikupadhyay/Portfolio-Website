@@ -3,16 +3,54 @@ import "./BuynSell.css";
 import { sports } from "../../assests/data";
 import { useNavigate } from "react-router-dom"; 
 import NavBar from "../../components/navbar/Navbar";
+import { useSelector } from "react-redux";
+import emailjs from "@emailjs/browser";
 
 function BuynSell() {
   const [cat, setcat] = useState("all");
   const [prods, setProds] = useState([]);
+  const userInfo = useSelector((state) => state.userInfo);
 
   // const navigate = useNavigate();
   const filterroom = function (value) {
     setcat(value);
   };
 
+  const handleClick = (name,email,itemname,price,desc) => {
+    console.log(itemname,price,desc)
+    const msg="I would like to buy this product posted by you at SportiPHY: \n\nItem Name: "+itemname+"\nPrice: "+price+"\nDescription: "+desc+"\n\nPlease contact me at "+userInfo.email+" if you are interested to sell this product."
+
+    emailjs
+      .send(
+        "service_j8bmr44",
+        "template_7545ba6",
+        {
+          from_name: userInfo.name,
+          to_name: name,
+          from_email: userInfo.email,
+          to_email: email,
+          message: msg,
+        },
+        "Rm1ia-p6cq15IJQrr"
+      )
+      .then(
+        () => {
+          alert(`Thank you.Email sent to ${name} that you are interested to buy this product.`);
+
+         
+        },
+        (error) => {
+          
+          console.error(error);
+
+          alert("Ahh, something went wrong. Please try again.");
+        }
+      );
+
+
+
+
+  }
   
 
   useEffect(() => {
@@ -55,9 +93,6 @@ function BuynSell() {
           </div>
 
 
-
-
-
           <div id="rooms">
 
             {prods.map((prod) => {
@@ -74,6 +109,7 @@ function BuynSell() {
                   </div>
                   <button
                     className="buttonbns"
+                    onClick={()=>handleClick(prod.username,prod.email,prod.itemname,prod.price,prod.description)}
                   >
                     contact
                   </button>
@@ -94,6 +130,7 @@ function BuynSell() {
                   </div>
                   <button
                     className="buttonbns"
+                    onClick={()=>handleClick(prod.username,prod.email,prod.itemname,prod.price,prod.description)}
                   >
                     contact
                   </button>
