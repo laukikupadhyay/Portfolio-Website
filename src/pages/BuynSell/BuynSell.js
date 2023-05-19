@@ -6,33 +6,31 @@ import NavBar from "../../components/navbar/Navbar";
 
 function BuynSell() {
   const [cat, setcat] = useState("all");
-  const [value, setValue] = useState(50);
-  const [groups, setGroups] = useState([]);
+  const [prods, setProds] = useState([]);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const filterroom = function (value) {
     setcat(value);
   };
 
-  const navigateToRoomsPage = (room) => {
-    navigate("/category", { state: { propValue: room } });
-  };
+  
 
   useEffect(() => {
-    const getPosts = async () => {
+    const getprods = async () => {
       try {
-        const res = await fetch(process.env.REACT_APP_BACKEND_URL + `groups`, {
+        const res = await fetch(process.env.REACT_APP_BACKEND_URL + `items/getitems`, {
           method: "GET",
         });
         const data = await res.json();
-        console.log(data.data.groups);
-        setGroups(data.data.groups);
+        // console.log(data.data.items);
+        setProds(data.data.items)
       } catch (err) {
         console.log(err.message);
       }
     };
-    getPosts();
+    getprods();
   }, []);
+  console.log(prods)
 
   return (
     <div>
@@ -44,7 +42,6 @@ function BuynSell() {
             <button className="button-value" onClick={() => filterroom("all")}>
               All
             </button>
-            {console.log(sports)}
             {sports.map((i) => {
               return (
                 <button
@@ -57,45 +54,53 @@ function BuynSell() {
             })}
           </div>
 
+
+
+
+
           <div id="rooms">
-            {sports.map((room) => {
+
+            {prods.map((prod) => {
               return (
-                <div className={cat == room.name ? `card` : "hide"}>
-                  <div className="image-container">
-                    <img src={room.image} />
+                <div className={cat == prod.category ? `cardbns` : "hide"}>
+                  <div className="image-containerbns">
+                    <img src={prod.image} />
                   </div>
-                  <div className="container">
-                    <h1 className="room-category">{room.name}</h1>
+                  <div className="containerbns">
+                    <h1 className="room-categorybns">{prod.itemname}</h1>
+                    <h1 className="room-pricebns">₹ {prod.price}</h1>
+                    <h1 className="room-pricebns">Owner: {prod.username}</h1>
+                    <p className="proddesc">Description: {prod.description}</p>
                   </div>
                   <button
-                    onClick={() => {
-                      navigateToRoomsPage(room);
-                    }}
+                    className="buttonbns"
                   >
-                    Search
+                    contact
                   </button>
                 </div>
               );
             })}
-            {sports.map((room) => {
+            {prods.map((prod) => {
               return (
-                <div className={cat == "all" ? `card` : "hide"}>
-                  <div className="image-container">
-                    <img src={room.image} />
+                <div className={cat == "all" ? `cardbns` : "hide"}>
+                  <div className="image-containerbns">
+                    <img src={prod.image} />
                   </div>
-                  <div className="container">
-                    <h1 className="room-category">{room.name}</h1>
+                  <div className="containerbns">
+                    <h1 className="room-categorybns">{prod.itemname}</h1>
+                    <h1 className="room-pricebns">₹ {prod.price}</h1>
+                    <h1 className="room-pricebns">Owner: {prod.username}</h1>
+                    <p className="proddesc">Description: {prod.description}</p>
                   </div>
                   <button
-                    onClick={() => {
-                      navigateToRoomsPage(room);
-                    }}
+                    className="buttonbns"
                   >
-                    Search
+                    contact
                   </button>
                 </div>
               );
             })}
+
           </div>
         </div>
       </div>
