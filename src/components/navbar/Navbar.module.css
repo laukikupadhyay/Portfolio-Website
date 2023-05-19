@@ -77,7 +77,7 @@
 
 .navitem:hover:after {
   width: 100%;
-  background: linear-gradient(90deg,#00dbde,#fc00ff);;
+  background: linear-gradient(90deg,#00dbde,#fc00ff);
 }
 
 /* .nav-item .active {
