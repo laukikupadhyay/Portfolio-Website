@@ -1,77 +1,77 @@
-.invitationRoomContainer{
-    /* width:50%;
+.invitationRoomContainer {
+  /* width:50%;
     align-items: center; */
-    margin:2rem 10rem 2rem 10rem;
+  margin: 2rem 10rem 2rem 10rem;
 }
-.room{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-    background-color: #262626;
-    padding:2rem;
-    border-radius: 1rem;
-    color:white;
+.room {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  background-color: #262626;
+  padding: 2rem;
+  border-radius: 1rem;
+  color: white;
 }
-.teamName{
-    font-size: 2rem;
+.teamName {
+  font-size: 2rem;
 }
-.teamDesc{
-    font-size: 1.3rem;
-    opacity: 0.8;
+.teamDesc {
+  font-size: 1.3rem;
+  opacity: 0.8;
 }
-.teamSize{
-    margin-top: 1rem;
-    font-size: 1.6rem;
+.teamSize {
+  margin-top: 1rem;
+  font-size: 1.6rem;
 }
-.group{
-    display: flex;
+.group {
+  display: flex;
 }
-.avatar{
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    margin-right: 2rem;
+.avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-right: 2rem;
 }
-button{
-    color: white;
-    margin-left: 2rem;
+button {
+  color: white;
+  margin-left: 0 !important;
 }
-.message{
-    font-size: 1.5rem;
+.message {
+  font-size: 1.5rem;
 }
-.enter{
-    background: green;
+.enter {
+  background: green;
 }
-button:hover{
-    background:green;
-    cursor: pointer;
+button:hover {
+  background: green;
+  cursor: pointer;
 }
-.invalidLink{
-    color:white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-style: italic
+.invalidLink {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-style: italic;
 }
 @media screen and (max-width: 720px) {
-    .groupDetails{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-   .room{
+  .groupDetails {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-   }
-   .message{
+  }
+  .room {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-   }    
+  }
+  .message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }

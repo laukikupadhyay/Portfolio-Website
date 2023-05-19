@@ -1,20 +1,24 @@
-.roomPage{
-    height:100vh;
-    overflow: hidden;
+.headerAndSide {
+  display: grid;
+  grid-template-columns: 4fr 1.5fr;
 }
-.headerAndSide{
-    display: flex;
-    height:100vh;
-    /* overflow: scroll; */
+/* .inviteUsers {
+  overflow-x: hidden;
+  overflow-y: scroll;
+} */
+
+.partition {
+  position: fixed;
+  width: 100vw;
+  height: 2px;
+  background-color: #e0e0e0;
 }
-.inviteUsers{
-    overflow-x:hidden;
-    overflow-y: scroll;
+.padding2 {
+  padding: 2rem 2rem 0 2rem;
 }
-.roomHeader{
-    width:70%;
-}
-.sideMembers{
-    width:30%;
-    overflow-y: scroll;
+
+@media only screen and (max-width: 600px) {
+  .headerAndSide {
+    grid-template-columns: 1fr;
+  }
 }
