@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import styles from "./RoomHeader.module.css"
 import demo from '../../../assests/images/demo.jpg'
 import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 function RoomHeader({room}) {
   //get room id from params
   const [isCopied, setIsCopied] = useState(false);
   const [matchStatus , setMatchStatus] = useState('close');
+  const userInfo = useSelector((state) => state.userInfo);
   
   const handleCopy = () => {
     const copyText = document.getElementById("code");
@@ -54,8 +56,13 @@ function RoomHeader({room}) {
           }/{room.maxSize}
         </span></p>
         <p className={styles['group-created-by']}>Created by: <span className={styles.tagStyle}>{room.adminName}</span></p>
+        <div className={styles['group-visibility']}>
         <p className={styles['group-created-by']}>Visibility: <span className={styles.tagStyle}>{room.visibility}</span></p>
-        <button onClick={changeGroupVisibility}>Change visibility</button>
+        {
+          room.creator === userInfo.email &&
+          <button onClick={changeGroupVisibility}>Change visibility</button>
+        }
+        </div>
         <div className={styles['group-created-at']}>
           <p>Code:</p>
             <input type="text" id="code" value={room.invitationLink} className={styles.invitationLink} readOnly />

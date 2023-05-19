@@ -63,12 +63,13 @@ function Invitation({room}) {
     const sendInvitationEmail = async (email,name) => {
       const msg = `Hi,
 
-Join my new room using the following code: ${room.invitationLink}.
+Join my new room using the following code: ${room.invitationLink}
 
 Just follow these steps:
 1. Login/Register to SportyPHY.
 2. Go to the 'Invitations' tab in the 'Rooms' section.
-3. Enter the code in the 'Join Room' section.
+3. Click on search for Users
+3. Enter the code and click 'Join Room' button.
 4. Happy Playing!!
 
 Regards,
