@@ -54,7 +54,7 @@ function EachCatRoom({ eachRoom, value }) {
       const res = await fetch(
         process.env.REACT_APP_BACKEND_URL + 'groups/join/'+ userInfo._id +"/"+ eachRoom._id,
         {
-          method: 'PUT',
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + userInfo.token,
