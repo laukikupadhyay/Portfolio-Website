@@ -49,7 +49,7 @@ function NavBar(prop) {
                 activeClassName={styles.active}
                 className={styles.navlinks}
               >
-                <IoMdNotifications />
+                {/* <IoMdNotifications /> */}
               </NavLink>
               {/* <NavLink
                 exact

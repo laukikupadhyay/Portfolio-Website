@@ -301,19 +301,25 @@
   .navlinksbuutonbns {
     margin-top: 1rem;
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .navlinksbuuton {
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   /* Make the buttons take full width */
   #containerbuttonbns,
   #button {
-    width: 100%;
+    width: 90%;
   }
   #containerbuttonbns,
   #buttonbns{
-    width: 100%;
+    /* width: 80%; */
   }
 }

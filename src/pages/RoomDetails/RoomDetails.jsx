@@ -60,6 +60,7 @@ function RoomDetails() {
               <Roommembers room={room} />
             </div>
             {
+              room.players && 
               room.players.includes(id) &&
               <div className={styles.inviteUsers}>
               <Invitation room={room} />

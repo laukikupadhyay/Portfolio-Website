@@ -26,8 +26,8 @@
       .postHeader {
         order: 2;
       }
-    
       .rightRequestSection {
         order: 1;
+        width:100%;
       }
 } 
