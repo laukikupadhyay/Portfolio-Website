@@ -20,20 +20,46 @@ function Main() {
 
   const userInfo = useSelector((state) => state.userInfo);
 
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        function (position) {
-          setLat(position.coords.latitude);
-          setLong(position.coords.longitude);
-          setLocation(position.coords.latitude, position.coords.longitude);
-        },
-        function (error) {
+  // useEffect(() => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       function (position) {
+  //         setLat(position.coords.latitude);
+  //         setLong(position.coords.longitude);
+  //         setLocation(position.coords.latitude, position.coords.longitude);
+  //       },
+  //       function (error) {
+  //         console.error(`Error getting user's location: ${error.message}`);
+  //       }
+  //     );
+  //   }
+  // }, []);
+
+  const [loadingLocation, setLoadingLocation] = useState(true);
+
+useEffect(() => {
+  fetch("https://api.ipify.org?format=json")
+    .then((response) => response.json())
+    .then((data) => {
+      const ipAddress = data.ip;
+      fetch(
+        `https://ipapi.co/${ipAddress}/json/`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          const { latitude, longitude } = data;
+          setLocation(latitude, longitude);
+        })
+        .catch((error) => {
           console.error(`Error getting user's location: ${error.message}`);
-        }
-      );
-    }
-  }, []);
+          setLoadingLocation(false);
+        });
+    })
+    .catch((error) => {
+      console.error(`Error getting user's IP address: ${error.message}`);
+      setLoadingLocation(false);
+    });
+}, []);
 
   const setLocation = async (latitude, longitude) => {
     try {

@@ -72,7 +72,9 @@
     font-weight: bold;
     color: #fff;
   }
-
+  i{
+    opacity: 0.4;
+  }
   @media screen and (max-width: 361px) {
     .sliderContainer{
       width:80%;

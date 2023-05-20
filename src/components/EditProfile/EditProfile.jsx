@@ -11,6 +11,7 @@ import { MapContainer, TileLayer, useMapEvents, Marker } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import MarkerIcon from "../../assests/icons/location-pin.png";
+import axios from "axios";
 
 function EditProfile({ user }) {
   const userInfo = useSelector((state) => state.userInfo);
@@ -34,23 +35,38 @@ function EditProfile({ user }) {
       setName(user.name);
     }
 
+    // const fetchLocation = async () => {
+    //   try {
+    //     if (navigator.geolocation) {
+    //       navigator.geolocation.getCurrentPosition(
+    //         function (position) {
+    //           setLat(position.coords.latitude);
+    //           setLong(position.coords.longitude);
+    //           setZoom(1);
+    //           setMarkerPosition([position.coords.latitude, position.coords.longitude]);
+    //         },
+    //         function (error) {
+    //           console.error(`Error getting user's location: ${error.message}`);
+    //         }
+    //       );
+    //     }
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // };
+
     const fetchLocation = async () => {
       try {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            function (position) {
-              setLat(position.coords.latitude);
-              setLong(position.coords.longitude);
-              setZoom(1);
-              setMarkerPosition([position.coords.latitude, position.coords.longitude]);
-            },
-            function (error) {
-              console.error(`Error getting user's location: ${error.message}`);
-            }
-          );
-        }
-      } catch (err) {
-        console.log(err);
+        const response = await axios.get("https://api.ipify.org?format=json");
+        const ipAddress = response.data.ip;
+        const locationResponse = await axios.get(`https://ipapi.co/${ipAddress}/json/`);
+        const { latitude, longitude } = locationResponse.data;
+        setLat(latitude);
+        setLong(longitude);
+        setZoom(1);
+        setMarkerPosition([latitude, longitude]);
+      } catch (error) {
+        console.error(`Error getting user's location: ${error.message}`);
       }
     };
 
