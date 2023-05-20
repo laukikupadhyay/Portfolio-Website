@@ -7,12 +7,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Invitation from "../../components/Invitation/Invitation";
 
-function RoomDetails() {
+function RoomDetails({userInfo}) {
   const [room, setRoom] = useState({});
   const { roomId } = useParams();
   const navigate = useNavigate();
-  const { id } = useSelector((state) => state.userInfo);
-  console.log(id);
 
   useEffect(() => {
     async function getRoomDetails() {
@@ -46,7 +44,7 @@ function RoomDetails() {
           <>
             <div className={styles.roomHeader}>
               <RoomHeader room={room} />
-              {room.players && room.players.includes(id) && (
+              {room.players && room.players.includes(userInfo._id) && (
   <div className={styles.padding2}>
     <button
       onClick={() => {
@@ -61,7 +59,7 @@ function RoomDetails() {
             </div>
             {
               room.players && 
-              room.players.includes(id) &&
+              room.players.includes(userInfo._id) &&
               <div className={styles.inviteUsers}>
               <Invitation room={room} />
             </div>
