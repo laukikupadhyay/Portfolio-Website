@@ -47,6 +47,7 @@ const ChatRoom = (props) => {
 
   return (
     <div>
+      <NavBar />
     <div className="chatroom">
       <div className="chat-room-container">
         <div className="roomheading"><span>Room: {roomname}</span></div>
