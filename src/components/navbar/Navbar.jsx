@@ -6,7 +6,6 @@ import { IoMdNotifications } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
 function NavBar(prop) {
-  console.log(prop.prop)
   const [click, setClick] = useState(false);
   const navigate = useNavigate();
 

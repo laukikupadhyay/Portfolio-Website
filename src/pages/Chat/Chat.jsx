@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Chat.css";
 import { useSelector } from "react-redux";
 import useChat from "./UseChat";
 import NavBar from "../../components/navbar/Navbar";
+import Roommembers from "../../components/Rooms/Roommembers/Roommembers";
 
 const ChatRoom = (props) => {
   const { roomId, roomname } = useParams();
@@ -12,6 +13,7 @@ const ChatRoom = (props) => {
   const { messages, sendMessage } = useChat(roomId, name);
   const [newMessage, setNewMessage] = React.useState("");
   const [oldMessage, setOldMessage] = React.useState([]);
+  const [room , setRoom] = useState([]);
   console.log(state.userInfo.name);
   //useEffect to fetch messages from database
   useEffect(() => {
@@ -30,11 +32,25 @@ const ChatRoom = (props) => {
       .catch((err) => {
         console.log(err);
       });
-
-
-
+      getRoomDetails();
       
-  }, []);
+  }, [room]);
+
+  const getRoomDetails = async () => {
+    try{
+      const res = await fetch(process.env.REACT_APP_BACKEND_URL +"groups/group/" + roomId, {
+        method: "GET",
+      })
+
+      const data = await res.json();
+      console.log(data);
+      setRoom(data.data.group)
+    }
+    catch(err){
+      console.log(err);
+    }
+
+  }
 
   const handleNewMessageChange = (event) => {
     setNewMessage(event.target.value);
@@ -50,7 +66,7 @@ const ChatRoom = (props) => {
       <NavBar />
     <div className="chatroom">
       <div className="chat-room-container">
-        <div className="roomheading"><span>Room: {roomname}</span></div>
+        <div className="roomheading"><span>{roomname}</span></div>
         <div className="chatsection">
           <div>
             <div className="messages-container">
@@ -91,8 +107,9 @@ const ChatRoom = (props) => {
           </div>
         </div>
         <div className="chatroomusers">
-          <div>Group Members</div>
-          <div>Yet to implement - so ise cherna mat</div>
+          <div>
+            <Roommembers room={room}/>
+          </div>
         </div>
       </div>
     </div>
