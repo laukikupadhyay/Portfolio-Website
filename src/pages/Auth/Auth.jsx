@@ -27,13 +27,15 @@ function Auth() {
           enthusiasts like never before!
         </span>
       </div>
+      {/* <div> */}
       {login ? (
         <Login switchToRegister={toggle} />
-      ) : (
-        !email ? 
-        <Register switchToLogIn={toggle} />:
-        <Email switchToLogIn={toggle} switchToRegister={toggleEmail}/>
-      )}
+        ) : (
+          !email ? 
+          <Register switchToLogIn={toggle} />:
+          <Email switchToLogIn={toggle} switchToRegister={toggleEmail}/>
+          )}
+          {/* </div> */}
     </div>
   );
 }
