@@ -18,7 +18,7 @@ const ChatRoom = (props) => {
   //useEffect to fetch messages from database
   useEffect(() => {
     console.log("useeffect running in chatroom");
-    fetch("http://localhost:8000/api/messages/" + roomId, {
+    fetch(process.env.REACT_APP_BACKEND_URL+ "messages/" + roomId, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

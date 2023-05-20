@@ -14,11 +14,11 @@ function Register({ switchToLogIn }) {
   const [password, setPassword] = useState("");
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const userInfo = useSelector((state) => state.auth.userInfo);
-  const loading = false;
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -42,7 +42,7 @@ function Register({ switchToLogIn }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(setLoading(true));
+    (setLoading(true));
     console.log(profilePic)
     if (name=="" || username=="" || email=="" || profilePic==undefined || password=="") {
       Swal.fire({
@@ -51,11 +51,11 @@ function Register({ switchToLogIn }) {
         icon: "error",
         confirmButtonText: "Ok",
       });
-      dispatch(setLoading(false));
+        setLoading(false);
     }
     try {
       console.log({ name, username, email, profilePic, password });
-      dispatch(setLoading(true));
+      setLoading(true);
       const locationObj = {
         type: "Point",
         coordinates: [long, lat],
@@ -100,7 +100,7 @@ function Register({ switchToLogIn }) {
       }
     }catch (err) {
       console.log(err);
-      dispatch(setLoading(false));
+      setLoading(false);
       Swal.fire({
         title: "Error!",
         text: err.message || "Error occurred while uploading the image",
