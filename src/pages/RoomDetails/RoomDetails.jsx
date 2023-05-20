@@ -11,7 +11,8 @@ function RoomDetails() {
   const [room, setRoom] = useState({});
   const { roomId } = useParams();
   const navigate = useNavigate();
-  const { userName } = useSelector((state) => state.userInfo);
+  const { id } = useSelector((state) => state.userInfo);
+  console.log(id);
 
   useEffect(() => {
     async function getRoomDetails() {
@@ -45,20 +46,25 @@ function RoomDetails() {
           <>
             <div className={styles.roomHeader}>
               <RoomHeader room={room} />
-              <div className={styles.padding2}>
-                <button
-                  onClick={() => {
-                    navigate("/chat/" + roomId + "/" + room.name);
-                  }}
-                >
-                  Chat with members
-                </button>
-              </div>
+              {room.players && room.players.includes(id) && (
+  <div className={styles.padding2}>
+    <button
+      onClick={() => {
+        navigate("/chat/" + roomId + "/" + room.name);
+      }}
+    >
+      Chat with members
+    </button>
+  </div>
+)}
               <Roommembers room={room} />
             </div>
-            <div className={styles.inviteUsers}>
+            {
+              room.players.includes(id) &&
+              <div className={styles.inviteUsers}>
               <Invitation room={room} />
             </div>
+            }
             <div className={styles.sideMembers}>
             </div>
           </>
