@@ -17,6 +17,7 @@ function Email({ switchToLogIn, switchToRegister }) {
         process.env.REACT_APP_BACKEND_URL + "auth/sendotp/" + email,
         {
           method: "POST",
+          AccessControlAllowOrigin: "*",
         }
       );
       const data = await res.json();

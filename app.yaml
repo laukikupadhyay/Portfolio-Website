@@ -1,0 +1,16 @@
+runtime: nodejs18
+handlers:
+  # Serve all static files with url ending with a file extension
+  - url: /(.*\..+)$
+    static_files: build/\1
+    upload: build/(.*\..+)$
+  # Catch all handler to index.html
+  - url: /.*
+    static_files: build/index.html
+    upload: build/index.html
+
+env_variables:
+  REACT_APP_BACKEND_URL: 'https://sportyphy-server.onrender.com/api/'
+  REACT_APP_EMAILJS_SERVICE_ID: 'service_gbixatt'
+  REACT_APP_EMAILJS_TEMPLATE_ID: 'template_7z97gr6'
+  REACT_APP_EMAILJS_USER_ID: 'iWxx2qNPr0xxujnnI'

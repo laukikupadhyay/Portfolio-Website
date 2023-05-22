@@ -18,6 +18,7 @@ const ChatRoom = (props) => {
   //useEffect to fetch messages from database
   useEffect(() => {
     console.log("useeffect running in chatroom");
+    console.log(roomId)
     fetch(process.env.REACT_APP_BACKEND_URL+ "messages/" + roomId, {
       method: "GET",
       headers: {
@@ -34,7 +35,9 @@ const ChatRoom = (props) => {
       });
       getRoomDetails();
       
-  }, [room]);
+  }, [
+    
+  ]);
 
   const getRoomDetails = async () => {
     try{
@@ -54,6 +57,7 @@ const ChatRoom = (props) => {
 
   const handleNewMessageChange = (event) => {
     setNewMessage(event.target.value);
+    console.log(newMessage)
   };
 
   const handleSendMessage = () => {
