@@ -17,12 +17,11 @@
 
 .navcontainer {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  width: 100%;
   height: 80px;
-  max-width: 1500px;
   font-size: 20px;
+  width:100%;
 }
 .navlogo {
   color: white;
@@ -32,7 +31,7 @@
   text-decoration: none;
   font-size: 2rem;
   flex-grow: 1;
-  
+  max-width: auto;
 }
 
 .Logo{
@@ -183,8 +182,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-100%, 60%);
-    font-size: 1.8rem;
+    transform: translate(-150%, 130%) scaleX(2); /* Add scaleX(-1) here */
+    font-size: 1.6rem;
     cursor: pointer;
     color: white;
   }
