@@ -42,14 +42,14 @@ function NavBar(prop) {
                 Profile
               </NavLink>
             </li> */}
-            <li className={styles.navitem}>
-              <NavLink
+            {/* <li className={styles.navitem}> */}
+              {/* <NavLink
                 exact
                 activeClassName={styles.active}
                 className={styles.navlinks}
               >
-                {/* <IoMdNotifications /> */}
-              </NavLink>
+                <IoMdNotifications />
+              </NavLink> */}
               {/* <NavLink
                 exact
                 activeClassName={styles.active}
@@ -57,7 +57,7 @@ function NavBar(prop) {
               >
                 Home
               </NavLink> */}
-            </li>
+            {/* </li> */}
             <li className={styles.linkbuttonbns}>
               <NavLink
                 exact

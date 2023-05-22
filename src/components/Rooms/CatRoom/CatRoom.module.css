@@ -12,6 +12,7 @@ h1 {
 }
 .catRooms {
   margin-top: 2rem;
+  width:50%;
 }
 .rooms {
   display: flex;
@@ -128,4 +129,20 @@ button:hover {
   font-size: 14px;
   font-weight: bold;
   color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .catRooms {
+    width: 90%;
+  }
+  .sliderValue{
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+  }
+  .catRooms{
+    margin-top: 8rem;
+  }
+}
+button{
+  margin-right:2rem;
 }

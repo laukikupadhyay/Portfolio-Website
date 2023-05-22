@@ -147,7 +147,7 @@ function CreateRoom({user}) {
         <div>Visibility:</div>
         <div className={styles.dropdown}>
       <select 
-      value={selectedSport} onChange={handleVisibilityChange}
+      value={visibility} onChange={handleVisibilityChange}
       >
        <option value="Public">Public</option>
         <option value="Private">Private</option>
