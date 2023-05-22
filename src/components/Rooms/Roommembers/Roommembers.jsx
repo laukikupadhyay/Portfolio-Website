@@ -3,9 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser,faXmark} from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+
+import Loader from "react-js-loader";
 
 function Roommembers({room}) {
   const [members, setMembers] = useState([])
+  const [loading, setLoading] = useState(false)
   const userInfo = useSelector((state) => state.userInfo);
   useEffect(()=>{
     getMembers()
@@ -24,8 +28,38 @@ function Roommembers({room}) {
     }
   }
 
-  const removeMember = async (e) => {
+  const removeMember = async (id) => {
+    Swal.fire({
+      title: "Do you really want to remove the user?",
+      text: "This action cannot be undone.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+    try{
 
+    setLoading(true)
+      const response = await fetch(process.env.REACT_APP_BACKEND_URL + 'groups/leavegroup/' + room._id + "/"+id, {
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+      })
+      const data = await response.json();
+      console.log(data)
+      getMembers();
+    }
+    catch(err){
+      console.log(err)
+    }
+    finally{
+      setLoading(false);
+    }
+  }
+})
   }
   return (
     <div className={styles.memberContainer}>
@@ -40,18 +74,23 @@ function Roommembers({room}) {
                     <div className={styles.name}>{member.name}</div>
                     <i>{member.name === room.adminName && "(Admin)"}</i>
                     </div>
-                    <div>
+                    {
+                      loading ?
+                      <Loader type="bubble-loop" bgColor={"#FFFFFF"} color={'#FFFFFF'} size={30} />
+                      :
+                      <div>
                       {
                         member.name === room.adminName ? ""
                         :
                         (
                           
-                            userInfo.email === room.creator && 
-                            <FontAwesomeIcon className={styles.remove} icon={faXmark} onClick={removeMember}/>
+                          userInfo.email === room.creator && 
+                          <FontAwesomeIcon className={styles.remove} icon={faXmark} onClick={()=>removeMember(member._id)}/>
                           
                           )
                         }
                     </div>
+                        }
                     
             </div>
           )

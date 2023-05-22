@@ -71,7 +71,7 @@ const Post = ({ user, ownProfileView }) => {
       );
       const data = await response.json();
       console.log(data);
-      Swal.fire("Removed!", "The user is not longer a friend!", "success");
+      Swal.fire("Removed!", "Post deleted!", "success");
       setPostsToView();
     } catch (err) {
       console.log(err);

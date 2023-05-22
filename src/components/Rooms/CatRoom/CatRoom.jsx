@@ -13,6 +13,7 @@ function CatRoom() {
   const location = useLocation();
   const [loading ,setLoading] = useState(false);
   const userInfo = useSelector((state) => state.userInfo);
+  const locationNotUpdated = !userInfo.location.coordinates[1] && !userInfo.location.coordinates[0];
   
   useEffect(() => {
     console.log(location.state.propValue)
@@ -57,36 +58,42 @@ function CatRoom() {
       <h1>{room.name}</h1>
 
       <div className={styles.sliderContainer}>
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value={value}
-              onChange={handleSliderChange}
-              className={styles.slider}
-            />
-            <div className={styles.sliderValue}>
-              Search in the radius : {value} kms
-            </div>
-          </div>
-      <div className={styles.catRooms}>
-      {
-        loading ? 
-        <Loader type="bubble-loop" bgColor={"#FFFFFF"} color={'#FFFFFF'} size={30} />
-        :
-        <>
-        {
-        catRooms.map((eachRoom) => {
-          return (
-            <div>
-            <EachCatRoom eachRoom={eachRoom} value={value} />
-            </div>
-            )
-          })}
-          </>
-        }
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value={value}
+          onChange={handleSliderChange}
+          className={styles.slider}
+        />
+        <div className={styles.sliderValue}>
+          Search in the radius : {value} kms
+        </div>
       </div>
-  </div>
+      <div className={styles.catRooms}>
+        {loading ? (
+          <Loader type="bubble-loop" bgColor={"#FFFFFF"} color={'#FFFFFF'} size={30} />
+        ) : (
+          <>
+            {locationNotUpdated ? (
+              <div className={styles.room}>
+                <i>
+                  <h3>Location not updated , Go to edit profile to update the location ....</h3>
+                </i>
+              </div>
+            ) : (
+              <>
+                {catRooms.map((eachRoom) => (
+                  <div key={eachRoom.id}>
+                    <EachCatRoom eachRoom={eachRoom} value={value} />
+                  </div>
+                ))}
+              </>
+            )}
+          </>
+        )}
+      </div>
+    </div>
   )
 }
 

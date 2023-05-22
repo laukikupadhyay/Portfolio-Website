@@ -26,6 +26,7 @@ function Search() {
     const [users, setUsers] = useState([]);
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [loading , setLoading] = useState(false);
+    const userInfo = useSelector((state) => state.userInfo);
     useEffect(() => {
       const fetchUsers = async () => {
         setLoading(true);
@@ -113,7 +114,7 @@ function Search() {
             </div>
         }
         {
-          compThree && <div className={styles.searchUserContainer}>
+            compThree && <div className={styles.searchUserContainer}>
             {/* <h1>Search user by distance</h1> */}
             <SearchUser/>
           </div>

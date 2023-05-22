@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 function MyRooms({user}) {
   const [rooms , setRooms] = useState([]);
   const [loading , isLoading] = useState(false);
+  // const [deleteLoading , ]
   const navigate = useNavigate();
 
   useEffect(()=>{
@@ -42,16 +43,31 @@ function MyRooms({user}) {
     }
   }
 
-  const handleLeave = async ()=>{
+  const handleLeave = async (id)=>{
+    Swal.fire({
+      title: "Do you really want to leave the room?",
+      text: "This action cannot be undone.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
     try{
-      const response = await fetch(process.env.REACT_APP_BACKEND_URL + '')
+      const response = await fetch(process.env.REACT_APP_BACKEND_URL + 'groups/leavegroup/' +id + '/'+ user._id, {
+        method: 'POST',
+      })
     }
     catch(err){
-
+      Swal.fire("Error!", "An error occurred while leaving the room!", "error");
     } finally {
-      window.location.reload();
+      // window.location.reload();
+      fetchUserGroups();
     }
+  }})
   }
+  
 const handleDelete = async (room) => {
   Swal.fire({
     title: "Do you really want to delete the group?",
@@ -120,7 +136,8 @@ const handleDelete = async (room) => {
                           Delete
                       </button>
                           : 
-                          <button className={styles.leave} onClick = {handleLeave}>
+                          <button className={styles.leave} onClick = {()=>{handleLeave(room._id)}
+                          }>
                           Leave
                           </button>
                         }
