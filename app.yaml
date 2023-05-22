@@ -11,7 +11,7 @@ handlers:
 
 env_variables:
   REACT_APP_BACKEND_URL: 'https://sportyphy-server.onrender.com/api/'
-   REACT_APP_SOCKET_SERVER_URL: "https://sportyphy-server.onrender.com"
+  REACT_APP_SOCKET_SERVER_URL: "https://sportyphy-server.onrender.com"
   REACT_APP_EMAILJS_SERVICE_ID: 'service_gbixatt'
   REACT_APP_EMAILJS_TEMPLATE_ID: 'template_7z97gr6'
   REACT_APP_EMAILJS_USER_ID: 'iWxx2qNPr0xxujnnI'

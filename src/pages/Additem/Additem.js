@@ -155,7 +155,7 @@ function Additem() {
               />
             </div>
             <button type="submit" className="additembutton">
-              Add Item
+              Pay ₹{(itemprice * 0.1).toFixed(2)}
             </button>
           </form>
         </div>
