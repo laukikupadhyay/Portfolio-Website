@@ -95,6 +95,26 @@ const handleCancelRequest = async () => {
   }
 }
 
+const handleRemoveFriend = async () =>{
+  try{
+      const response = await fetch(process.env.REACT_APP_BACKEND_URL + 'users/removefriend/'+ userInfo._id + '/' + user._id, {
+          method: 'PATCH',
+          headers: {
+              'Content-Type': 'application/json',
+          }
+      })
+      const res = await response.json();
+      console.log(res.data.response);
+      dispatch(setUser(res.data.response));
+  }
+  catch(err){
+      console.log(err);
+  }
+  finally{
+    window.location.reload();
+  }
+}
+
   return (
     <div className={styles.MyAccount}>
       <h2>{user._id === userInfo._id ? "My" : user.name} Account</h2>
@@ -108,17 +128,21 @@ const handleCancelRequest = async () => {
             <div className={styles.username}>{user.name}</div>
           </div>
         </div>
-        {profileView && user._id !== userInfo._id && (
-          <div>
-            {userInfo.getRequests.includes(user._id) ? (
-              <button onClick={handleAcceptRequest}>Accept Request</button>
-            ) : userInfo.sentRequests.includes(user._id) ? (
-              <button onClick={handleCancelRequest}>Cancel Request</button>
-            ) : (
-              <button onClick={handleSendRequests}>Send Request</button>
-            )}
-          </div>
-        )}
+        {
+  profileView && user._id !== userInfo._id && (
+    <div>
+      {userInfo.getRequests.includes(user._id) ? (
+        <button onClick={handleAcceptRequest}>Accept Request</button>
+      ) : userInfo.sentRequests.includes(user._id) ? (
+        <button onClick={handleCancelRequest}>Cancel Request</button>
+      ) : userInfo.friends.includes(user._id) ? (
+        <button onClick={handleRemoveFriend}>Remove as friend</button>
+      ) : (
+        <button onClick={handleSendRequests}>Send Request</button>
+      )}
+    </div>
+  )
+}
       </div>
       <div className={styles.details}>
         <div className={styles.detailName}>
