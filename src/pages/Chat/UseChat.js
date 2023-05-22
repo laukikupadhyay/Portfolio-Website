@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
-const SOCKET_SERVER_URL = process.env.REACT_APP_BACKEND_URL;
+const SOCKET_SERVER_URL = process.env.REACT_APP_SOCKET_SERVER_URL;
 
 const useChat = (roomId, name) => {
   const [messages, setMessages] = useState([]);
@@ -34,8 +34,7 @@ const useChat = (roomId, name) => {
       senderId: socketRef.current.id,
       name: name,
       roomId: roomId,
-      // send roomId also
-    });
+   });
   };
 
   return { messages, sendMessage };

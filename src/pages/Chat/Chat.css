@@ -24,7 +24,7 @@
   background-color: #151515;
   color: white;
   border-radius: 1%;
-  border-top: none;
+  border: none;
   width: 100%;
   height: 60px;
 }
@@ -68,10 +68,10 @@
 }
 
 
-.messages-container, .new-message-input-field, .send-message-button {
+/* .messages-container, .new-message-input-field, .send-message-button {
   border-color: #9a9a9a;
  
-}
+} */
 
 .chat-room-container {
   position: fixed;
