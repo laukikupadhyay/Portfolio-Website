@@ -5,10 +5,12 @@ import styles from './PublicProfile.module.css'
 import React, { useEffect, useState } from 'react'
 import NavBar from '../../components/navbar/Navbar';
 import Post from '../../components/Post/Post';
+import { useSelector } from 'react-redux';
 
 function PublicProfile() {
     const {id} = useParams();
     const [user , setuser] = useState(null);
+    const userInfo = useSelector((state) => state.userInfo);
     // const []
 
     useEffect(()=>{
@@ -36,7 +38,7 @@ function PublicProfile() {
         <NavBar/>
         <div className={styles.content}>
             <div className={styles.myAccount}>
-        {user ? <MyAccount user={user} /> : <p>Loading...</p>}
+        {user ? <MyAccount user={user} profileView={true}/> : <p>Loading...</p>}
             </div>
             <div className={styles.posts}>
         {user ? <Post user={user} ownProfileView={true} className={styles.posts}/> : <p>Loading...</p>}

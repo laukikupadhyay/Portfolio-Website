@@ -80,21 +80,21 @@ const Post = ({ user, ownProfileView }) => {
   }
 });
 };
-  useEffect(() => {
-    const fetchPostUsers = async () => {
-      setLoading(true)
-      const users = {};
-      for (const post of posts) {
-        if(ownProfileView){
-          if(post.userId === user._id){
-            users[post.userId] = await getUserById(post.userId);
-          }
+useEffect(() => {
+  const fetchPostUsers = async () => {
+    setLoading(true)
+    const users = {};
+    for (const post of posts) {
+      if(ownProfileView){
+        if(post.userId === user._id){
+          users[post.userId] = await getUserById(post.userId);
         }
-        else{
-
-          if (!users[post.userId]) {
-            users[post.userId] = await getUserById(post.userId);
-          }
+      }
+      else{
+        
+        if (!users[post.userId]) {
+          users[post.userId] = await getUserById(post.userId);
+        }
         }
       }
       setPostUsers(users);
@@ -102,19 +102,15 @@ const Post = ({ user, ownProfileView }) => {
     };
     fetchPostUsers();
   }, [posts]);
-
-  if (!posts.length) {
-    return <div>No posts to show....</div>;
-  }
-
-  return (
-    <div className={styles.container}>
+  
+    return (
+      <div className={styles.container}>
       {
         loading?
         <Loader type="bubble-loop" bgColor={"#FFFFFF"} color={'#FFFFFF'} size={30} />:
         <>
           {
-          posts &&
+            posts &&
             posts.map((post) => {
               if(ownProfileView && post.userId !== user._id){
                 return null;
@@ -136,9 +132,9 @@ const Post = ({ user, ownProfileView }) => {
                   <div className={styles.upperDetails}>
                     <div className={styles.upperName}>
                     <h5 className={styles.name}  onClick={() => {
-                    navigate("/userpage/" + post.userId);
-                  }} 
-                  >{postUser[0]?.name ?? ""}</h5>
+                      navigate("/userpage/" + post.userId);
+                    }} 
+                    >{postUser[0]?.name ?? ""}</h5>
                   {userInfo._id === post.userId &&
                     <FontAwesomeIcon icon={faTrash} className={styles.trash} onClick={()=> removePost(post._id)}/>
                   }
@@ -158,6 +154,5 @@ const Post = ({ user, ownProfileView }) => {
       }
     </div>
   );
-};
-
+}
 export default Post;
