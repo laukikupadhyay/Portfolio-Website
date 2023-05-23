@@ -16,7 +16,7 @@ import axios from "axios";
 function EditProfile({ user }) {
   const userInfo = useSelector((state) => state.userInfo);
   const [name, setName] = useState("");
-  const [interests, setInterests] = useState([]);
+  const [interests, setInterests] = useState(userInfo.interest);
   const [loading1, setLoading1] = useState(false);
   const [loading2, setLoading2] = useState(false);
   const [long, setLong] = useState(0);
@@ -145,12 +145,32 @@ function EditProfile({ user }) {
           setLong(position.coords.longitude);
           setMarkerPosition([position.coords.latitude, position.coords.longitude]);
           setLocation(position.coords.latitude, position.coords.longitude);
+  
+          Swal.fire({
+            icon: "success",
+            title: "Location updated successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         },
         function (error) {
           console.error(`Error getting user's location: ${error.message}`);
+  
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Failed to retrieve location. Check if you have given access to location for this website!",
+          });
         }
       );
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Give access to your location!",
+      });
     }
+  
     setLoading2(false);
   };
 

@@ -82,7 +82,7 @@ const ChatRoom = (props) => {
                       message.name == name ? "my-message" : "received-message"
                     }`}
                   >
-                    {message.name}: {message.messages}
+                    <i>{message.name}:</i> {message.messages}
                   </li>
                 ))}
                 {messages.map((message, i) => (
@@ -94,7 +94,7 @@ const ChatRoom = (props) => {
                         : "received-message"
                     }`}
                   >
-                    {message.name}: {message.body}
+                    <i>{message.name}:</i> {message.body}
                   </li>
                 ))}
               </ol>

@@ -18,7 +18,7 @@
 .new-message-input-field {
   height: 80px;
   max-height: 50%;
-  font-size: 20px;
+  font-size: 15px;
   padding: 8px 12px;
   resize: none;
   background-color: #151515;
@@ -27,6 +27,9 @@
   border: none;
   width: 100%;
   height: 60px;
+}
+.new-message-input-field:focus{
+  outline: none;
 }
 
 .message-item {
@@ -66,7 +69,6 @@
   background-color: #414141;
   cursor:pointer;
 }
-
 
 /* .messages-container, .new-message-input-field, .send-message-button {
   border-color: #9a9a9a;
@@ -119,12 +121,17 @@
   position: absolute;
   right: 0;
 }
-
+.message-item>i{
+  margin-left:0;
+}
 
 /* Add a media query for screens smaller than 768px */
 @media (max-width: 768px) {
   .chat-room-container {
     flex-direction: column;
+  }
+  .my-message{
+    /* width: 70%; */
   }
   
   .roomheading {
@@ -155,10 +162,11 @@
   
   .new-message-input-field {
     max-height: none;
+    font-size: 1.2rem;
   }
   
   .message-item {
-    width: 100%;
+    width: 70%;
   }
 }
 

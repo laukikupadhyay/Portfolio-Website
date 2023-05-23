@@ -4,6 +4,8 @@ import "./Additem.css";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
+import Loader from "react-js-loader";
 
 function Additem() {
   const userInfo = useSelector((state) => state.userInfo);
@@ -17,6 +19,14 @@ function Additem() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!itemname || !itemdesc || !cat || !itemprice || !image) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please fill all the fields",
+      });
+      return;
+    }
     setLoading(true);
     const form = new FormData();
     form.append("itemname", itemname);
@@ -154,9 +164,18 @@ function Additem() {
                 onChange={(e) => setImage(e.target.files[0])}
               />
             </div>
-            <button type="submit" className="additembutton">
-              Pay ₹{(itemprice * 0.1).toFixed(2)}
-            </button>
+            {loading ? (
+              <Loader
+                type="bubble-loop"
+                bgColor={"#FFFFFF"}
+                color={"#FFFFFF"}
+                size={30}
+              />
+            ) : (
+              <button type="submit" className="additembutton">
+                Pay ₹{(itemprice * 0.1).toFixed(2)}
+              </button>
+            )}
           </form>
         </div>
       </div>

@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import Loader from "react-js-loader";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import Logo from '../../assests/images/logo.png';
+import sportyphyPost from '../../assests/images/sportyphypost.png'
 
 const Post = ({ user, ownProfileView }) => {
   const navigate = useNavigate();
@@ -108,6 +110,35 @@ useEffect(() => {
       {
         loading?
         <Loader type="bubble-loop" bgColor={"#FFFFFF"} color={'#FFFFFF'} size={30} />:
+        posts.length === 0 ? (
+          <>
+          <p className={styles.noPosts}>
+            <i>Connect with friends and post your interests</i>
+          </p>
+          <div>
+              <div className={styles.user}>
+                <div
+                  className={styles.about}
+                  >
+                  <div className={styles.avatar}>
+                    <img
+                      className={styles.avatarImg}
+                      src={Logo}
+                      alt="avatar"
+                      />
+                  </div>
+                  <div className={styles.upperDetails}>
+                    <div className={styles.upperName}>
+                    <h5 className={styles.name}>Sporty-PHY</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p className={styles.description}>Sporty-PHY: A go-to Place for Sports Enthusiasts , connect with the people around with similar sports interest.</p>
+              <img className={styles.image} alt="post" src={sportyphyPost} />
+            </div>
+          </>
+        ) : (
         <>
           {
             posts &&
@@ -151,6 +182,7 @@ useEffect(() => {
           );
         })}
       </>
+        )
       }
     </div>
   );
