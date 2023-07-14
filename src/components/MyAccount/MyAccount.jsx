@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faGear } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import opencage from "opencage-api-client";
-import { setUser } from "../../store/auth/auth-slice";
+import { setUser } from "../../state/auth/auth-slice";
 
 function MyAccount({ user, profileView }) {
   const userInfo = useSelector((state) => state.userInfo);

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./SideNav.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { setUser } from "../../store/auth/auth-slice";
+import { setUser } from "../../state/auth/auth-slice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

@@ -8,7 +8,7 @@ import Friends from "../../components/Friends/Friends";
 import CreateRoom from "../../components/Rooms/CreateRoom/CreateRoom";
 import EditProfile from "../../components/EditProfile/EditProfile";
 import { useSelector, useDispatch } from "react-redux";
-import { setUser } from "../../store/auth/auth-slice";
+import { setUser } from "../../state/auth/auth-slice";
 import { useNavigate } from "react-router-dom";
 
 function Main() {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Login.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { setUser, setLoading } from "../../../store/auth/auth-slice.js";
+import { setUser, setLoading } from "../../../state/auth/auth-slice"
 import { useNavigate } from "react-router-dom";
 import Loader from "react-js-loader";
 import swal from "sweetalert2";

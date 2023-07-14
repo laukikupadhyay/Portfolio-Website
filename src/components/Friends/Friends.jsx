@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser,faXmark} from "@fortawesome/free-solid-svg-icons";
 import Loader from "react-js-loader";
 import { useDispatch } from 'react-redux';
-import { setUser } from '../../store/auth/auth-slice';
+import { setUser } from '../../state/auth/auth-slice';
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 

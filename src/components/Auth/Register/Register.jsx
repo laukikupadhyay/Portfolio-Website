@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Register.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { setLoading, setUser } from "../../../store/auth/auth-slice.js";
+import { setLoading, setUser } from "../../../state/auth/auth-slice"
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Loader from "react-js-loader";

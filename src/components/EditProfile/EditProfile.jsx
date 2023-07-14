@@ -4,7 +4,7 @@ import { interestsList } from "../../assests/data.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoading, setUser } from "../../store/auth/auth-slice";
+import { setLoading, setUser } from "../../state/auth/auth-slice";
 import Loader from "react-js-loader";
 import Swal from "sweetalert2";
 import { MapContainer, TileLayer, useMapEvents, Marker } from "react-leaflet";

@@ -5,7 +5,7 @@ import Header from "../../components/Header/Header";
 import Navbar from "../../components/navbar/Navbar";
 import styles from './Main.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUser } from '../../store/auth/auth-slice.js';
+// import { setUser } from '../../store/auth/auth-slice.js';
 import EachUser from "../../components/SearchUser/EachUser/EachUser";
 
 function Main() {

@@ -3,7 +3,7 @@ import styles from "./EachUser.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faXmark, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../../../store/auth/auth-slice";
+import { setUser } from "../../../state/auth/auth-slice";
 import { useNavigate } from "react-router-dom";
 
 function EachUser({ user}) {
