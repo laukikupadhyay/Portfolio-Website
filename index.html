@@ -7,6 +7,9 @@
     <title>Portfolio: Laukik</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
+    <link rel="stylesheet" href="style_icons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
   <body>
     <nav id="desktop-nav">
@@ -38,45 +41,42 @@
     </nav>
     <section id="profile">
       <div class="section__pic-container">
-        <img src="./assets/profile-pic2.png" alt="Laukik Upadhyay profile picture" />
+        <img id="profile_pic2" src="./assets/profile-pic2.png" alt="Laukik Upadhyay profile picture" />
       </div>
       <div class="section__text">
         <p class="section__text__p1">Hello, I'm</p>
         <h1 class="title">Laukik Upadhyay</h1>
         <p class="section__text__p2">Software and Front-End Developer</p>
-        <div class="btn-container">
-          <button
+        <div class="button-container">
+          <button id="bt"
             class="btn btn-color-2"
-            onclick="window.open('./assets/Laukik Upadhyay_Resume.pdf')"
-          >
-            Download CV
+            onclick="window.open('./assets/Laukik Upadhyay_Resume.pdf')">
+          <i class="fa fa-download">&nbsp;CV</i>        
           </button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
+          <button id="bt" class="hire" onclick="location.href='mailto:laukikbhardwaj183@gmail.com'">
+            <i class="fab fa-hire-a-helper">&nbsp;Hire Me</i>
           </button>
         </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/laukik-upadhyay-b96394184'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/laukikupadhyay'"
-          />
+
+        <div id="socials-container"> 
+          <div class="icons">
+            <a href="#" class="fb"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/its_laukik?igshid=MzRlODBiNWFlZA==" class="insta"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/laukikupadhyay" class="git"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/laukik-upadhyay-b96394184" class="lin"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.youtube.com/channel/UCsilfa0sRWxEZduSpxxDebg" class="you"><i class="fab fa-youtube"></i></a>
+          </div>
+        
         </div>
       </div>
     </section>
     <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-     <h1 class="title">About Me</h1>
+      <p class="section__text__p1">Explore my</p>
+     <h1 class="title">Education</h1>
        <div class="section-container">
         <div class="section__pic-container">
-          <img
+          <img 
             src="./assets/profile-pic3.png"
             alt="Profile picture"
             class="about-pic"
@@ -352,7 +352,7 @@
             alt="Email icon"
             class="icon contact-icon email-icon"
           />
-          <p><a href="mailto:laukikbhardwaj183@gmail.com">laukikbhardwaj183.com</a></p>
+          <p><a href="mailto:laukikbhardwaj183@gmail.com">laukikbhardwaj183@gmail.com</a></p>
         </div>
         <div class="contact-info-container">
           <img
@@ -360,7 +360,7 @@
             alt="LinkedIn icon"
             class="icon contact-icon"
           />
-          <p><a href="https://www.linkedin.com/in/laukik-upadhyay-b96394184"></a>">LinkedIn</a></p>
+          <p><a href="https://www.linkedin.com/in/laukik-upadhyay-b96394184"></a>LinkedIn</a></p>
         </div>
       </div>
     </section>

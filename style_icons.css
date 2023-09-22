@@ -1,0 +1,147 @@
+
+.icons a{
+  background: #ecf0f3;
+  position: relative;
+  height: 60px;
+  width: 60px;
+  margin: 10px 10px;
+  display: inline-flex;
+  text-decoration: none;
+  border-radius: 50%;
+  transition: translate(-50%, -50%);
+  box-shadow: -2px -2px 7px #000000,
+              3px 3px 5px #a0a0a3;
+}
+.icons a:hover:before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
+  background: #ecf0f3;
+}
+.icons a i{
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  font-size: 28px;
+  line-height: 60px;
+}
+.icons a:hover i{
+  animation: rotate 6s infinite linear;
+  transition: transform .5s ease;
+}
+.icons a.fb i{
+  border-radius: 50%;
+  box-shadow: 3px 3px 3px #4267B2 ;
+  color: #4267B2;
+}
+.icons a.fb:hover {
+  transform: scale(1.2);
+  box-shadow: 3px 3px 5px #4267B2 ,
+  -3px -3px 5px #4267B2 ;
+ }
+.icons a.twitter i{
+  border-radius: 50%;
+  box-shadow: 3px 3px 3px #1DA1F2;
+  color: #1DA1F2;
+}
+.icons a.twitter:hover {
+  transform: scale(1.2);
+  box-shadow: 3px 3px 5px #1DA1F2 ,
+  -3px -3px 5px #1DA1F2 ;
+ }
+.icons a.insta i{
+  border-radius: 50%;
+  box-shadow: 3px 3px 3px #E1306C ;
+  color: #E1306C;
+}
+.icons a.insta:hover {
+  transform: scale(1.2);
+  box-shadow: 3px 3px 5px #E1306C ,
+  -3px -3px 5px #E1306C ;
+ }
+.icons a.git i{
+  border-radius: 50%;
+  box-shadow: 3px 3px 3px #000 ;
+  color: #000;
+}
+.icons a.git:hover {
+  transform: scale(1.2);
+  box-shadow: 3px 3px 5px #000 ,
+  -3px -3px 5px #000 ;
+ }
+.icons a.lin i{
+  border-radius: 50%;
+  box-shadow: 3px 3px 3px #0077b5 ;
+  color: #0077b5;
+}
+.icons a.lin:hover {
+  transform: scale(1.2);
+  box-shadow: 3px 3px 5px #0077b5 ,
+              -3px -3px 5px #0077b5 ;
+ }
+.icons a.you i{
+  border-radius: 50%;
+  box-shadow: 3px 3px 3px #CD201F ;
+  color: #CD201F;
+ }
+ .icons a.you:hover {
+  transform: scale(1.2);
+  box-shadow: 3px 3px 5px #CD201F ,
+  -3px -3px 5px #CD201F ;
+ }
+
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+ /* Download and Hire Me */
+
+ .button-container{
+  box-shadow: border-box;
+  background-color: rgb(243, 243, 248);;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+
+#bt{
+  font-family: 'Times New Roman', serif;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 13px;
+  margin: 15px;
+  width: 150px;
+  background: #ebeef1;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  color: #00a037;
+  box-shadow: 10px 10px 10px -1px rgba(66, 67, 68, 0.16),
+             -10px -10px 10px -1px rgba(255, 255, 255, 0.70);
+  transition: transform .5s ease;
+  border-color: #fcf9f9;
+}
+
+#bt:hover {
+  box-shadow: inset 10px 10px 10px -1px rgba(1, 13, 22, 0.16),
+             inset -10px -10px 10px -1px rgba(0, 0, 0, 0.7);
+             transform: scale(1.1);
+}
+
+
+
+/* Nav Bar  */

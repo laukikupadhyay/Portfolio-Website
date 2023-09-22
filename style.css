@@ -162,26 +162,39 @@ section {
 
 .section-container {
   display: flex;
+  
 }
 
 /* PROFILE SECTION */
+#profile_pic2 {
+  border-radius: 50%;
+  border-color: 20px solid black;
+
+}
 
 #profile {
   display: flex;
   justify-content: center;
   gap: 5rem;
   height: 80vh;
+  
 }
 
 .section__pic-container {
+  transition: transform .5s ease;
   display: flex;
   height: 400px;
   width: 400px;
   margin: auto 0;
+  transition: transform .5s ease;
+}
+.section__pic-container:hover {
+    transform: scale3d();
 }
 
 .section__text {
   align-self: center;
+  line-height: 1.8;
   text-align: center;
 }
 
@@ -206,7 +219,7 @@ section {
 #socials-container {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
   gap: 1rem;
 }
 
@@ -219,51 +232,57 @@ section {
 
 /* BUTTONS */
 
-.btn-container {
+/* .btn-container {
   display: flex;
   justify-content: center;
   gap: 1rem;
 }
 
+
 .btn {
+  transition: transform .5s ease;
+  background: rgb(128, 55, 150);
+  box-shadow: -3px -3px 7px #000000,
+              3px 3px 7px #000000;
   font-weight: 600;
   transition: all 300ms ease;
   padding: 1rem;
   width: 8rem;
   border-radius: 2rem;
 }
+.btn:hover{
+  transform: scale(1.1);
+  background-color: blueviolet;
+  
+}
 
 .btn-color-1,
 .btn-color-2 {
-  border: rgb(53, 53, 53) 0.1rem solid;
+  border: rgb(0, 0, 0) 0.1rem solid;
 }
 
 .btn-color-1:hover,
 .btn-color-2:hover {
+  color: rgb(255, 255, 255);
   cursor: pointer;
 }
 
 .btn-color-1,
 .btn-color-2:hover {
-  background: rgb(53, 53, 53);
   color: white;
 }
 
 .btn-color-1:hover {
-  background: rgb(0, 0, 0);
+  color: white;
 }
 
 .btn-color-2 {
-  background: none;
-}
-
-.btn-color-2:hover {
-  border: rgb(255, 255, 255) 0.1rem solid;
+  color: white;
 }
 
 .btn-container {
   gap: 1rem;
-}
+} */
 
 /* ABOUT SECTION */
 
