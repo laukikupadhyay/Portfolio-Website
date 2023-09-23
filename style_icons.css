@@ -95,7 +95,6 @@
   -3px -3px 5px #CD201F ;
  }
 
-
 @keyframes rotate{
     0%{
         transform: rotate(0deg);
@@ -142,5 +141,6 @@
 }
 
 
-
 /* Nav Bar  */
+
+
