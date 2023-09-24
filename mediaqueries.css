@@ -2,6 +2,7 @@
   #profile {
     height: 83vh;
     margin-bottom: 6rem;
+    border: none;
   }
   .about-containers {
     flex-wrap: wrap;
@@ -12,10 +13,11 @@
   }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1200px){
   #desktop-nav {
     display: none;
   }
+
 
   #hamburger-nav {
     display: flex;
@@ -100,4 +102,5 @@
   .text-container {
     text-align: justify;
   }
+}
 }
