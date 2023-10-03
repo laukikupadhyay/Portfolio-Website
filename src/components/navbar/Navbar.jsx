@@ -58,8 +58,9 @@ function NavBar(prop) {
                 Home
               </NavLink> */}
             {/* </li> */}
-            <li className={styles.linkbuttonbns}>
-              <NavLink
+            {/* <li className={styles.linkbuttonbns}>
+              {/* Here, Buy and sale option has been removed till line 75 */}
+              {/* <NavLink
                 exact
                 to="#"
                 activeClassName={styles.active}
@@ -72,7 +73,7 @@ function NavBar(prop) {
                   </NavLink>
                 </span>
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink
                 exact
