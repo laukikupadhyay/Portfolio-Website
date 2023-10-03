@@ -44,12 +44,12 @@
   box-shadow: 3px 3px 5px #4267B2 ,
   -3px -3px 5px #4267B2 ;
  }
-.icons a.twitter i{
+.icons a.twi i{
   border-radius: 50%;
   box-shadow: 3px 3px 3px #1DA1F2;
   color: #1DA1F2;
 }
-.icons a.twitter:hover {
+.icons a.twi:hover {
   transform: scale(1.2);
   box-shadow: 3px 3px 5px #1DA1F2 ,
   -3px -3px 5px #1DA1F2 ;
