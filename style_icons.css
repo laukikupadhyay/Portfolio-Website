@@ -141,6 +141,33 @@
 }
 
 
-/* Nav Bar  */
+/* For Project Buttons for Github and Live More */
+
+#btt{
+  font-family: 'Times New Roman', serif;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px;
+  margin: 10px;
+  width: 120px;
+  background: #8a55e0;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  color: #ffffff;
+  box-shadow: 10px 10px 10px -1px rgba(1, 13, 22, 0.16),
+             -10px -3px 10px -1px rgba(0, 0, 0, 0.7);
+  transition: transform .5s ease;
+  border-color: #fcf9f9;
+}
+
+#btt:hover {
+  box-shadow: inset 10px 10px 10px -1px rgba(1, 13, 22, 0.16),
+             inset -10px -10px 10px -1px rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
+  background-color: #a0a0a3;
+  color:rgba(0, 0, 0, 0.7)
 
 
+
+}
